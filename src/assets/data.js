@@ -1,6 +1,6 @@
 export const data = [
     {
-      id: 1, imgUrl: "src/assets/img/cc.jpg"
+      id: 1, imgUrl: "./public/cc.jpg"
     },
     {
       id: 2, imgUrl: "src/assets/img/ccc.jpg"

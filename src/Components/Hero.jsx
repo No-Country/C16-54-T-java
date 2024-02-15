@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { data } from "../assets/data.js";
+import { data } from "../assets/data";
 import logoblanco from "../assets/img/logoblanco.svg";
 import "./hero.css";
 import {
