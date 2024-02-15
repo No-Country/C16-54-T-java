@@ -1,6 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { data } from "../assets/data";
 import logoblanco from "../assets/img/logoblanco.svg";
+import "./hero.css";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Image,
+  Stack,
+  Heading,
+  Text,
+  Divider,
+  ButtonGroup,
+  Button,
+} from "@chakra-ui/react";
+import img from "../assets/img/ffff.jpg";
+import { FaRegHeart } from "react-icons/fa";
+
 
 const Hero = () => {
   const listRef = useRef();
@@ -68,6 +84,91 @@ const Hero = () => {
               })}
             </ul>
           </div>
+        </div>
+      </div>
+      <div className="novedades">
+        <h2 className="novedades-title">Novedades</h2>
+        <div className="novedades-container">
+          <Card maxW="25%" bg={"#1B314E"}>
+            <CardBody>
+              <Image
+                src={img}
+                alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md" color={"white"}>Valorant</Heading>
+                <Text color={"white"} fontSize="2xl">
+                  $450
+                </Text>
+              </Stack>
+            </CardBody>
+            <Divider color={"#9FEADD"}/>
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button variant="solid" color={"white"} bg={"#879DBB"}>
+                  Comprar
+                </Button>
+                <Button fontSize={"2rem"} variant="ghost" colorScheme="blue">
+                  <FaRegHeart />
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card>
+          <Card maxW="25%" bg={"#1B314E"}>
+            <CardBody>
+              <Image
+                src={img}
+                alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md" color={"white"}>Valorant</Heading>
+
+                <Text color={"white"} fontSize="2xl">
+                  $450
+                </Text>
+              </Stack>
+            </CardBody>
+            <Divider color={"#9FEADD"}/>
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button variant="solid" color={"white"} bg={"#879DBB"}>
+                  Comprar
+                </Button>
+                <Button fontSize={"2rem"} variant="ghost" colorScheme="blue">
+                  <FaRegHeart />
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card>
+          <Card maxW="25%" bg={"#1B314E"}>
+            <CardBody>
+              <Image
+                src={img}
+                alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md" color={"white"}>Valorant</Heading>
+
+                <Text color={"white"} fontSize="2xl">
+                  $450
+                </Text>
+              </Stack>
+            </CardBody>
+            <Divider color={"#9FEADD"}/>
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button variant="solid" color={"white"} bg={"#879DBB"}>
+                  Comprar
+                </Button>
+                <Button fontSize={"2rem"} variant="ghost" colorScheme="blue">
+                  <FaRegHeart />
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card>
         </div>
       </div>
     </div>
