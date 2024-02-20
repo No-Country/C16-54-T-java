@@ -18,6 +18,7 @@ import img from "../assets/img/ffff.jpg";
 import { FaRegHeart } from "react-icons/fa";
 
 
+
 const Hero = () => {
   const listRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -89,7 +90,8 @@ const Hero = () => {
       <div className="novedades">
         <h2 className="novedades-title">Novedades</h2>
         <div className="novedades-container">
-          <Card maxW="25%" bg={"#1B314E"}>
+        
+          <Card maxW={{ base: "60%", md: "25%", lg: "25%" }} bg={"#1B314E"}>
             <CardBody>
               <Image
                 src={img}
@@ -109,13 +111,13 @@ const Hero = () => {
                 <Button variant="solid" color={"white"} bg={"#879DBB"}>
                   Comprar
                 </Button>
-                <Button fontSize={"2rem"} variant="ghost" colorScheme="blue">
+                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue">
                   <FaRegHeart />
                 </Button>
               </ButtonGroup>
             </CardFooter>
           </Card>
-          <Card maxW="25%" bg={"#1B314E"}>
+          <Card maxW={{ base: "60%", md: "25%", lg: "25%" }} bg={"#1B314E"}>
             <CardBody>
               <Image
                 src={img}
@@ -136,13 +138,13 @@ const Hero = () => {
                 <Button variant="solid" color={"white"} bg={"#879DBB"}>
                   Comprar
                 </Button>
-                <Button fontSize={"2rem"} variant="ghost" colorScheme="blue">
+                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue">
                   <FaRegHeart />
                 </Button>
               </ButtonGroup>
             </CardFooter>
           </Card>
-          <Card maxW="25%" bg={"#1B314E"}>
+          <Card maxW={{ base: "60%", md: "25%", lg: "25%" }} bg={"#1B314E"}>
             <CardBody>
               <Image
                 src={img}
@@ -163,7 +165,7 @@ const Hero = () => {
                 <Button variant="solid" color={"white"} bg={"#879DBB"}>
                   Comprar
                 </Button>
-                <Button fontSize={"2rem"} variant="ghost" colorScheme="blue">
+                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue">
                   <FaRegHeart />
                 </Button>
               </ButtonGroup>

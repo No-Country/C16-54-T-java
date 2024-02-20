@@ -15,3 +15,30 @@
     background-color: antiquewhite;
     display: contents;
 }
+
+.nav-resp,
+.nav-div{
+    top: 40vh;
+    left: 50%;
+    margin: auto;
+}
+
+
+@media (max-width:738px){
+    .btn{
+        display: block;
+    }
+    .input{
+        display: block;
+    }
+    .navbar{
+        position: relative;
+    }
+}
+
+@media (min-width: 731px) and (max-width: 1170px)  {
+    .menu{
+        width: 100%;
+        
+    }
+}

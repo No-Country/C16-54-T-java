@@ -1,6 +1,6 @@
 .hero{
-    background-color: black;
-    
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(43,12,95,1) 50%, rgba(0,0,0,1) 100%);    
+
   }
   
   ul,
@@ -111,5 +111,57 @@
     margin: auto;
     justify-content: space-around;
     
+    
+}
+
+
+
+
+@media (max-width:738px){
+
+    .leftArrow{
+      font-size: 25px;
+      display: none;
+    }
+    .rightArrow{
+      font-size: 25px;
+      display: none;
+    }
+    .container-images{
+      display: none;
+      background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(43,12,95,1) 50%, rgba(0,0,0,1) 100%);    
+    }
+    .text-container{
+      width: 280px;
+      top: 10%;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      position: relative;
+      left: 0;
+
+    }
+    .text-container .img-hero{
+      width: 80px;
+      margin: auto;
+    }
+    .text-container .text{
+      font-size: 1rem;
+      margin-top: 1.5rem;
+    }
+    .text-container .title{
+      font-size: 1.8rem;
+      margin: auto;
+      padding-top: 3rem;
+    }
+    .novedades{
+      height: 100%;
+    }
+    .novedades .novedades-container{
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
     
 }
