@@ -1,5 +1,6 @@
 package com.gamestopia.Gamestopia.entities;
 
+import com.gamestopia.Gamestopia.Enum.Clasification;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,12 +31,11 @@ public class Game {
     private boolean active;
     @Column(columnDefinition = "TINYINT(1)")
     private boolean promotion;
+    @Enumerated(EnumType.STRING)
+    Clasification clasification;
     @ManyToOne
     @JoinColumn(name = "id_developer")
     private Developer developer;
-    @ManyToOne
-    @JoinColumn(name = "id_clasification")
-    private Clasification clasification;
     @ManyToOne
     @JoinColumn(name = "id_category")
     private Category category;
