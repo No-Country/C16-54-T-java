@@ -24,12 +24,15 @@
 }
 
 
+
+
 @media (max-width:738px){
     .btn{
         display: block;
     }
     .input{
         display: block;
+        margin-top: 1rem;
     }
     .navbar{
         position: relative;
