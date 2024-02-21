@@ -4,7 +4,7 @@ import { CiFacebook } from "react-icons/ci";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { Checkbox, Input, Text } from "@chakra-ui/react";
-
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -87,18 +87,19 @@ const Login = () => {
           </form>
           <Text fontSize={".8rem"} color={"#9FEADD"} marginTop={"2rem"}>
             ¿No tienes una cuenta?
-            <Button
-              height={"0"}
-              background={"none"}
-              _hover={"none"}
-              color={"#9FEADD"}
-              fontWeight={"300"}
-              fontSize={".8rem"}
-              marginLeft={"2rem"}
-              
-            >
-              REGISTRATE
-            </Button>
+            <Link to={"/register"}>
+              <Button
+                height={"0"}
+                background={"none"}
+                _hover={"none"}
+                color={"#9FEADD"}
+                fontWeight={"300"}
+                fontSize={".8rem"}
+                marginLeft={"2rem"}
+              >
+                REGISTRATE
+              </Button>
+            </Link>
           </Text>
         </div>
       </div>
