@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -39,5 +41,9 @@ public class Game {
     @ManyToOne
     @JoinColumn(name = "id_category")
     private Category category;
+    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<WishList> wishLists = new ArrayList<>();
+    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ShoppingCart> shoppingCartList = new ArrayList<>();
     //Esta faltando aun colocar el atributo para almacenar las imagenes
 }
