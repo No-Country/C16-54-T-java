@@ -2,28 +2,57 @@ import { Button, Input, Text } from "@chakra-ui/react";
 import "./register.css";
 
 const Register = () => {
+
+  // let boton =document.getElementById("btn-registro");
+  // boton.addEventListener("click", evento => {
+  //     registroPersona();
+  // });
+
+  // let registroPersona = async() => {
+
+
+  // let campos = {};
+
+  // campos.nombre = document.getElementById("nombre").value;
+  // campos.apellido = document.getElementById("apellido").value;
+  // campos.email = document.getElementById("email").value;
+  // campos.contraseña = document.getElementById("contraseña").value;
+  // campos.rol = document.getElementById("rol").value;
+
+  // const peticion = await fetch("http:localhost:8080/auth/register"),
+  // {
+  //   method:'POST',
+  //   headers: {
+  //     'Accept' : 'aplication/json',
+  //     'Content-Type' : 'aplication/json'
+  //   },
+  //   body: JSON.stringify(campos)
+  // }
+// }
   return (
     <div className="register">
       <form action="">
         <h1>REGISTRO</h1>
         <div className="reg-1">
           <Text color={"#9FEADD"}>Nombre</Text>
-          <Input required background={"#C2CEDE"} type="text" w={"18rem"} />
+          <Input required id="nombre" background={"#C2CEDE"} type="text" w={"18rem"}  marginRight="2.5rem"/>
           <Text color={"#9FEADD"}>Apellido</Text>
-          <Input required background={"#C2CEDE"} type="text" w={"18rem"} />
+          <Input id="apellido" required background={"#C2CEDE"} type="text" w={"18rem"}  marginRight="2.5rem"/>
         </div>
         <div className="reg-2">
           <Text color={"#9FEADD"}>Email</Text>
-          <Input required background={"#C2CEDE"} type="text" w={"18rem"} />
+          <Input required id="email" background={"#C2CEDE"} type="text" w={"18rem"}  marginRight="2.5rem"/>
           <Text color={"#9FEADD"}>Contraseña</Text>
-          <Input required background={"#C2CEDE"} type="text" w={"18rem"} />
+          <Input required id="contraseña" background={"#C2CEDE"} type="text" w={"18rem"}  marginRight="2.5rem"/>
         </div>
         <div className="reg-3">
           <Text color={"#9FEADD"}>Rol</Text>
-          <Input required background={"#C2CEDE"} type="text" w={"18rem"} />
+          <Input required id="rol" background={"#C2CEDE"} type="text" w={"18rem"} marginRight="2.5rem"
+          />
         </div>
 
         <Button
+          id="btn-registro"
           bg={"#879DBB"}
           color={"#0D1A2C"}
           colorScheme="blackAlpha"

@@ -85,7 +85,7 @@ const Login = () => {
               INICIAR SECION
             </Button>
           </form>
-          <Text fontSize={".8rem"} color={"#9FEADD"} marginTop={"2rem"}>
+          <Text fontSize={".8rem"} color={"#9FEADD"} marginTop={"2rem"} marginBottom={"2rem"} position={"absolute"} bottom={"0"}>
             ¿No tienes una cuenta?
             <Link to={"/register"}>
               <Button

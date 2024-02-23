@@ -28,22 +28,24 @@
     width: 50%;
     height: 100vh;
     display: flex;
+    position: relative;
 }
 
 .login{
     width: 70vh;
-    height: 80vh;
+    height: 100%;
     background-color: #0D1A2C;
     border-radius: 2rem;
-    margin: 7rem auto 0 auto;
+    margin: 7rem auto 7rem auto;
     align-items: center;
     display: flex;
     flex-direction: column;
+    
 }
 .text{
     display: flex;
     flex-direction: column;
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 .login .text h2{
     color: #9BFFF3;
