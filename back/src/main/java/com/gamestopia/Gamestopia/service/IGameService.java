@@ -15,7 +15,7 @@ public interface IGameService {
     //Buscar un juego por id
     Game findGame(String id);
     //Editar un juego
-    void editGame(Game game);
+    void editGame(String id, Game updateGame);
 
 
 }

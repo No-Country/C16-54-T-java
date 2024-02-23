@@ -1,9 +1,7 @@
 package com.gamestopia.Gamestopia.controller;
 
 
-import com.gamestopia.Gamestopia.entities.Category;
 import com.gamestopia.Gamestopia.entities.Game;
-import com.gamestopia.Gamestopia.service.ICategoryService;
 import com.gamestopia.Gamestopia.service.IGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,9 +35,9 @@ public class GameController {
     }
 
     //Modificar los datos de un juego
-    @PutMapping("/edit")
-    public String editGame(@RequestBody Game game) {
-        gameServ.editGame(game);
+    @PutMapping("/edit/{id}")
+    public String editGame(@PathVariable String id, @RequestBody Game updateGame) {
+        gameServ.editGame(id,updateGame);
         return "Game edited";
     }
 

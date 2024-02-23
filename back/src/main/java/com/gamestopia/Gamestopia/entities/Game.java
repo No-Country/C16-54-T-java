@@ -35,15 +35,9 @@ public class Game {
     private boolean promotion;
     @Enumerated(EnumType.STRING)
     Clasification clasification;
-    @ManyToOne
-    @JoinColumn(name = "id_developer")
-    private Developer developer;
-    @ManyToOne
-    @JoinColumn(name = "id_category")
-    private Category category;
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<WishList> wishLists = new ArrayList<>();
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<ShoppingCart> shoppingCartList = new ArrayList<>();
+    @Column(name = "category", length = 45)
+    private String category;
+    @Column(name = "developer_company", length = 45)
+    private String developerCompany;
     //Esta faltando aun colocar el atributo para almacenar las imagenes
 }
