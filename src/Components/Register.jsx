@@ -3,35 +3,38 @@ import "./register.css";
 
 const Register = () => {
 
-  // let boton =document.getElementById("btn-registro");
-  // boton.addEventListener("click", evento => {
-  //     registroPersona();
-  // });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = {
+      nombre: "nombre",
+      apellido: "apellido",
+      email: "email",
+      contraseña: "contraseña",
+      rol: "rol"
+    };
+    try {
+      const response = await fetch('http://localhost:8080/api/registro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      if (response.ok) {
+        // Registro exitoso, puedes redirigir a otra página o mostrar un mensaje de éxito
+      } else {
+        // Manejar el caso de error, por ejemplo, mostrar un mensaje de error
+      }
+    } catch (error) {
+      console.error('Error al enviar solicitud:', error);
+    }
+  };
 
-  // let registroPersona = async() => {
 
-
-  // let campos = {};
-
-  // campos.nombre = document.getElementById("nombre").value;
-  // campos.apellido = document.getElementById("apellido").value;
-  // campos.email = document.getElementById("email").value;
-  // campos.contraseña = document.getElementById("contraseña").value;
-  // campos.rol = document.getElementById("rol").value;
-
-  // const peticion = await fetch("http:localhost:8080/auth/register"),
-  // {
-  //   method:'POST',
-  //   headers: {
-  //     'Accept' : 'aplication/json',
-  //     'Content-Type' : 'aplication/json'
-  //   },
-  //   body: JSON.stringify(campos)
-  // }
-// }
+  
   return (
     <div className="register">
-      <form action="">
+      <form method="POST">
         <h1>REGISTRO</h1>
         <div className="reg-1">
           <Text color={"#9FEADD"}>Nombre</Text>
@@ -52,6 +55,7 @@ const Register = () => {
         </div>
 
         <Button
+          onClick={handleSubmit}
           id="btn-registro"
           bg={"#879DBB"}
           color={"#0D1A2C"}

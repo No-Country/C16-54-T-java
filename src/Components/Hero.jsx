@@ -108,10 +108,10 @@ const Hero = () => {
             <Divider color={"#9FEADD"}/>
             <CardFooter>
               <ButtonGroup spacing="2">
-                <Button variant="solid" color={"white"} bg={"#879DBB"}>
+                <Button variant="solid" color={"#0D1A2C"} bg={"#879DBB"} _hover={{ bg: '#9FEADD' }}>
                   Comprar
                 </Button>
-                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue">
+                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue" _hover={{ bg: '#9FEADD' }}>
                   <FaRegHeart />
                 </Button>
               </ButtonGroup>
@@ -135,10 +135,10 @@ const Hero = () => {
             <Divider color={"#9FEADD"}/>
             <CardFooter>
               <ButtonGroup spacing="2">
-                <Button variant="solid" color={"white"} bg={"#879DBB"}>
+                <Button variant="solid" color={"#0D1A2C"} bg={"#879DBB"} _hover={{ bg: '#9FEADD' }}>
                   Comprar
                 </Button>
-                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue">
+                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue" _hover={{ bg: '#9FEADD' }}>
                   <FaRegHeart />
                 </Button>
               </ButtonGroup>
@@ -162,16 +162,17 @@ const Hero = () => {
             <Divider color={"#9FEADD"}/>
             <CardFooter>
               <ButtonGroup spacing="2">
-                <Button variant="solid" color={"white"} bg={"#879DBB"}>
+                <Button variant="solid" color={"#0D1A2C"} bg={"#879DBB"} _hover={{ bg: '#9FEADD' }}>
                   Comprar
                 </Button>
-                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue">
+                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue" _hover={{ bg: '#9FEADD' }}>
                   <FaRegHeart />
                 </Button>
               </ButtonGroup>
             </CardFooter>
           </Card>
         </div>
+        
       </div>
     </div>
   );

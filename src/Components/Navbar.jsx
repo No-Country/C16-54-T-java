@@ -48,7 +48,7 @@ const Navbar = () => {
         >
           <Link to={"/"}>
             <Button color={"#9BFFF3"} variant="link">
-              Home
+              HOME
             </Button>
           </Link>
           <Link to={""}>
@@ -59,17 +59,17 @@ const Navbar = () => {
                 variant="link"
                 rightIcon={<ChevronDownIcon />}
               >
-                Tienda
+                TIENDA
               </MenuButton>
-              <MenuList bgGradient='linear(rgba(0,0,0,1), rgba(43,12,95,1), rgba(0,0,0,1))'>
-                <MenuItem color={"#9BFFF3"} bgGradient='linear(rgba(0,0,0,1), rgba(43,12,95,1), rgba(0,0,0,1))'>
-                  <Link to={""}></Link>Acción
+              <MenuList bg={"#0D1A2C"} padding={"0"} border={"none"}>
+                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"} >
+                  <Link to={""}></Link>ACCIÓN
                 </MenuItem>
-                <MenuItem color={"#9BFFF3"} bgGradient='linear(rgba(0,0,0,1), rgba(43,12,95,1), rgba(0,0,0,1))'>
-                  <Link to={""}></Link>Deportes
+                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
+                  <Link to={""}></Link>DEPORTES
                 </MenuItem>
-                <MenuItem color={"#9BFFF3"} bgGradient='linear(rgba(0,0,0,1), rgba(43,12,95,1), rgba(0,0,0,1))'>
-                  <Link to={""}></Link>Estrategia
+                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
+                  <Link to={""}></Link>ESTRATEGIA
                 </MenuItem>
               </MenuList>
             </Menu>
@@ -83,18 +83,18 @@ const Navbar = () => {
                 variant="link"
                 rightIcon={<ChevronDownIcon />}
               >
-                Biblioteca
+                BIBLIOTECA
               </MenuButton>
-              <MenuList bgGradient='linear(rgba(0,0,0,1), rgba(43,12,95,1), rgba(0,0,0,1))'>
-                <MenuItem color={"#9BFFF3"} bgGradient='linear(rgba(0,0,0,1), rgba(43,12,95,1), rgba(0,0,0,1))'>Mis juegos</MenuItem>
-                <MenuItem color={"#9BFFF3"} bgGradient='linear(rgba(0,0,0,1), rgba(43,12,95,1), rgba(0,0,0,1))'>Actualizaciones</MenuItem>
+              <MenuList bg={"#0D1A2C"} padding={"0"} border={"none"}>
+                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>Mis juegos</MenuItem>
+                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>Actualizaciones</MenuItem>
               </MenuList>
             </Menu>
           </Link>
 
           <Link to={""}>
             <Button color={"#9BFFF3"} variant="link">
-              Acerca de
+              ACERCA DE
             </Button>
           </Link>
         </Stack>
@@ -114,17 +114,18 @@ const Navbar = () => {
       </Flex>
 
       <Box margin={"2rem"}>
-        <Button bg={"black"} padding={"6px"} height={"none"}>
+        <Button bg={"black"} padding={"6px"} height={"none"} _hover={{ bg: '#9FEADD' }}>
           <MdOutlineLocalGroceryStore color={"#9BFFF3"} />
         </Button>
         <Link to={"/login"}>
           <Button
+            _hover={{ bg: '#9FEADD' }}
             bg={"black"}
             padding={"6px"}
             height={"none"}
             marginLeft={"1rem"}
           >
-            <IoPersonSharp color={"#9BFFF3"} />
+            <IoPersonSharp color={"#9BFFF3"}/>
           </Button>
         </Link>
       </Box>
