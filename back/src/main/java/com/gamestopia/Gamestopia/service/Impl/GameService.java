@@ -1,7 +1,8 @@
-package com.gamestopia.Gamestopia.service;
+package com.gamestopia.Gamestopia.service.Impl;
 
 import com.gamestopia.Gamestopia.Repository.GameRepository;
 import com.gamestopia.Gamestopia.entities.Game;
+import com.gamestopia.Gamestopia.service.IGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

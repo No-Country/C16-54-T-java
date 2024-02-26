@@ -34,6 +34,10 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     Role role;
+    @OneToOne
+    protected Image image;
+    @ManyToMany
+    private List<Game> gameList;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
