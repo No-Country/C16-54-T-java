@@ -45,7 +45,7 @@ public class UserController {
          User user = iUserService.findUser(id);
          return user;    
      }
-    //--------------------------------------------------el usuario lo creo cuando se registra en authRequestRegisterdto--------------------------------------------
+    //--
     @PostMapping("/crear")
     public void saveUser(@RequestBody User user){
         iUserService.saveUser(user);

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import static com.gamestopia.Gamestopia.util.Constant.API;
 import static com.gamestopia.Gamestopia.util.Constant.RESOURCE_AUTH;
 @RestController
-//@RequestMapping(value = API + RESOURCE_AUTH)
-@RequestMapping("/v1/api/auth")
+@RequestMapping(value = API + RESOURCE_AUTH)
+
 @RequiredArgsConstructor
 public class AuthController {
 
