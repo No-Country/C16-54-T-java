@@ -64,13 +64,13 @@ const Navbar = () => {
               </MenuButton>
               <MenuList bg={"#0D1A2C"} padding={"0"} border={"none"}>
                 <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
-                  <Link to={""}></Link>ACCIÓN
+                  <Link to={""}></Link>JUEGOS DE ACCIÓN
                 </MenuItem>
                 <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
-                  <Link to={""}></Link>DEPORTES
+                  <Link to={""}></Link>JUEGOS DE DEPORTES
                 </MenuItem>
                 <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
-                  <Link to={""}></Link>ESTRATEGIA
+                  <Link to={""}></Link>JUEGOS DE ESTRATEGIA
                 </MenuItem>
                 <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} borderTop={"1px"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
                   <Link to={""}></Link>VER TODOS
@@ -92,8 +92,8 @@ const Navbar = () => {
                 BIBLIOTECA
               </MenuButton>
               <MenuList bg={"#0D1A2C"} padding={"0"} border={"none"}>
-                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>Mis juegos</MenuItem>
-                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>Actualizaciones</MenuItem>
+                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>MIS JUEGOS</MenuItem>
+                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>ACTUALIZACIONES</MenuItem>
               </MenuList>
             </Menu>
           </Link>
