@@ -4,7 +4,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    background-color: #475883;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(43,12,95,1) 50%, rgba(0,0,0,1) 100%);
 }
 .image-container{
     width: 50%;
