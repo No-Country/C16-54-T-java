@@ -5,6 +5,7 @@ import com.gamestopia.Gamestopia.Repository.UserRepository;
 import com.gamestopia.Gamestopia.entities.User;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +53,16 @@ public class UserService implements IUserService {
       user.setPassword(updateUser.getPassword() != null ? updateUser.getPassword() : user.getPassword());
       
 //     user.setImg(updateUser.getImg() != null ? updateUser.getImg() : user.getImg());
+    }
+
+    public Optional<User> getByUserName(String userName){
+        return userRepo.findByUserName(userName);
+    }
+    public boolean existByUserName(String userName){
+        return userRepo.existsByUserName(userName);
+    }
+    public void save(User user){
+        userRepo.save(user);
     }
 
 }

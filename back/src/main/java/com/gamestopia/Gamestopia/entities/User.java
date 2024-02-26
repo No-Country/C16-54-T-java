@@ -64,4 +64,12 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+    public String getUserName() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public String getPassword() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

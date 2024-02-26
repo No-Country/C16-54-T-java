@@ -1,18 +1,11 @@
-
 package com.gamestopia.Gamestopia.controller;
 
 import com.gamestopia.Gamestopia.entities.User;
 import com.gamestopia.Gamestopia.service.UserService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  *
@@ -20,36 +13,38 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user")//localhost:8080/user
+
 public class UserController {
-    
+
+    private final UserService userService;
+
     @Autowired
-    UserService iUserService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/lista")
     public List<User> userList() {
-        List<User> list = iUserService.listUser();
-        return list;
+        return userService.listUser();
     }
-    
+
     @GetMapping("/buscar/{id}")
-     public User findUser(@PathVariable String id){
-         User user = iUserService.findUser(id);
-         return user;    
-     }
-    
+    public User findUser(@PathVariable String id) {
+        return userService.findUser(id);
+    }
+
     @PostMapping("/crear")
-    public void saveUser(@RequestBody User user){
-        iUserService.saveUser(user);
+    public void saveUser(@RequestBody User user) {
+        userService.save(user);
     }
-    
+
     @DeleteMapping("/borrar/{id}")
-    public void deleteUser(@PathVariable String id){
-        iUserService.deleteUser(id);
+    public void deleteUser(@PathVariable String id) {
+        userService.deleteUser(id);
     }
-    
+
     @PutMapping("/actualizar/{id}")
-    public void editUser(@PathVariable String id, 
-                         @RequestBody User updateUser){
-        iUserService.edit(id, updateUser);
+    public void editUser(@PathVariable String id, @RequestBody User updateUser) {
+        userService.edit(id, updateUser);
     }
 }

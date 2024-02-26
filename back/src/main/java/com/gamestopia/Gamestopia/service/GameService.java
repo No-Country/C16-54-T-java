@@ -1,7 +1,7 @@
 package com.gamestopia.Gamestopia.service;
 
-import com.gamestopia.Gamestopia.Repository.GameRepository;
 import com.gamestopia.Gamestopia.entities.Game;
+import com.gamestopia.Gamestopia.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,6 @@ public class GameService implements IGameService {
     @Autowired
     private GameRepository gameRepo;
 
-    @Override
     public List<Game> getGames() {
         return gameRepo.findAll();
     }
@@ -31,7 +30,7 @@ public class GameService implements IGameService {
     @Override
     public Game findGame(String id) {
         return gameRepo.findById(id).orElse(null);
-    }
+}
 
     @Override
     public void editGame(String id, Game updateGame) {
@@ -64,5 +63,10 @@ public class GameService implements IGameService {
 
         this.saveGame(game);
     }
+
+    @Override
+    public List<Game> getGame() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+  }
 }
 

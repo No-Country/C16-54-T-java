@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface IGameService {
     //Traer todos los juegos
-    List<Game> getGames();
+    public List<Game> getGame();
     //Crear un juego
     void saveGame(Game game);
     //Borrar juego
@@ -16,6 +16,7 @@ public interface IGameService {
     Game findGame(String id);
     //Editar un juego
     void editGame(String id, Game updateGame);
+
 
 
 }
