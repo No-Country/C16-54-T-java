@@ -39,5 +39,6 @@ public class Game {
     private String category;
     @Column(name = "developer_company", length = 45)
     private String developerCompany;
-    //Esta faltando aun colocar el atributo para almacenar las imagenes
+    @OneToOne
+    protected Image image;
 }

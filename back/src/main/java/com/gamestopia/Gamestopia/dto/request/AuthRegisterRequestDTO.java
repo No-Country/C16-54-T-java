@@ -1,5 +1,6 @@
-package com.gamestopia.Gamestopia.dto;
+package com.gamestopia.Gamestopia.dto.request;
 
+import com.gamestopia.Gamestopia.entities.Image;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,11 +10,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterDTO {
+public class AuthRegisterRequestDTO {
     String name;
     String lastName;
     String email;
     String password;
-    String role;
-
 }

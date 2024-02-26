@@ -1,10 +1,12 @@
 
-package com.gamestopia.Gamestopia.service;
+package com.gamestopia.Gamestopia.service.Impl;
 
 import com.gamestopia.Gamestopia.Repository.UserRepository;
 import com.gamestopia.Gamestopia.entities.User;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import com.gamestopia.Gamestopia.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

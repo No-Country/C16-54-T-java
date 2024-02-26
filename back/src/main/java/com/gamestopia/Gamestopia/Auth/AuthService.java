@@ -3,9 +3,10 @@ package com.gamestopia.Gamestopia.Auth;
 import com.gamestopia.Gamestopia.Enum.Role;
 import com.gamestopia.Gamestopia.Jwt.JwtService;
 import com.gamestopia.Gamestopia.Repository.UserRepository;
-import com.gamestopia.Gamestopia.dto.AuthResponse;
-import com.gamestopia.Gamestopia.dto.LoginDTO;
-import com.gamestopia.Gamestopia.dto.RegisterDTO;
+
+import com.gamestopia.Gamestopia.dto.request.AuthLoginRequestDTO;
+import com.gamestopia.Gamestopia.dto.request.AuthRegisterRequestDTO;
+import com.gamestopia.Gamestopia.dto.response.AuthResponseDTO;
 import com.gamestopia.Gamestopia.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,34 +25,57 @@ public class AuthService {
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
-    public AuthResponse login(LoginDTO datos) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(datos.getEmail(), datos.getPassword()));
-        UserDetails user = userRepository.findByEmail(datos.getEmail()).orElseThrow();
+    public AuthResponseDTO login(AuthLoginRequestDTO request) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
         String token = jwtService.getToken(user);
-        return AuthResponse.builder()
+
+        String id = user.getId();
+        String email = user.getEmail();
+        String lastName = user.getLastName();
+        String name = user.getName();
+        Role role = user.getRole();
+
+        return AuthResponseDTO.builder()
+                .id(id)
+                .lastName(lastName)
+                .name(name)
+                .role(role)
+                .email(email)
                 .token(token)
                 .build();
 
     }
 
-    public AuthResponse register(RegisterDTO datos){
-        Optional<User> userOptional = userRepository.findByEmail(datos.getEmail());
+    public AuthResponseDTO register(AuthRegisterRequestDTO request){
+        Optional<User> userOptional = userRepository.findByEmail(request.getEmail());
 
         if (userOptional.isPresent()) {
             throw new RuntimeException("Ya existe un usuario con ese email");
         }
 
         User user = User.builder()
-                .email(datos.getEmail())
-                .password(passwordEncoder.encode(datos.getPassword()))
-                .name(datos.getName())
-                .lastName(datos.getLastName())
-                .role(Role.valueOf(datos.getRole()))
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .name(request.getName())
+                .lastName(request.getLastName())
+                .role(Role.USER)
                 .build();
 
         userRepository.save(user);
 
-        return AuthResponse.builder()
+        String id = user.getId();
+        String email = user.getEmail();
+        String lastName = user.getLastName();
+        String name = user.getName();
+        Role role = user.getRole();
+
+        return AuthResponseDTO.builder()
+                .id(id)
+                .lastName(lastName)
+                .name(name)
+                .role(role)
+                .email(email)
                 .token(jwtService.getToken(user))
                 .build();
     }
