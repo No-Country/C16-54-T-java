@@ -1,25 +1,29 @@
 import { Button, Input, Text } from "@chakra-ui/react";
 import "./register.css";
+import axios from "axios";
 
 const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = {
-      nombre: "nombre",
-      apellido: "apellido",
-      email: "email",
-      contraseña: "contraseña",
-      rol: "rol"
-    };
+
+    const name = document.getElementById("nombre").value;
+    const lastname = document.getElementById("apellido").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("contraseña").value;
+    const role = document.getElementById("rol").value;
+
+    const data = {
+      name: name,
+      lastName: lastname,
+      email: email,
+      password: password,
+      role: role
+    }
+
     try {
-      const response = await fetch('http://localhost:8080/api/registro', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+      const response = await axios.post("http://localhost:8080/auth/register", data)
+
       if (response.ok) {
         // Registro exitoso, puedes redirigir a otra página o mostrar un mensaje de éxito
       } else {
@@ -29,8 +33,6 @@ const Register = () => {
       console.error('Error al enviar solicitud:', error);
     }
   };
-
-
   
   return (
     
@@ -40,7 +42,7 @@ const Register = () => {
       </div>
       <div className="register-container">
         <div className="bg-register">
-        <form method="POST">
+        <form method="POST" onSubmit={handleSubmit}>
         <h1>REGISTRO</h1>
         
           <Text color={"#9FEADD"}>Nombre</Text>
@@ -52,11 +54,12 @@ const Register = () => {
           <Text color={"#9FEADD"}>Email</Text>
           <Input required id="email" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"} />
           <Text color={"#9FEADD"}>Contraseña</Text>
-          <Input required id="contraseña" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"}  />
+          <Input required id="contraseña" background={"#C2CEDE"} type="password" w={"18rem"} h={"2rem"}  />
         
+          <Text color={"#9FEADD"}>Confirmar Contraseña</Text>
+          <Input required id="confirmar" background={"#C2CEDE"} type="password" w={"18rem"} h={"2rem"}  />
         
-          <Text color={"#9FEADD"}>Rol</Text>
-          <Input required id="rol" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"}
+          <Input required id="rol" value={"USER"} hidden background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"}
           />
         
 
@@ -82,6 +85,6 @@ const Register = () => {
       
     </div>
   );
-};
+  }
 
 export default Register;
