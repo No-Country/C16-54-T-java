@@ -4,7 +4,7 @@ import { CiFacebook } from "react-icons/ci";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { Checkbox, Input, Text } from "@chakra-ui/react";
-
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -45,7 +45,9 @@ const Login = () => {
               type="text"
               w={"18rem"}
             />
-            <Text color={"#9FEADD"}>Usuario o email</Text>
+            <Text w={"6rem"} color={"#9FEADD"}>
+              Usuario o email
+            </Text>
             <Input
               required
               marginTop={"2rem"}
@@ -72,33 +74,42 @@ const Login = () => {
             </Checkbox>
 
             <Button
-              bg={"#879DBB"}
               color={"#0D1A2C"}
+              bg={"#879DBB"}
+              _hover={{ bg: "#9FEADD" }}
               colorScheme="blackAlpha"
               w={"7rem"}
-              height={"1.5rem"}
-              fontWeight={"500"}
+              height={"2rem"}
+              fontWeight={"bold"}
               type="submit"
               m={"1rem auto 0 auto"}
-              _hover={"#0B1626"}
+              alignItems={"center"}
+              
             >
               INICIAR SECION
             </Button>
           </form>
-          <Text fontSize={".8rem"} color={"#9FEADD"} marginTop={"2rem"}>
+          <Text
+            fontSize={".8rem"}
+            color={"#9FEADD"}
+            marginTop={"2rem"}
+            marginBottom={"2rem"}
+            bottom={"0"}
+          >
             ¿No tienes una cuenta?
-            <Button
-              height={"0"}
-              background={"none"}
-              _hover={"none"}
-              color={"#9FEADD"}
-              fontWeight={"300"}
-              fontSize={".8rem"}
-              marginLeft={"2rem"}
-              
-            >
-              REGISTRATE
-            </Button>
+            <Link to={"/register"}>
+              <Button
+                height={"0"}
+                background={"none"}
+                _hover={"none"}
+                color={"#9FEADD"}
+                fontWeight={"300"}
+                fontSize={".8rem"}
+                marginLeft={"2rem"}
+              >
+                REGISTRATE
+              </Button>
+            </Link>
           </Text>
         </div>
       </div>
