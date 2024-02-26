@@ -1,5 +1,6 @@
 package com.gamestopia.Gamestopia.entities;
 
+import com.gamestopia.Gamestopia.Enum.Clasification;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -30,14 +33,11 @@ public class Game {
     private boolean active;
     @Column(columnDefinition = "TINYINT(1)")
     private boolean promotion;
-    @ManyToOne
-    @JoinColumn(name = "id_developer")
-    private Developer developer;
-    @ManyToOne
-    @JoinColumn(name = "id_clasification")
-    private Clasification clasification;
-    @ManyToOne
-    @JoinColumn(name = "id_category")
-    private Category category;
+    @Enumerated(EnumType.STRING)
+    Clasification clasification;
+    @Column(name = "category", length = 45)
+    private String category;
+    @Column(name = "developer_company", length = 45)
+    private String developerCompany;
     //Esta faltando aun colocar el atributo para almacenar las imagenes
 }
