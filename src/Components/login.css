@@ -26,7 +26,7 @@
 
 .container .login-container{
     width: 50%;
-    height: 100vh;
+    height: calc(100vh + 8rem);
     display: flex;
     position: relative;
     align-items: center;

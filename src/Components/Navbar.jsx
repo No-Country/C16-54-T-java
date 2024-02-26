@@ -52,8 +52,9 @@ const Navbar = () => {
             </Button>
           </Link>
           <Link to={""}>
-            <Menu>
-              <MenuButton
+          <Box >
+            <Menu >
+              <MenuButton 
                 as={Button}
                 color={"#9BFFF3"}
                 variant="link"
@@ -62,7 +63,7 @@ const Navbar = () => {
                 TIENDA
               </MenuButton>
               <MenuList bg={"#0D1A2C"} padding={"0"} border={"none"}>
-                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"} >
+                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
                   <Link to={""}></Link>ACCIÓN
                 </MenuItem>
                 <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
@@ -71,8 +72,13 @@ const Navbar = () => {
                 <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
                   <Link to={""}></Link>ESTRATEGIA
                 </MenuItem>
+                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} borderTop={"1px"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
+                  <Link to={""}></Link>VER TODOS
+                </MenuItem>
               </MenuList>
             </Menu>
+          </Box>
+            
           </Link>
 
           <Link to={""}>
@@ -92,9 +98,9 @@ const Navbar = () => {
             </Menu>
           </Link>
 
-          <Link to={""}>
+          <Link to={"About-us"}>
             <Button color={"#9BFFF3"} variant="link">
-              ACERCA DE
+              NOSOTROS
             </Button>
           </Link>
         </Stack>

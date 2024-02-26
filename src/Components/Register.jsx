@@ -33,26 +33,32 @@ const Register = () => {
 
   
   return (
+    
     <div className="register">
-      <form method="POST">
+      <div className="image-container">
+        <img src="./s.jpg"></img>
+      </div>
+      <div className="register-container">
+        <div className="bg-register">
+        <form method="POST">
         <h1>REGISTRO</h1>
-        <div className="reg-1">
+        
           <Text color={"#9FEADD"}>Nombre</Text>
-          <Input required id="nombre" background={"#C2CEDE"} type="text" w={"18rem"}  marginRight="2.5rem"/>
+          <Input required id="nombre" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"}  />
           <Text color={"#9FEADD"}>Apellido</Text>
-          <Input id="apellido" required background={"#C2CEDE"} type="text" w={"18rem"}  marginRight="2.5rem"/>
-        </div>
-        <div className="reg-2">
+          <Input id="apellido" required background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"}/>
+        
+        
           <Text color={"#9FEADD"}>Email</Text>
-          <Input required id="email" background={"#C2CEDE"} type="text" w={"18rem"}  marginRight="2.5rem"/>
+          <Input required id="email" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"} />
           <Text color={"#9FEADD"}>Contraseña</Text>
-          <Input required id="contraseña" background={"#C2CEDE"} type="text" w={"18rem"}  marginRight="2.5rem"/>
-        </div>
-        <div className="reg-3">
+          <Input required id="contraseña" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"}  />
+        
+        
           <Text color={"#9FEADD"}>Rol</Text>
-          <Input required id="rol" background={"#C2CEDE"} type="text" w={"18rem"} marginRight="2.5rem"
+          <Input required id="rol" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"}
           />
-        </div>
+        
 
         <Button
           onClick={handleSubmit}
@@ -65,11 +71,15 @@ const Register = () => {
           fontWeight={"500"}
           type="submit"
           m={"1rem auto 0 auto"}
-          _hover={"#0B1626"}
+          _hover={{ bg: '#9FEADD' }}
         >
-          Enviar Registro
+          Crear cuenta
         </Button>
       </form>
+        </div>
+      
+      </div>
+      
     </div>
   );
 };

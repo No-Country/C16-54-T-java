@@ -4,7 +4,37 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    background-color: #475883;
+}
+.image-container{
+    width: 50%;
+    height: 100vh;
+}
+.image-container img{
+    height: 100vh;
+    width: auto;
+}
+.register-container{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.bg-register{
     background-color: #0D1A2C;
+    width: 450px;
+    height: 530px;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    position: absolute;
+}
+form{
+    gap: .5rem;
 }
 
 form h1{
@@ -15,18 +45,5 @@ form h1{
 }
 form p{
     width: 4rem;
-    
-}
-
-
-.reg-1,
-.reg-2,
-.reg-3{
-    display: flex;
-    padding: 1rem 1rem 1rem 0;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
-    
     
 }
