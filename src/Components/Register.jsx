@@ -54,11 +54,12 @@ const Register = () => {
           <Text color={"#9FEADD"}>Email</Text>
           <Input required id="email" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"} />
           <Text color={"#9FEADD"}>Contraseña</Text>
-          <Input required id="contraseña" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"}  />
+          <Input required id="contraseña" background={"#C2CEDE"} type="password" w={"18rem"} h={"2rem"}  />
         
+          <Text color={"#9FEADD"}>Confirmar Contraseña</Text>
+          <Input required id="confirmar" background={"#C2CEDE"} type="password" w={"18rem"} h={"2rem"}  />
         
-          <Text color={"#9FEADD"}>Rol</Text>
-          <Input required id="rol" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"}
+          <Input required id="rol" value={"USER"} hidden background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"}
           />
         
 
