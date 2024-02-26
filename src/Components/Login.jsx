@@ -44,6 +44,7 @@ const Login = () => {
               background={"#C2CEDE"}
               type="text"
               w={"18rem"}
+              fontWeight={"bold"}
             />
             <Text w={"6rem"} color={"#9FEADD"}>
               Usuario o email
@@ -52,8 +53,9 @@ const Login = () => {
               required
               marginTop={"2rem"}
               background={"#C2CEDE"}
-              type="email"
+              type="password"
               w={"18rem"}
+              fontWeight={"bold"}
             />
             <Text color={"#9FEADD"}>
               Contraseña{" "}
