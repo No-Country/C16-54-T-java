@@ -4,8 +4,8 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(43,12,95,1) 50%, rgba(0,0,0,1) 100%);
-}
+    background: rgb(13,26,44);
+    background: linear-gradient(90deg, rgba(13,26,44,1) 22%, rgba(56,116,142,1) 50%, rgba(13,26,44,1) 78%);}
 .image-container{
     width: 50%;
     height: 100vh;
@@ -23,7 +23,7 @@
 }
 
 .bg-register{
-    background-color: #0D1A2C;
+    background-color: #1B314E;
     width: 450px;
     height: 530px;
     display: flex;

@@ -1,6 +1,5 @@
 .hero{
-  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(43,12,95,1) 50%, rgba(0,0,0,1) 100%);    
-
+  background: linear-gradient(90deg, rgba(13,26,44,1) 22%, rgba(56,116,142,1) 50%, rgba(13,26,44,1) 78%);
   }
   
   ul,
@@ -89,8 +88,8 @@
 
 
 .novedades{
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(43,12,95,1) 50%, rgba(0,0,0,1) 100%);
-    width: 100%;
+  background: rgb(13,26,44);
+  background: linear-gradient(90deg, rgba(13,26,44,1) 22%, rgba(56,116,142,1) 50%, rgba(13,26,44,1) 78%);    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -99,7 +98,7 @@
 }
 
 .novedades .novedades-title{
-    color: #9BFFF3;
+    color: #9FEADD;
     font-size: 3rem;
     align-items: center;
     margin: 1rem auto;
@@ -130,8 +129,8 @@
     }
     .container-images{
       display: none;
-      background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(43,12,95,1) 50%, rgba(0,0,0,1) 100%);    
-    }
+      background: rgb(13,26,44);
+      background: linear-gradient(90deg, rgba(13,26,44,1) 22%, rgba(56,116,142,1) 50%, rgba(13,26,44,1) 78%);    }
     .text-container{
       width: 280px;
       top: 10%;

@@ -1,4 +1,5 @@
 import "./aboutUs.css";
+import logo from "../assets/img/logob.png";
 
 const AboutUs = () => {
   return (
@@ -6,6 +7,8 @@ const AboutUs = () => {
       <div className="img-container">
         <img src="./ccc.jpg"></img>
         <div className="aboutUs">
+        <div className="image-logo"><img src={logo} /></div>
+        
           <h2>Sobre Nosotros</h2>
           <p>
             En Gamestopia, nos enorgullece ser tu destino confiable y seguro
