@@ -3,9 +3,7 @@
     height: 100vh;
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(43,12,95,1) 50%, rgba(0,0,0,1) 100%);
     display: flex;
-    
 }
-
 .container .img-container{
     width: 50%;
     height: 100vh;
@@ -38,7 +36,6 @@
     width: 70vh;
     background-color: #0D1A2C;
     border-radius: 2rem;
-    /* margin: 7rem auto 7rem auto; */
     align-items: center;
     display: flex;
     flex-direction: column;
