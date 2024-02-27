@@ -1,10 +1,16 @@
 import { Button, Input, Text } from "@chakra-ui/react";
 import "./register.css";
 import axios from "axios";
+/* import { useState } from "react"; */
 
 const Register = () => {
 
+ /*  const [nombre, setNombre] = useState("");
+  const [apellido , setApellido] = useState("");
+  const [email, setEmail] = useState(""); */
+
   const handleSubmit = async (e) => {
+    console.log("boton presionado");
     e.preventDefault();
 
     const name = document.getElementById("nombre").value;
@@ -51,7 +57,7 @@ const Register = () => {
         
         
           <Text color={"#9FEADD"}>Email</Text>
-          <Input required id="email" background={"#C2CEDE"} type="text" w={"18rem"} h={"2rem"} fontWeight={"bold"}/>
+          <Input required id="email" background={"#C2CEDE"} type="email" w={"18rem"} h={"2rem"} fontWeight={"bold"}/>
           <Text color={"#9FEADD"}>Contraseña</Text>
           <Input required id="contraseña" background={"#C2CEDE"} type="password" w={"18rem"} h={"2rem"} fontWeight={"bold"} />
         
@@ -63,6 +69,7 @@ const Register = () => {
         
 
         <Button
+          
           onClick={handleSubmit}
           id="btn-registro"
           bg={"#879DBB"}
@@ -77,6 +84,7 @@ const Register = () => {
         >
           Crear cuenta
         </Button>
+
       </form>
         </div>
       
