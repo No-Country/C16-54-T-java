@@ -3,6 +3,8 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Khand", sans-serif;;
-}
-
     
+}
+#root{
+    background: linear-gradient(90deg, rgba(13,26,44,1) 22%, rgba(56,116,142,1) 50%, rgba(13,26,44,1) 78%);
+}
