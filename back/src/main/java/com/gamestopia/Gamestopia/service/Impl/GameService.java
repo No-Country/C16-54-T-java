@@ -62,8 +62,26 @@ public class GameService implements IGameService {
         if (updateGame.isPromotion() != game.isPromotion()) {
             game.setPromotion(updateGame.isPromotion());
         }
+        if (updateGame.getImage() != null) {
+            game.setImage(updateGame.getImage());
+        }
 
         this.saveGame(game);
     }
+
+    @Override
+    public List<Game> findBySearch(String value) {
+        List<Game> gameList = gameRepo.findBySearch(value);
+        if (gameList.isEmpty()) {
+            throw new RuntimeException("No se encontraron resultados para " + value);
+        }
+        return gameList;
+    }
+
+    @Override
+    public List<Game> findByCategory(String category) {
+        return gameRepo.findByCategory(category);
+    }
+
 }
 
