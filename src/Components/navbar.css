@@ -23,6 +23,10 @@
     margin: auto;
 }
 
+.navbar button a{
+    width: 100%;
+}
+
 
 @media (max-width:738px){
     .btn{

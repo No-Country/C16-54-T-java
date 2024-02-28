@@ -6,6 +6,7 @@ import Login from "./Components/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./Components/Register";
 import AboutUs from "./Components/AboutUs";
+import AllGames from "./Components/AllGames";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/register' element={<Register/>}/>
         <Route exact path='/About-us' element={<AboutUs/>}/>
+        <Route exact path='/All-the-games' element={<AllGames/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

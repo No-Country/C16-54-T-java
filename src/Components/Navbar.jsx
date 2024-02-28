@@ -51,7 +51,7 @@ const Navbar = () => {
               HOME
             </Button>
           </Link>
-          <Link to={""}>
+          
           <Box >
             <Menu >
               <MenuButton 
@@ -64,22 +64,22 @@ const Navbar = () => {
               </MenuButton>
               <MenuList bg={"#0D1A2C"} padding={"0"} border={"none"}>
                 <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
-                  <Link to={""}></Link>JUEGOS DE ACCIÓN
+                  <Link to={""}>JUEGOS DE ACCIÓN</Link>
                 </MenuItem>
                 <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
-                  <Link to={""}></Link>JUEGOS DE DEPORTES
+                  <Link to={""}>JUEGOS DE DEPORTES</Link>
                 </MenuItem>
                 <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
-                  <Link to={""}></Link>JUEGOS DE ESTRATEGIA
+                  <Link to={""}>JUEGOS DE ESTRATEGIA</Link>
                 </MenuItem>
                 <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} borderTop={"1px"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
-                  <Link to={""}></Link>VER TODOS
+                  <Link to={"All-the-games"}>VER TODOS</Link>
                 </MenuItem>
               </MenuList>
             </Menu>
           </Box>
             
-          </Link>
+          
 
           <Link to={""}>
             <Menu>
