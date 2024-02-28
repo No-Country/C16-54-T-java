@@ -1,10 +1,15 @@
 
 package com.gamestopia.Gamestopia.service.Impl;
 
+import com.gamestopia.Gamestopia.Repository.GameRepository;
 import com.gamestopia.Gamestopia.Repository.UserRepository;
+import com.gamestopia.Gamestopia.entities.Game;
 import com.gamestopia.Gamestopia.entities.User;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import com.gamestopia.Gamestopia.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +24,8 @@ public class UserService implements IUserService {
 
      @Autowired
     public UserRepository userRepo;
+     @Autowired
+     private GameRepository gameRepository;
     
     @Override
     public List<User> listUser() {
@@ -54,6 +61,17 @@ public class UserService implements IUserService {
       user.setPassword(updateUser.getPassword() != null ? updateUser.getPassword() : user.getPassword());
       
 //     user.setImg(updateUser.getImg() != null ? updateUser.getImg() : user.getImg());
+    }
+    @Override
+    public List<Game> gameList(String id){
+        List<Game> myGames = new ArrayList<>();
+        Optional<User> response = userRepo.findById(id);
+
+        if(response.isPresent()){
+            User user = response.get();
+            myGames = gameRepository.findByUser(user);
+        }
+        return myGames;
     }
 
 }

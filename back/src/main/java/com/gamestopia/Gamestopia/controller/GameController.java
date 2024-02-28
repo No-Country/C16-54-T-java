@@ -49,30 +49,14 @@ public class GameController {
     }
 
     //Modificar los datos de un juego
-    @PutMapping("/edit/{id}")
-    public String editGame(@PathVariable String id, @RequestBody Game updateGame) {
-        gameServ.editGame(id,updateGame);
-        return "Game edited";
-    }
+
 
     @DeleteMapping ("/delete/{id}")
     public String deleteGame(@PathVariable String id){
         gameServ.deleteGame(id);
         return "Game eliminated";
     }
-    @PostMapping("/uploadPhoto")
 
-    public ResponseEntity<?> uploadPhoto(@RequestParam MultipartFile file, @RequestParam String idGame){
-        Image image = imageService.saveImageGame(file, idGame);
-
-        URI uri = ServletUriComponentsBuilder
-                .fromCurrentContextPath()
-                .path("/v1/api/game/getPhoto")
-                .queryParam("idGame", idGame)
-                .build()
-                .toUri();
-        return ResponseEntity.status(HttpStatus.CREATED).body(uri);
-    }
     @GetMapping("/getPhoto")
     public ResponseEntity<byte[]> getPhoto(@RequestParam String idGame){
 

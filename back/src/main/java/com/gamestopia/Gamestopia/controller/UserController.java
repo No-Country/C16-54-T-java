@@ -1,6 +1,7 @@
 
 package com.gamestopia.Gamestopia.controller;
 
+import com.gamestopia.Gamestopia.entities.Game;
 import com.gamestopia.Gamestopia.entities.Image;
 import com.gamestopia.Gamestopia.entities.User;
 import com.gamestopia.Gamestopia.service.Impl.ImageService;
@@ -34,7 +35,7 @@ public class UserController {
     @Autowired
     ImageService imageService;
 
-    @GetMapping("/lista")
+   @GetMapping("/lista")
     public List<User> userList() {
         List<User> list = iUserService.listUser();
         return list;
@@ -45,7 +46,7 @@ public class UserController {
          User user = iUserService.findUser(id);
          return user;    
      }
-    //--
+
     @PostMapping("/crear")
     public void saveUser(@RequestBody User user){
         iUserService.saveUser(user);
@@ -60,6 +61,12 @@ public class UserController {
     public void editUser(@PathVariable String id, 
                          @RequestBody User updateUser){
         iUserService.edit(id, updateUser);
+    }
+    //listar juegos asociados al usuario por id
+    @GetMapping("/{id}/games")
+    public ResponseEntity<List<Game>> showGames(@PathVariable String id){
+        List<Game> games = iUserService.gameList(id);
+        return new ResponseEntity<>(games, HttpStatus.OK);
     }
 
     @PostMapping("/uploadPhoto")

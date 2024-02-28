@@ -1,6 +1,7 @@
 
 package com.gamestopia.Gamestopia.service;
 
+import com.gamestopia.Gamestopia.entities.Game;
 import com.gamestopia.Gamestopia.entities.User;
 import java.util.List;
 
@@ -25,4 +26,5 @@ public interface IUserService {
     public void edit(String id, User updateUser);
 
 
+    List<Game> gameList(String id);
 }

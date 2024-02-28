@@ -3,6 +3,7 @@ package com.gamestopia.Gamestopia.entities;
 import com.gamestopia.Gamestopia.Enum.Clasification;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "game")
@@ -41,4 +43,6 @@ public class Game {
     private String developerCompany;
     @OneToOne
     protected Image image;
+    @ManyToOne
+    private User user;
 }

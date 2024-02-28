@@ -29,7 +29,12 @@ public class SecurityConfig {
                          .disable())
                 .authorizeHttpRequests(authRequest ->
                     authRequest
+                            .requestMatchers("/v1/api/*").permitAll()
                  .requestMatchers("/v1/api/auth/*").permitAll()
+
+                            /*.requestMatchers("/admin").hasRole(Role.ADMIN.toString())
+                            .requestMatchers("/").hasAnyRole(
+                                    Role.ADMIN.toString(), Role.USER.toString())*/
                    .anyRequest().authenticated()
                 )
                 .sessionManagement(sessionManager->

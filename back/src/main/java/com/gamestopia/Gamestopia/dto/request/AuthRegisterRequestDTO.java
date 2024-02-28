@@ -15,4 +15,5 @@ public class AuthRegisterRequestDTO {
     String lastName;
     String email;
     String password;
+    String repeatedPassword;
 }

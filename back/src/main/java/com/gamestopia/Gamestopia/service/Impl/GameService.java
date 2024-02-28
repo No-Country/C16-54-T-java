@@ -2,11 +2,13 @@ package com.gamestopia.Gamestopia.service.Impl;
 
 import com.gamestopia.Gamestopia.Repository.GameRepository;
 import com.gamestopia.Gamestopia.entities.Game;
+import com.gamestopia.Gamestopia.exception.GameNotFoundException;
 import com.gamestopia.Gamestopia.service.IGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GameService implements IGameService {
@@ -20,8 +22,8 @@ public class GameService implements IGameService {
     }
 
     @Override
-    public void saveGame(Game game) {
-        gameRepo.save(game);
+    public Game saveGame(Game game) {
+        return gameRepo.save(game);
     }
 
     @Override
@@ -34,36 +36,61 @@ public class GameService implements IGameService {
         return gameRepo.findById(id).orElse(null);
     }
 
+    /**
+     * Editar
+     *
+     * @param id El primer número entero.
+     * @param updateGame El segundo número entero.
+     * @return la actualizacion de juego si existe.
+     */
     @Override
-    public void editGame(String id, Game updateGame) {
-        Game game = this.findGame(id);
+    public Game editGame(String id, Game updateGame) {
+        Optional<Game> response = gameRepo.findById(id);
+
+        if(response.isEmpty()){
+            throw new GameNotFoundException("El juego con el Id "+ id + " no existe");
+        }
+        Game existingGame = response.get();
 
         if (updateGame.getName() != null) {
-            game.setName(updateGame.getName());
+            existingGame.setName(updateGame.getName());
         }
         if (updateGame.getDescription() != null) {
-            game.setDescription(updateGame.getDescription());
+            existingGame.setDescription(updateGame.getDescription());
         }
         if (updateGame.getClasification() != null) {
-            game.setClasification(updateGame.getClasification());
+            existingGame.setClasification(updateGame.getClasification());
         }
         if (updateGame.getCategory() != null) {
-            game.setCategory(updateGame.getCategory());
+            existingGame.setCategory(updateGame.getCategory());
         }
         if (updateGame.getDeveloperCompany() != null) {
-            game.setDeveloperCompany(updateGame.getDeveloperCompany());
+            existingGame.setDeveloperCompany(updateGame.getDeveloperCompany());
         }
         if (updateGame.getPrice() != null) {
-            game.setPrice(updateGame.getPrice());
+            existingGame.setPrice(updateGame.getPrice());
         }
-        if (updateGame.isActive() != game.isActive()) {
-            game.setActive(updateGame.isActive());
+        if (updateGame.isActive() != existingGame.isActive()) {
+            existingGame.setActive(updateGame.isActive());
         }
-        if (updateGame.isPromotion() != game.isPromotion()) {
-            game.setPromotion(updateGame.isPromotion());
+        if (updateGame.isPromotion() != existingGame.isPromotion()) {
+            existingGame.setPromotion(updateGame.isPromotion());
         }
 
-        this.saveGame(game);
+        return gameRepo.save(existingGame);
     }
+
+    @Override
+    public void changeStatus(String id, boolean active) {
+        Optional<Game> response = gameRepo.findById(id);
+        if(response.isPresent()){
+            Game game = response.get();
+            game.setActive(active);
+            gameRepo.save(game);
+        }else{
+            throw new GameNotFoundException("El juego no se encuentra con el Id= " + id);
+        }
+    }
+
 }
 

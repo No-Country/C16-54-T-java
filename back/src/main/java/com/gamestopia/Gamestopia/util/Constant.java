@@ -8,4 +8,5 @@ public final class Constant {
     public static final String RESOURCE_ADMIN= "/admin";
 
     public static final String RESOURCE_GAME = "/game";
+    public static final String RESOURCE_PORTAL = "/portal";
 }

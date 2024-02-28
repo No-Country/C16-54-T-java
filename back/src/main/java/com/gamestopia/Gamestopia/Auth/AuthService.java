@@ -8,6 +8,7 @@ import com.gamestopia.Gamestopia.dto.request.AuthLoginRequestDTO;
 import com.gamestopia.Gamestopia.dto.request.AuthRegisterRequestDTO;
 import com.gamestopia.Gamestopia.dto.response.AuthResponseDTO;
 import com.gamestopia.Gamestopia.entities.User;
+import com.gamestopia.Gamestopia.exception.InvalidPassword;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.util.StringUtils;
 
 import java.util.Optional;
 
@@ -54,6 +56,7 @@ public class AuthService {
             throw new RuntimeException("Ya existe un usuario con ese email");
         }
 
+        validatePassword(request);
         User user = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -78,5 +81,15 @@ public class AuthService {
                 .email(email)
                 .token(jwtService.getToken(user))
                 .build();
+    }
+    private void validatePassword(AuthRegisterRequestDTO request) {
+
+        if(!StringUtils.hasText(request.getPassword()) || !StringUtils.hasText(request.getRepeatedPassword())){
+            throw new InvalidPassword("El Password no coincide");
+        }
+
+        if(!request.getPassword().equals(request.getRepeatedPassword())){
+            throw new InvalidPassword("Passwords no coincide");
+        }
     }
 }
