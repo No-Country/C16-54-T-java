@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/button";
-import "./login.css";
+import "./styles.css";
 import { CiFacebook } from "react-icons/ci";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
