@@ -1,29 +1,26 @@
-.about{
-    width: 100%;
-}
+
 
 .img-container{
+    padding-top: 10rem;
+    padding-left: 5rem;
+    background-image: url(../assets/img/ccc.jpg);
     width: 100%;
     height: 100vh;
-    position: relative;
+    /* position: relative; */
 }
 
-.img-container img{
-    width: 100%;
-}
 .image-logo{
+   
     width: 150px;
-    position: absolute;
-    top: -200px;
+    margin-bottom: 2rem;
+    /* position: absolute; */
 }
 
-.img-container .aboutUs{
-    width: 450px;
+.aboutUs{
+    max-width: 450px;
     color: #FFFFFF;
-    position: absolute;
-    z-index: 10;
-    bottom: 15%;
-    left: 10%;
+    /* position: absolute; */
+   
 }
 
 .img-container .aboutUs h2{
@@ -33,18 +30,54 @@
 
 .section-about{
     width: 100%;
-    height: 100vh;
-   
-    position: relative;
-    margin-bottom: 2rem;
+    padding: 2rem;
+}
+
+@media (min-width: 768px) {
+    .contenedor-mision{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .mision{
+        
+        width: 450px;
+        color: #FFFFFF;
+    }
+
+    .mision h2{
+        font-size: 1.5rem;
+        color: #9FEADD;
+    }
+ 
+    
+    .confianza{
+        width: 450px;
+        color: #FFFFFF;
+        
+    }
+    .confianza h2{
+        font-size: 1.5rem;
+        color: #9FEADD;
+    }
+    
+    .seguridad{
+        width: 450px;
+        color: #FFFFFF;  
+        
+    }
+    
+    .seguridad h2{
+        font-size: 1.5rem;
+        color: #9FEADD;      
+    }
 }
 
 .mision{
-    width: 450px;
+    
     color: #FFFFFF;
-    position: absolute;
-    left: 60%;
-    top: 5%;
+    margin-bottom: 2rem;
+   
 }
 .mision h2{
     font-size: 1.5rem;
@@ -52,11 +85,10 @@
 }
 
 .confianza{
-    width: 450px;
+    
     color: #FFFFFF;
-    position: absolute;
-    left: 10%;
-    top: 35%;
+    margin-bottom: 2rem;
+   
 }
 
 .confianza h2{
@@ -65,11 +97,9 @@
 }
 
 .seguridad{
-    width: 450px;
-    color: #FFFFFF;
-    position: absolute;
-    left: 60%;
-    top: 55%;
+   
+   color: #FFFFFF;
+   padding-bottom: 2rem; 
     
 }
 
