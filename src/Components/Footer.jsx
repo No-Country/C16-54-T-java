@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/button";
-import "./footer.css";
+import "./styles.css";
 import { CiFacebook } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";

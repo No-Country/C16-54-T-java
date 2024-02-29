@@ -1,4 +1,4 @@
-import "./navbar.css";
+import "./styles.css";
 import {
   Input,
   IconButton,
