@@ -76,6 +76,9 @@ public class GameService implements IGameService {
         if (updateGame.isPromotion() != existingGame.isPromotion()) {
             existingGame.setPromotion(updateGame.isPromotion());
         }
+        if (updateGame.getImage() != null) {
+            existingGame.setImage(updateGame.getImage());
+        }
 
         return gameRepo.save(existingGame);
     }
@@ -90,6 +93,20 @@ public class GameService implements IGameService {
         }else{
             throw new GameNotFoundException("El juego no se encuentra con el Id= " + id);
         }
+
+    }
+    @Override
+    public List<Game> findBySearch(String value) {
+        List<Game> gameList = gameRepo.findBySearch(value);
+        if (gameList.isEmpty()) {
+            throw new RuntimeException("No se encontraron resultados para " + value);
+        }
+        return gameList;
+    }
+    @Override
+    public List<Game> findByCategory(String category) {
+        return gameRepo.findByCategory(category);
+
     }
 
 }
