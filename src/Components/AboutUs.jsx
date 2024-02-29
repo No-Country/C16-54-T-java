@@ -1,4 +1,4 @@
-import "./aboutUs.css";
+import "./styles.css";
 import logo from "../assets/img/logob.png";
 
 const AboutUs = () => {

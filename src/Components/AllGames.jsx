@@ -18,7 +18,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import img from "../assets/img/bg-games.jpg";
-import "./allGames.css";
+import "./styles.css";
 import { FaRegHeart } from "react-icons/fa";
 
 const AllGames = () => {
