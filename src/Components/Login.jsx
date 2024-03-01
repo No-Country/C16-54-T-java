@@ -1,12 +1,42 @@
 import { Button } from "@chakra-ui/button";
 import "./styles.css";
-/* import { CiFacebook } from "react-icons/ci";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { SiGmail } from "react-icons/si"; */
 import { Checkbox, Input, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+// import { useState } from "react";
 
 const Login = () => {
+  // const [email, setEmail] = useState('');
+  // const[password, setPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try{
+      const response = await axios.post('http://localhost:8080/v1/api/auth/login', {
+        email: email,
+        password: password
+      })
+
+      //Si la respuesta es ok, redirecciona
+      // if(response.status == 200){
+      //   window.location.href = '/About-us'
+      // }
+
+      const token = response.data.token;
+
+      //Almacenar el JWT en el localStorage
+      localStorage.setItem('token', token)
+      console.log(localStorage)
+      
+    } catch (error) {
+      console.error('Error al iniciar sesión: ', error)
+    }
+  };
+
   return (
     <div className="container">
       <div className="img-contenedor">
@@ -22,6 +52,7 @@ const Login = () => {
           <form action="">
             <Input
               required
+              id="email"
               marginTop={"2rem"}
               background={"#C2CEDE"}
               type="text"
@@ -33,6 +64,7 @@ const Login = () => {
             </Text>
             <Input
               required
+              id="password"
               marginTop={"2rem"}
               background={"#C2CEDE"}
               type="password"
@@ -58,6 +90,7 @@ const Login = () => {
             </Checkbox>
 
             <Button
+              onClick={handleSubmit}
               color={"#0D1A2C"}
               bg={"#879DBB"}
               _hover={{ bg: "#9FEADD" }}
