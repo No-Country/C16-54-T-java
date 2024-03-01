@@ -23,7 +23,7 @@
 
 import { useState } from "react";
 import { Button, Input, Text } from "@chakra-ui/react";
-import "./register.css";
+import "./styles.css";
 import axios from "axios";
 
 const Register = () => {

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { data } from "../assets/data";
 import logoblanco from "../assets/img/logoblanco.svg";
-import "./hero.css";
+import "./styles.css";
 import {
   Card,
   CardBody,
@@ -172,7 +172,7 @@ const Hero = () => {
             </CardFooter>
           </Card>
         </div>
-        
+              
       </div>
     </div>
   );
