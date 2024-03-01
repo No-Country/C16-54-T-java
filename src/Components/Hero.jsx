@@ -172,7 +172,7 @@ const Hero = () => {
             </CardFooter>
           </Card>
         </div>
-        
+              
       </div>
     </div>
   );
