@@ -4,8 +4,9 @@ import logo from "../assets/img/logob.png";
 const AboutUs = () => {
   return (
     <div className="about">
+
       <div className="img-container">
-        <img src="./ccc.jpg"></img>
+        {/* <img src="./ccc.jpg"></img> */}
         <div className="aboutUs">
         <div className="image-logo"><img src={logo} /></div>
         
@@ -20,7 +21,9 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
+
       <div className="section-about">
+        <div className="contenedor-mision">
         <div className="mision">
           <h2>MISIÓN</h2>
           <p>
@@ -31,6 +34,8 @@ const AboutUs = () => {
             alta calidad y un servicio excepcional en cada paso del camino.
           </p>
         </div>
+        </div>
+     
         <div className="confianza">
           <h2>CONFIANZA Y TRANSPARENCIA</h2>
           <p>
@@ -42,6 +47,7 @@ const AboutUs = () => {
             ganárnosla en cada transacción.
           </p>
         </div>
+        <div className="contenedor-mision">
         <div className="seguridad">
           <h2>SEGURIDAD</h2>
           <p>
@@ -58,7 +64,9 @@ const AboutUs = () => {
             experiencia con Gamestopia sea excepcional en todo momento.
           </p>
         </div>
+        </div>
       </div>
+
     </div>
   );
 };

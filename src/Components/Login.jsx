@@ -1,8 +1,8 @@
 import { Button } from "@chakra-ui/button";
 import "./styles.css";
-import { CiFacebook } from "react-icons/ci";
+/* import { CiFacebook } from "react-icons/ci";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
+import { SiGmail } from "react-icons/si"; */
 import { Checkbox, Input, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -42,28 +42,10 @@ const Login = () => {
 
   return (
     <div className="container">
-      <div className="img-container">
+      <div className="img-contenedor">
         <img src="./s.jpg" />
       </div>
-      <div className="icons-container">
-        <div className="icons">
-          <Button bg={"none"} _hover={"none"}>
-            <CiFacebook color="#9FEADD" fontSize={"1.2rem"} />
-          </Button>
-          <Button bg={"none"} _hover={"none"}>
-            <FaInstagram color="#9FEADD" fontSize={"1.2rem"} />
-          </Button>
-          <Button bg={"none"} _hover={"none"}>
-            <FaWhatsapp color="#9FEADD" fontSize={"1.2rem"} />
-          </Button>
-          <Button bg={"none"} _hover={"none"}>
-            <SiGmail color="#9FEADD" fontSize={"1.2rem"} />
-          </Button>
-        </div>
-        <div className="copyright">
-          © GAMESTOPIA 2024. Todos los derechos reservados.
-        </div>
-      </div>
+      
       <div className="login-container">
         <div className="login">
           <div className="text">
