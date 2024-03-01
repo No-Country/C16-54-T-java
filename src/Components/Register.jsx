@@ -33,28 +33,36 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [role, setRole] = useState("USER");
+
+  //Validaciones---------------------------------
+
   const [showErrorNombre, setShowErrorNombre] = useState(false);
   const [showErrorApellido, setShowErrorApellido] = useState(false);
+  const [showErrorEmail, setShowErrorEmail] = useState(false);
+  
   
   const handleBlur = () => {
     // Validación y configuración para mostrar el error al salir del campo
-    setShowErrorNombre(nombre == "" && nombre.length == 0);
+    setShowErrorNombre(nombre.trim() === "");
     
   };
   const handleBlurApellido = () => {
-    // Validación y configuración para mostrar el error al salir del campo
-    setShowErrorApellido(apellido == "" && apellido.length == 0);
-    
+    setShowErrorApellido(apellido.trim() === ""); 
   };
 
+  //Validacion de e-mail
   const isValidEmail = (email) => {
     // Expresión regular para validar un email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return emailRegex.test(email);
   };
 
+  const handleBlurMail = () =>{
+    setShowErrorEmail(email.trim() === "" || !isValidEmail(email))
+  }
+
   const handleSubmit = async (e) => {
-    console.log("boton presionado");
+    console.log("presionado")
 
     e.preventDefault();
 
@@ -124,6 +132,7 @@ const Register = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onBlur={handleBlurMail}
               background={"#C2CEDE"}
               type="email"
               w={"18rem"}
@@ -131,7 +140,7 @@ const Register = () => {
               fontWeight={"bold"}
             />
 
-{!isValidEmail  ? <p style={{color: '#FF6666'}}> debe ser un email valido</p> : null}
+{showErrorEmail  ? <p style={{color: '#FF6666'}}> debe ser un email valido</p> : null}
 
             <Text color={"#9FEADD"}>Contraseña</Text>
 
@@ -173,11 +182,23 @@ const Register = () => {
               w={"18rem"}
               h={"2rem"}
             />
-
-            <Button
+{!isValidEmail(email) || nombre.trim() === "" || apellido.trim() === "" || password !== password2 || password.trim() === "" ? <Button
+              disabled
+              bg={"#38748E"}
+              color={"#0D1A2C"}
+              colorScheme="blackAlpha"
+              w={"7rem"}
+              height={"1.5rem"}
+              fontWeight={"500"}
+              m={"1rem auto 0 auto"}
+              _hover={{ bg: "#9FEADD" }}
+              
+            >
+              Crear cuenta
+            </Button>  : <Button
               onClick={handleSubmit}
               id="btn-registro"
-              bg={"#879DBB"}
+              bg={"#ffffff"}
               color={"#0D1A2C"}
               colorScheme="blackAlpha"
               w={"7rem"}
@@ -188,7 +209,8 @@ const Register = () => {
               _hover={{ bg: "#9FEADD" }}
             >
               Crear cuenta
-            </Button>
+            </Button> }
+            
           </form>
         </div>
       </div>
