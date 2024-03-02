@@ -36,8 +36,6 @@ public class User implements UserDetails {
     Role role;
     @OneToOne
     protected Image image;
-    @ManyToMany
-    private List<Game> gameList;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

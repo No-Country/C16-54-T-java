@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
@@ -43,6 +41,4 @@ public class Game {
     private String developerCompany;
     @OneToOne
     protected Image image;
-    @ManyToOne
-    private User user;
 }
