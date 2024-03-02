@@ -29,7 +29,7 @@ public class SecurityConfig {
                          .disable())
                 .authorizeHttpRequests(authRequest ->
                     authRequest
-                 .requestMatchers("/v1/api/*").permitAll()
+                 .requestMatchers("/v1/api/**").permitAll()
                  .requestMatchers("/v1/api/auth/*", "/gamestopiaapi/swagger-ui/**", "/v3/api-docs/**").permitAll()
                  .anyRequest().authenticated()
                 )
