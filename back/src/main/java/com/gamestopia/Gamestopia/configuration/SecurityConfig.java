@@ -29,9 +29,9 @@ public class SecurityConfig {
                          .disable())
                 .authorizeHttpRequests(authRequest ->
                     authRequest
-                 .requestMatchers("/auth/**").permitAll()
-                   .anyRequest().authenticated()
-                )
+                .requestMatchers("/**").permitAll()
+                .requestMatchers("/auth/*", "/gamestopiaapi/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                   .anyRequest().authenticated())
                 .sessionManagement(sessionManager->
                         sessionManager
                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))

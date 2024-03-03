@@ -23,7 +23,9 @@ import { FaRegHeart } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 
 const AllGames = () => {
+
   const [games, setGames] = useState([]);
+
   useEffect(() => {
 
     fetch("http://localhost:8080/game/list")
