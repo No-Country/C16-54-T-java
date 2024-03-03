@@ -87,8 +87,9 @@ const AllGames = () => {
 
 
           {games.map(game => (
-            <li key={game.id}>{game.title}</li>
+            <h1 key={game.id}>Nombre:{game.name} Precio:{game.price}</h1>
           ))}
+
             <Card maxW={{ base: "60%", md: "30%", lg: "30%" }} bg={"#1B314E"}>
               <CardBody>
                 <Image
