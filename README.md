@@ -1,5 +1,5 @@
 
-# C16-54-T-java
+# GamesTopia
 
 
  # Diseño UX/UI
@@ -9,7 +9,7 @@
  # Front-end
 
 - Federico Pelourson
-- Guido Pasciucco
+- Fernando Damian
   
  # Back-end
  
@@ -17,6 +17,5 @@
 - James Serrato
 - Ana Merlo
 - Daniella Baella
-- Fernando Damian
 - Davys Torres Ortiz
 

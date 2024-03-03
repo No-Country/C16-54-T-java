@@ -74,10 +74,10 @@ const Register = () => {
       role: role,
     };
     try {
-      const response = await axios.post("http://localhost:8080/auth/register", data);
+      const response = await axios.post("http://localhost:8080/v1/api/auth/register", data)
 
-      if (response.ok) {
-        // Registro exitoso, puedes redirigir a otra página o mostrar un mensaje de éxito
+      if (response.status == 200) {
+        window.location.href = '/login'
       } else {
         // Manejar el caso de error, por ejemplo, mostrar un mensaje de error
       }
