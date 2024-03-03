@@ -23,6 +23,7 @@ public class GameController {
     }
 
     //Traer todos los juegos
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/list")
     public List<Game> gameList () {
         return gameServ.getGames();
