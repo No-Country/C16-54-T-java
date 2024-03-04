@@ -21,6 +21,7 @@ import img from "../assets/img/bg-games.jpg";
 import "./styles.css";
 import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const AllGames = () => {
 
