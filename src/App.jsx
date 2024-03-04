@@ -7,6 +7,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./Components/Register";
 import AboutUs from "./Components/AboutUs";
 import AllGames from "./Components/AllGames";
+import Cart from "./Components/Cart";
+import Card from "./Components/Card";
 
 const App = () => {
   return (
@@ -15,11 +17,13 @@ const App = () => {
       <Routes>
         <Route exact path='/' element={<Hero/>}/>
         <Route exact path='/login' element={<Login/>}/>
+        <Route exact path='/cart' element={<Cart/>}/>
         <Route exact path='/register' element={<Register/>}/>
         <Route exact path='/About-us' element={<AboutUs/>}/>
         <Route exact path='/All-the-games' element={<AllGames/>}/>
       </Routes>
       <Footer/>
+      {/* <Card/> */}
     </BrowserRouter>
       
     

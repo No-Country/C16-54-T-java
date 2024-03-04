@@ -74,7 +74,7 @@ const Register = () => {
       role: role,
     };
     try {
-      const response = await axios.post("http://localhost:8080/v1/api/auth/register", data)
+      const response = await axios.post("http://localhost:8080/auth/register", data)
 
       if (response.status == 200) {
         window.location.href = '/login'
