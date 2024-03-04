@@ -51,10 +51,10 @@ const Navbar = () => {
               HOME
             </Button>
           </Link>
-          
-          <Box >
-            <Menu >
-              <MenuButton 
+
+          <Box>
+            <Menu>
+              <MenuButton
                 as={Button}
                 color={"#9BFFF3"}
                 variant="link"
@@ -63,23 +63,42 @@ const Navbar = () => {
                 TIENDA
               </MenuButton>
               <MenuList bg={"#0D1A2C"} padding={"0"} border={"none"}>
-                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
+                <MenuItem
+                  color={"#9BFFF3"}
+                  bg={"#0D1A2C"}
+                  _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
+                  fontWeight={"bold"}
+                >
                   <Link to={""}>JUEGOS DE ACCIÓN</Link>
                 </MenuItem>
-                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
+                <MenuItem
+                  color={"#9BFFF3"}
+                  bg={"#0D1A2C"}
+                  _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
+                  fontWeight={"bold"}
+                >
                   <Link to={""}>JUEGOS DE DEPORTES</Link>
                 </MenuItem>
-                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
+                <MenuItem
+                  color={"#9BFFF3"}
+                  bg={"#0D1A2C"}
+                  _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
+                  fontWeight={"bold"}
+                >
                   <Link to={""}>JUEGOS DE ESTRATEGIA</Link>
                 </MenuItem>
-                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} borderTop={"1px"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>
+                <MenuItem
+                  color={"#9BFFF3"}
+                  bg={"#0D1A2C"}
+                  borderTop={"1px"}
+                  _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
+                  fontWeight={"bold"}
+                >
                   <Link to={"All-the-games"}>VER TODOS</Link>
                 </MenuItem>
               </MenuList>
             </Menu>
           </Box>
-            
-          
 
           <Link to={""}>
             <Menu>
@@ -92,8 +111,22 @@ const Navbar = () => {
                 BIBLIOTECA
               </MenuButton>
               <MenuList bg={"#0D1A2C"} padding={"0"} border={"none"}>
-                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>MIS JUEGOS</MenuItem>
-                <MenuItem color={"#9BFFF3"} bg={"#0D1A2C"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }} fontWeight={"bold"}>ACTUALIZACIONES</MenuItem>
+                <MenuItem
+                  color={"#9BFFF3"}
+                  bg={"#0D1A2C"}
+                  _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
+                  fontWeight={"bold"}
+                >
+                  MIS JUEGOS
+                </MenuItem>
+                <MenuItem
+                  color={"#9BFFF3"}
+                  bg={"#0D1A2C"}
+                  _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
+                  fontWeight={"bold"}
+                >
+                  ACTUALIZACIONES
+                </MenuItem>
               </MenuList>
             </Menu>
           </Link>
@@ -120,18 +153,25 @@ const Navbar = () => {
       </Flex>
 
       <Box margin={"2rem"}>
-        <Button bg={"black"} padding={"6px"} height={"none"} _hover={{ bg: '#9FEADD' }}>
-          <MdOutlineLocalGroceryStore color={"#9BFFF3"} />
-        </Button>
+        <Link to={"/cart"}>
+          <Button
+            bg={"black"}
+            padding={"6px"}
+            height={"none"}
+            _hover={{ bg: "#9FEADD" }}
+          >
+            <MdOutlineLocalGroceryStore color={"#9BFFF3"} />
+          </Button>
+        </Link>
         <Link to={"/login"}>
           <Button
-            _hover={{ bg: '#9FEADD' }}
+            _hover={{ bg: "#9FEADD" }}
             bg={"black"}
             padding={"6px"}
             height={"none"}
             marginLeft={"1rem"}
           >
-            <IoPersonSharp color={"#9BFFF3"}/>
+            <IoPersonSharp color={"#9BFFF3"} />
           </Button>
         </Link>
       </Box>
@@ -148,7 +188,7 @@ const Navbar = () => {
         className="nav-div"
         w="100vw"
         h="100vh"
-        bgGradient='linear(rgba(0,0,0,1), rgba(43,12,95,1), rgba(0,0,0,1))'
+        bgGradient="linear(rgba(0,0,0,1), rgba(43,12,95,1), rgba(0,0,0,1))"
         zIndex={20}
         pos="fixed"
         top="0"
@@ -156,7 +196,6 @@ const Navbar = () => {
         overflowY="auto"
         flexDir="column"
         display={display}
-        
       >
         <Flex justify="flex-end">
           <IconButton
@@ -177,18 +216,38 @@ const Navbar = () => {
           top="10%"
         >
           <Link to={"/"}>
-            <Button color={"#9BFFF3"} fontSize={"1.5rem"} margin={"1.2rem"} variant="link">
+            <Button
+              color={"#9BFFF3"}
+              fontSize={"1.5rem"}
+              margin={"1.2rem"}
+              variant="link"
+            >
               Home
             </Button>
           </Link>
 
-          <Button color={"#9BFFF3"} fontSize={"1.5rem"} margin={"1.2rem"} variant="link">
+          <Button
+            color={"#9BFFF3"}
+            fontSize={"1.5rem"}
+            margin={"1.2rem"}
+            variant="link"
+          >
             Tienda
           </Button>
-          <Button color={"#9BFFF3"} fontSize={"1.5rem"} margin={"1.2rem"} variant="link">
+          <Button
+            color={"#9BFFF3"}
+            fontSize={"1.5rem"}
+            margin={"1.2rem"}
+            variant="link"
+          >
             Biblioteca
           </Button>
-          <Button color={"#9BFFF3"} fontSize={"1.5rem"} margin={"1.2rem"} variant="link">
+          <Button
+            color={"#9BFFF3"}
+            fontSize={"1.5rem"}
+            margin={"1.2rem"}
+            variant="link"
+          >
             Acerca de
           </Button>
 
