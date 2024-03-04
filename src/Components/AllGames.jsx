@@ -23,6 +23,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+
 const AllGames = () => {
 
   const [games, setGames] = useState([]);
