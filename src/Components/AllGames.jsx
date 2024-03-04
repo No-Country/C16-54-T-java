@@ -84,8 +84,6 @@ const AllGames = () => {
             flexWrap={"wrap"}
           >
 
-
-
           {games.map(game => (
             <Card key={game.id} maxW={{ base: "60%", md: "30%", lg: "30%" }} bg={"#1B314E"}>
             <CardBody>
@@ -98,7 +96,7 @@ const AllGames = () => {
                 <Heading size="md" color={"white"}>
                   {game.name}
                 </Heading>
-                <p color={"white"}>{game.description}</p>
+                {/* <Text color={"white"}>{game.description}</Text> */}
                 <Text color={"white"} fontSize="2xl">
                   ${game.price}
                 </Text>
