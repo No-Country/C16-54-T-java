@@ -87,47 +87,48 @@ const AllGames = () => {
 
 
           {games.map(game => (
-            <h1 key={game.id}>Nombre:{game.name} Precio:{game.price}</h1>
+            <Card key={game.id} maxW={{ base: "60%", md: "30%", lg: "30%" }} bg={"#1B314E"}>
+            <CardBody>
+              <Image
+                src={img}
+                alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md" color={"white"}>
+                  {game.name}
+                </Heading>
+                <p color={"white"}>{game.description}</p>
+                <Text color={"white"} fontSize="2xl">
+                  ${game.price}
+                </Text>
+              </Stack>
+            </CardBody>
+            <Divider color={"#9FEADD"} />
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button
+                  variant="solid"
+                  color={"#0D1A2C"}
+                  bg={"#879DBB"}
+                  _hover={{ bg: "#9FEADD" }}
+                >
+                  Comprar
+                </Button>
+                <Button
+                  fontSize={{ base: 15, md: 15, lg: 30 }}
+                  variant="ghost"
+                  colorScheme="blue"
+                  _hover={{ bg: "#9FEADD" }}
+                >
+                  <FaRegHeart />
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card>
           ))}
 
-            <Card maxW={{ base: "60%", md: "30%", lg: "30%" }} bg={"#1B314E"}>
-              <CardBody>
-                <Image
-                  src={img}
-                  alt="Green double couch with wooden legs"
-                  borderRadius="lg"
-                />
-                <Stack mt="6" spacing="3">
-                  <Heading size="md" color={"white"}>
-                    Valorant
-                  </Heading>
-                  <Text color={"white"} fontSize="2xl">
-                    $450
-                  </Text>
-                </Stack>
-              </CardBody>
-              <Divider color={"#9FEADD"} />
-              <CardFooter>
-                <ButtonGroup spacing="2">
-                  <Button
-                    variant="solid"
-                    color={"#0D1A2C"}
-                    bg={"#879DBB"}
-                    _hover={{ bg: "#9FEADD" }}
-                  >
-                    Comprar
-                  </Button>
-                  <Button
-                    fontSize={{ base: 15, md: 15, lg: 30 }}
-                    variant="ghost"
-                    colorScheme="blue"
-                    _hover={{ bg: "#9FEADD" }}
-                  >
-                    <FaRegHeart />
-                  </Button>
-                </ButtonGroup>
-              </CardFooter>
-            </Card>
+            
 
 
             {/* <Card maxW={{ base: "60%", md: "30%", lg: "30%" }} bg={"#1B314E"}>
