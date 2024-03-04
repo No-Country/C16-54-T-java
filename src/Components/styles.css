@@ -1,0 +1,695 @@
+
+:root {
+    --background-gradient: linear-gradient(90deg, rgba(13,26,44,1) 22%, rgba(56,116,142,1) 50%, rgba(13,26,44,1) 78%);
+    --dark-blue: #0D1A2C;
+    --intermediate-blue: #1B314E;
+    --light-blue: #38748E;
+    --light-green: #9FEADD;
+    --letters: #FFFFFF;
+}
+
+
+/* Navbar */
+
+.navbar{
+    width: 100%;
+    height: 5rem;
+    background: var(--background-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 20;
+}
+
+.menu{
+    width: 40%;
+    height: 2rem;
+    display: contents;
+}
+
+.nav-resp,
+.nav-div{
+    top: 40vh;
+    left: 50%;
+    margin: auto;
+}
+
+.navbar button a{
+    width: 100%;
+}
+
+
+@media (max-width:738px){
+    .btn{
+        display: block;
+    }
+    .input{
+        display: block;
+        margin-top: 1rem;
+    }
+    .navbar{
+        position: relative;
+    }
+}
+
+@media (min-width: 731px) and (max-width: 1170px)  {
+    .menu{
+        width: 100%;
+        
+    }
+}
+
+
+
+/* Hero */
+.hero{
+    background: var(--background-gradient);
+    }
+
+    ul,
+    li {
+    list-style: none;
+    white-space: nowrap;
+    }
+
+    li {
+    height: 100vh;
+    display: block;
+    }
+    
+    .hero-img{
+    object-fit: cover;
+    overflow: hidden;
+    filter: brightness(50%);
+    width: 100%;
+    }
+
+    
+  /* Main container */
+
+    .main-container {
+    height: 100vh;
+    }
+    
+  /* Slider container */
+    .slider-container {
+    position: relative;
+    height: 100%
+    }
+
+    
+  /* Arrows */
+    .leftArrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 32px;
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--light-green);
+    z-index: 1;
+    cursor: pointer;
+    }
+    
+    .rightArrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 32px;
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--light-green);
+    z-index: 1;
+    cursor: pointer;
+    }
+    
+    .text-container{
+    width: 350px;
+    position: absolute;
+    z-index: 10;
+    top: 20%;
+    left: 10%;
+    }
+    .text-container .img-hero{
+    width: 160px;
+    
+    }
+    .text-container .title{
+    width: 100%;
+    color: var(--letters);
+    font-size: 2rem;
+    
+    }
+    .text-container .text{
+    color: var(--letters);
+    font-size: 1rem;
+    }
+
+    .container-images {
+    height: 100%;
+    overflow: hidden;
+    }
+
+
+.novedades{
+    background: var(--background-gradient);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 10rem;
+}
+
+.novedades .novedades-title{
+    color: var(--light-green);
+    font-size: 3rem;
+    align-items: center;
+    margin: 1rem auto;
+}
+
+.novedades .novedades-container{
+    flex-direction: row;
+    display: flex;
+    gap: 2rem;
+    margin: auto;
+    justify-content: space-around;
+}
+
+
+@media (max-width:738px){
+
+    .leftArrow{
+        font-size: 25px;
+        display: none;
+    }
+    .rightArrow{
+        font-size: 25px;
+        display: none;
+    }
+    .main-container{
+        display: none;
+    }
+    .container-images{
+        display: none;
+        background: var(--background-gradient);    
+    }
+    .text-container{
+        width: 280px;
+        top: 10%;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        position: relative;
+        left: 0;
+    }
+    .text-container .img-hero{
+        width: 80px;
+        margin: auto;
+    }
+    .text-container .text{
+        font-size: 1rem;
+        margin-top: 1.5rem;
+    }
+    .text-container .title{
+        font-size: 1.8rem;
+        margin: auto;
+        padding-top: 3rem;
+    }
+    .novedades{
+        height: 100%;
+    }
+    .novedades .novedades-container{
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+}
+
+  /* AllGames sectio */
+    .games{
+        background: var(--background-gradient);
+        width: 100%;
+        position: relative;
+        width: 100%;
+    }
+
+.image-games{
+    width: 100%;
+}
+
+.image-games img{
+    width: 100%;
+}
+
+.games-container {
+    width: 70%;
+    display: block;
+}
+
+.games-container .cards{
+    position: relative;
+    top: -250px;
+    left: 35%;
+}
+
+.title-tienda{
+    position: relative;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    top: -5rem;
+
+}
+
+.title-tienda h2{
+    color: var(--light-green);
+    font-size: 2.5rem;
+    top: -200px;
+    left: 5.5rem;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    font-weight: 600;
+}
+
+.title-tienda .filter{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.title-tienda .filter h3{
+    color: var(--light-green);
+    font-size: 1.5rem;
+    position: relative;
+}
+
+@media (max-width: 1200px) {
+    .image-games{
+        position: relative;
+        
+    }
+    .image-games button{
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .title-tienda h2{
+        position: relative;
+        top: -100px;
+    }
+    .filter{
+        position: relative;
+        top: 100px;
+    }
+}
+
+
+@media (min-width: 200px) and (max-width: 500px)  {
+    .games-container{
+        width: 100%;
+    }
+    .games-container .filter{
+        display: none;
+    }
+    .games-container .cards{
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    .title-tienda h2{
+        display: none;
+    }
+}
+
+/* About seccion */
+
+.about{
+    background: var(--background-gradient);
+}
+.img-container{
+    padding-top: 10rem;
+    padding-left: 5rem;
+    background-image: url(../assets/img/ccc.jpg);
+    width: 100%;
+    height: 100vh;
+}
+
+.image-logo{
+    width: 150px;
+    margin-bottom: 2rem;
+}
+
+.aboutUs{
+    max-width: 450px;
+    color: var(--letters);
+}
+
+.img-container .aboutUs h2{
+    font-size: 1.5rem;
+    color: var(--light-green);
+}
+
+.section-about{
+    width: 100%;
+    padding: 2rem;
+}
+
+@media (min-width: 768px) {
+    .contenedor-mision{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .mision{
+        
+        width: 450px;
+        color: var(--letters);
+    }
+
+    .mision h2{
+        font-size: 1.5rem;
+        color: var(--light-green);
+    }
+    
+    .confianza{
+        width: 450px;
+        color: var(--letters);
+    }
+    .confianza h2{
+        font-size: 1.5rem;
+        color: var(--light-green);
+    }
+    
+    .seguridad{
+        width: 450px;
+        color: var(--letters);  
+        
+    }
+    
+    .seguridad h2{
+        font-size: 1.5rem;
+        color: var(--light-green);      
+    }
+}
+
+.mision{
+    color: var(--letters);
+    margin-bottom: 2rem;
+}
+.mision h2{
+    font-size: 1.5rem;
+    color: var(--light-green);
+}
+
+.confianza{
+    color: var(--letters);
+    margin-bottom: 2rem;
+}
+
+.confianza h2{
+    font-size: 1.5rem;
+    color: var(--light-green);
+}
+
+.seguridad{
+    color: var(--letters);
+    padding-bottom: 2rem; 
+}
+
+.seguridad h2{
+    font-size: 1.5rem;
+    color: var(--light-green);
+}
+
+
+/* login section */
+.container{
+    padding-top: 5rem;
+    background: var(--background-gradient);
+    display: flex;
+    }
+    .container .img-contenedor{
+        width: 50%;
+        height: 100vh;
+    }
+    .container .img-contenedor img{
+        height: 100vh;
+        width: auto;
+    }
+
+    .container .login-container{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .login{
+        padding: 3rem;
+        height: auto;
+        background-color: var(--intermediate-blue);
+        border-radius: 2rem;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .text{
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+    .login .text h2{
+        color: var(--light-green);
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-size: 1.8rem;
+    }
+    .login .text p{
+        color: var(--light-green);
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    .label{
+        width: 5rem;
+        height: 2rem;
+        background-color: #C2CEDE;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    @media (max-width:738px){
+        .img-contenedor{
+            display: none;
+        }
+        .container .login-container{
+            width: 100%;
+            height: 100%;
+        }
+        .login{
+            margin: 0 auto;
+        }
+        .container{
+            height: 100%;
+        }
+    }
+
+/* Register section */
+.register{
+    background: var(--background-gradient);
+    padding: 5rem 0 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    }
+    .image-container{
+        width: 50%;    
+    }
+    
+    .image-container img{
+        width: auto;
+        
+    }
+    
+    @media (max-width: 1000px) {
+        .image-container{
+            display: none;
+        }
+        .register{
+            padding: 0;
+        }
+    }
+    
+    .register-container{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    
+    .bg-register{
+        background-color: var(--intermediate-blue);
+        width: auto;
+        padding: 4rem;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        border-radius: 1rem;
+        
+    }
+    form{
+        gap: .5rem;
+    }
+    
+    form h1{
+        margin: auto;
+        color: var(--light-green);
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+    form p{
+        width: 14rem;
+    }
+
+/* Footer section */
+.footer{
+    background: var(--background-gradient);
+    height: 8rem;
+    bottom: 0;
+    display: flex;
+    border-top: 2px solid #9FEADD;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+}
+
+.footer .icons{
+    margin: auto;
+}
+.footer .copyright{
+    color: var(--light-green);
+    font-size: .8rem;
+    margin: auto;
+}
+
+.cart{
+    height: 100vh;
+}
+.cart-container{
+    position: relative;
+    top: 5rem;
+}
+
+.card{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.card h2{
+    color: #9FEADD;
+    font-size: 2.2rem;
+    position: relative;
+    left: 0%;
+    top: -10%;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.card-container{
+    width: 50%;
+    height: 50vh;
+    position: relative;
+    top: 20%;
+    left: 10%;
+}
+.card-container img{
+    width: 100%;
+    border-radius: 1.5rem;
+}
+
+.container-store{
+    width: 200px;
+    height: 40%;
+    position: relative;
+    right: -25%;
+    top: 20%;
+}
+.container-store img{
+    width: 150px;
+    color: #9FEADD;
+}
+
+.container-store .store{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 5rem;
+    width: 200px;
+}
+.container-store .store h3{
+    font-size: 3rem;
+    color: #9FEADD;
+    font-weight: 600;
+}
+
+.requirements-container{
+    height: 20%;
+    background-color: #0D1A2C;
+    position: relative;
+    bottom: 0;
+    margin: 5rem;
+    display: flex;
+    
+}
+
+.requirements-container .description{
+    width: 35%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    
+}
+.requirements-container .description h3{
+    color: var(--light-green);
+    font-size: 1.5rem;
+    padding-right: 2rem;
+}
+.requirements-container .description p{
+    color:var(--light-blue);
+}
+
+.requirements-container .requirements{
+    width: 65%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    
+}
+.requirements-container .requirements h3{
+    color: var(--light-green);
+    font-size: 1.5rem;
+    padding-right: 1rem;
+}
+.requirements-container .requirements p{
+    color:var(--light-blue);
+    padding: 0 2rem;
+}

@@ -1,36 +1,49 @@
 import { Button } from "@chakra-ui/button";
-import "./login.css";
-import { CiFacebook } from "react-icons/ci";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
+import "./styles.css";
+
 import { Checkbox, Input, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+// import { useState } from "react";
 
 const Login = () => {
+  // const [email, setEmail] = useState('');
+  // const[password, setPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try{
+      const response = await axios.post('http://localhost:8080/v1/api/auth/login', {
+        email: email,
+        password: password
+      })
+
+      //Si la respuesta es ok, redirecciona
+      // if(response.status == 200){
+      //   window.location.href = '/About-us'
+      // }
+
+      const token = response.data.token;
+
+      //Almacenar el JWT en el localStorage
+      localStorage.setItem('token', token)
+      console.log(localStorage)
+      
+    } catch (error) {
+      console.error('Error al iniciar sesión: ', error)
+    }
+  };
+
   return (
     <div className="container">
-      <div className="img-container">
+      <div className="img-contenedor">
         <img src="./s.jpg" />
       </div>
-      <div className="icons-container">
-        <div className="icons">
-          <Button bg={"none"} _hover={"none"}>
-            <CiFacebook color="#9FEADD" fontSize={"1.2rem"} />
-          </Button>
-          <Button bg={"none"} _hover={"none"}>
-            <FaInstagram color="#9FEADD" fontSize={"1.2rem"} />
-          </Button>
-          <Button bg={"none"} _hover={"none"}>
-            <FaWhatsapp color="#9FEADD" fontSize={"1.2rem"} />
-          </Button>
-          <Button bg={"none"} _hover={"none"}>
-            <SiGmail color="#9FEADD" fontSize={"1.2rem"} />
-          </Button>
-        </div>
-        <div className="copyright">
-          © GAMESTOPIA 2024. Todos los derechos reservados.
-        </div>
-      </div>
+      
       <div className="login-container">
         <div className="login">
           <div className="text">
@@ -40,18 +53,24 @@ const Login = () => {
           <form action="">
             <Input
               required
+              id="email"
               marginTop={"2rem"}
               background={"#C2CEDE"}
               type="text"
               w={"18rem"}
+              fontWeight={"bold"}
             />
-            <Text color={"#9FEADD"}>Usuario o email</Text>
+            <Text w={"6rem"} color={"#9FEADD"}>
+              Usuario o email
+            </Text>
             <Input
               required
+              id="password"
               marginTop={"2rem"}
               background={"#C2CEDE"}
-              type="email"
+              type="password"
               w={"18rem"}
+              fontWeight={"bold"}
             />
             <Text color={"#9FEADD"}>
               Contraseña{" "}
@@ -72,20 +91,29 @@ const Login = () => {
             </Checkbox>
 
             <Button
-              bg={"#879DBB"}
+              onClick={handleSubmit}
               color={"#0D1A2C"}
+              bg={"#879DBB"}
+              _hover={{ bg: "#9FEADD" }}
               colorScheme="blackAlpha"
               w={"7rem"}
-              height={"1.5rem"}
-              fontWeight={"500"}
+              height={"2rem"}
+              fontWeight={"bold"}
               type="submit"
               m={"1rem auto 0 auto"}
-              _hover={"#0B1626"}
+              alignItems={"center"}
+              
             >
               INICIAR SECION
             </Button>
           </form>
-          <Text fontSize={".8rem"} color={"#9FEADD"} marginTop={"2rem"} marginBottom={"2rem"} position={"absolute"} bottom={"0"}>
+          <Text
+            fontSize={".8rem"}
+            color={"#9FEADD"}
+            marginTop={"2rem"}
+            marginBottom={"2rem"}
+            bottom={"0"}
+          >
             ¿No tienes una cuenta?
             <Link to={"/register"}>
               <Button
