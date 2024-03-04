@@ -606,10 +606,10 @@
 
 .card h2{
     color: #9FEADD;
-    font-size: 3rem;
+    font-size: 2.2rem;
     position: relative;
     left: 0%;
-    top: -20%;
+    top: -10%;
     font-weight: 500;
     text-transform: uppercase;
 }
@@ -623,6 +623,7 @@
 }
 .card-container img{
     width: 100%;
+    border-radius: 1.5rem;
 }
 
 .container-store{
@@ -648,4 +649,47 @@
     font-size: 3rem;
     color: #9FEADD;
     font-weight: 600;
+}
+
+.requirements-container{
+    height: 20%;
+    background-color: #0D1A2C;
+    position: relative;
+    bottom: 0;
+    margin: 5rem;
+    display: flex;
+    
+}
+
+.requirements-container .description{
+    width: 35%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    
+}
+.requirements-container .description h3{
+    color: var(--light-green);
+    font-size: 1.5rem;
+    padding-right: 2rem;
+}
+.requirements-container .description p{
+    color:var(--light-blue);
+}
+
+.requirements-container .requirements{
+    width: 65%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    
+}
+.requirements-container .requirements h3{
+    color: var(--light-green);
+    font-size: 1.5rem;
+    padding-right: 1rem;
+}
+.requirements-container .requirements p{
+    color:var(--light-blue);
+    padding: 0 2rem;
 }
