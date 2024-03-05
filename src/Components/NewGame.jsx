@@ -4,6 +4,7 @@ import "./styles.css";
 import { Input, Text } from "@chakra-ui/react";
 
 const NewGame = () => {
+  
   return (
     <div className="new-game">
       <div className="title-game">
