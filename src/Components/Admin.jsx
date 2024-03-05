@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import provisoria from "../assets/img/ffff.jpg";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
   return (
@@ -24,6 +25,7 @@ const Admin = () => {
       </div>
       <div className="admin-container">
         <div className="nav-container">
+        <Link to={"Agregar-juego"}>
           <Button
             variant="solid"
             color={"#0D1A2C"}
@@ -32,6 +34,7 @@ const Admin = () => {
           >
             AGREGAR JUEGO
           </Button>
+          </Link>
           <Flex className="input" display={["none", "none", "flex", "flex"]}>
             <InputGroup w={[100, 250, 400]}>
               <Input pr="9rem" placeholder="Buscador..." bg={"white"} />

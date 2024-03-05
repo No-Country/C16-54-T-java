@@ -774,3 +774,81 @@
     display: flex;
     margin: auto;
 }
+
+.new-game{
+    width: 100%;
+    height: 1000px;
+    background-color: #0D1A2C;
+}
+.title-game{
+    width: 70%;
+    position: relative;
+    top: 8%;
+    display: flex;
+    margin: auto;
+    color: var(--light-green);
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.new-game .datos-new-game{
+    width: 70%;
+    height: 60%;
+    position: relative;
+    top: 10%;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.new-game .datos-new-game .datos-primarios{
+    display: flex;
+    height: 50%;
+    width: 40%;
+    
+}
+.new-game .datos-new-game .datos-primarios .inputs{
+    width: 100%;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-game .datos-new-game .datos-primarios .video-img{
+    display: flex;
+    position: absolute;
+    right: 0;
+    height: 50%;
+    width: 40%;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+
+.new-game .datos-new-game .datos-secundarios{
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    height: 3rem;
+}
+
+.requisitos{
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+.requisitos .minimos{
+    width: 40%;
+}
+
+.requisitos .recomendados{
+    width: 40%;
+}
+
+.agregar{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: 4rem;
+}

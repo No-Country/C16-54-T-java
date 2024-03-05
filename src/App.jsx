@@ -11,6 +11,7 @@ import Cart from "./Components/Cart";
 import Card from "./Components/Card";
 import Library from "./Components/Library";
 import Admin from "./Components/Admin";
+import NewGame from "./Components/NewGame";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route exact path='/Card' element={<Card/>}/>
         <Route exact path='/Library' element={<Library/>}/>
         <Route exact path='/Admin' element={<Admin/>}/>
+        <Route exact path='/Admin/Agregar-juego' element={<NewGame/>}/>
       </Routes>
       <Footer/>
       
