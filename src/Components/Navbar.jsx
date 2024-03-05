@@ -42,14 +42,24 @@ const Navbar = () => {
       >
         <Stack
           direction="row"
-          spacing={{ base: 10, md: 5, lg: 20 }}
+          spacing={{ base: 10, md: 18, lg: 14 }}
           align="center"
           paddingLeft={"1rem"}
         >
           <Link to={"/"}>
-            <Button color={"#9BFFF3"} variant="link">
-              HOME
-            </Button>
+          <Menu>
+              <MenuButton
+                as={Button}
+                _active={{
+                  transform: "scale(1.20)",
+                  textDecoration: "underline"
+                }}
+                color={"#9BFFF3"}
+                variant="link"
+              >
+                HOME
+              </MenuButton>
+            </Menu>
           </Link>
 
           <Box>
@@ -59,6 +69,10 @@ const Navbar = () => {
                 color={"#9BFFF3"}
                 variant="link"
                 rightIcon={<ChevronDownIcon />}
+                _active={{
+                  transform: "scale(1.20)",
+                  textDecoration: "underline"
+                }}
               >
                 TIENDA
               </MenuButton>
@@ -100,47 +114,58 @@ const Navbar = () => {
             </Menu>
           </Box>
 
-          <Link to={""}>
+          <Link to={"/Library"}>
             <Menu>
               <MenuButton
                 as={Button}
+                _active={{
+                  transform: "scale(1.20)",
+                  textDecoration: "underline"
+                }}
                 color={"#9BFFF3"}
                 variant="link"
-                rightIcon={<ChevronDownIcon />}
               >
                 BIBLIOTECA
               </MenuButton>
-              <MenuList bg={"#0D1A2C"} padding={"0"} border={"none"}>
-                <MenuItem
-                  color={"#9BFFF3"}
-                  bg={"#0D1A2C"}
-                  _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
-                  fontWeight={"bold"}
-                >
-                  MIS JUEGOS
-                </MenuItem>
-                <MenuItem
-                  color={"#9BFFF3"}
-                  bg={"#0D1A2C"}
-                  _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
-                  fontWeight={"bold"}
-                >
-                  ACTUALIZACIONES
-                </MenuItem>
-              </MenuList>
             </Menu>
           </Link>
 
           <Link to={"About-us"}>
-            <Button color={"#9BFFF3"} variant="link">
-              NOSOTROS
-            </Button>
+          <Menu>
+              <MenuButton
+                as={Button}
+                _active={{
+                  transform: "scale(1.20)",
+                  textDecoration: "underline"
+                }}
+                color={"#9BFFF3"}
+                variant="link"
+              >
+                NOSOTROS
+              </MenuButton>
+            </Menu>
+          </Link>
+          <Link to={"/Admin"}>
+          <Menu>
+              <MenuButton
+                as={Button}
+                _active={{
+                  transform: "scale(1.20)",
+                  textDecoration: "underline"
+                }}
+                color={"#9BFFF3"}
+                variant="link"
+                marginRight={"2rem"}
+              >
+                ADMINISTRADOR
+              </MenuButton>
+            </Menu>
           </Link>
         </Stack>
       </Flex>
 
       <Flex className="input" display={["none", "none", "flex", "flex"]}>
-        <InputGroup w={[100, 250, 400]}>
+        <InputGroup w={[100, 300, 300]}>
           <Input pr="9rem" placeholder="Buscador..." bg={"white"} />
           <InputRightElement width="4.5rem">
             <IconButton
@@ -222,7 +247,7 @@ const Navbar = () => {
               margin={"1.2rem"}
               variant="link"
             >
-              Home
+              HOME
             </Button>
           </Link>
 
@@ -232,7 +257,7 @@ const Navbar = () => {
             margin={"1.2rem"}
             variant="link"
           >
-            Tienda
+            TIENDA
           </Button>
           <Button
             color={"#9BFFF3"}
@@ -240,7 +265,7 @@ const Navbar = () => {
             margin={"1.2rem"}
             variant="link"
           >
-            Biblioteca
+            BIBLIOTECA
           </Button>
           <Button
             color={"#9BFFF3"}
@@ -248,7 +273,7 @@ const Navbar = () => {
             margin={"1.2rem"}
             variant="link"
           >
-            Acerca de
+            NOSOTROS
           </Button>
 
           <div
