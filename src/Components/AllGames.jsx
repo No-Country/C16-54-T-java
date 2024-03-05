@@ -28,9 +28,9 @@ const AllGames = () => {
 
   const [games, setGames] = useState([]);
 
-  useEffect(() => {
+ /* useEffect(() => {
 
-    fetch("http://localhost:8080/game/list")
+    fetch("http://localhost:8080/v1/api/portal/list")
     .then(response => {
       if (!response.ok) {
         throw new Error(`Error!! ${response.status}: ${response.statusText}`);
@@ -42,7 +42,41 @@ const AllGames = () => {
 
   },[])
 
+  const renderImage = (imageContent) => {
+    console.log("Valor de game.image:", imageContent);
+    if (!imageContent) return null;
 
+    
+  };*/
+  useEffect(() => {
+    const fetchGamesAndImages = async () => {
+      try {
+        // Obtener la lista de juegos
+        const gamesResponse = await fetch("http://localhost:8080/v1/api/portal/list");
+        if (!gamesResponse.ok) {
+          throw new Error(`Error al obtener la lista de juegos: ${gamesResponse.status}`);
+        }
+        const gamesData = await gamesResponse.json();
+        setGames(gamesData);
+
+        // Obtener las imágenes de los juegos
+        const gamesWithImages = await Promise.all(gamesData.map(async game => {
+          const imageResponse = await fetch(`http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`);
+          if (!imageResponse.ok) {
+            throw new Error(`Error al obtener la imagen del juego ${game.title}: ${imageResponse.status}`);
+          }
+          const blob = await imageResponse.blob();
+          const imageUrl = URL.createObjectURL(blob);
+          return { ...game, imageUrl };
+        }));
+        setGames(gamesWithImages);
+      } catch (error) {
+        console.error("Error al obtener la lista de juegos y las imágenes:", error);
+      }
+    };
+
+    fetchGamesAndImages(); // Llamamos a la función para obtener la lista de juegos y las imágenes cuando el componente se monta
+  }, []);
   return (
     <div className="games">
       <div className="image-games">
@@ -90,7 +124,7 @@ const AllGames = () => {
             <Card key={game.id} maxW={{ base: "60%", md: "30%", lg: "30%" }} bg={"#1B314E"}>
             <CardBody>
               <Image
-                src={img}
+                src={game.imageUrl}
                 alt="Green double couch with wooden legs"
                 borderRadius="lg"
               />
