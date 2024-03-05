@@ -9,6 +9,8 @@ import AboutUs from "./Components/AboutUs";
 import AllGames from "./Components/AllGames";
 import Cart from "./Components/Cart";
 import Card from "./Components/Card";
+import Library from "./Components/Library";
+import Admin from "./Components/Admin";
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
         <Route exact path='/About-us' element={<AboutUs/>}/>
         <Route exact path='/All-the-games' element={<AllGames/>}/>
         <Route exact path='/Card' element={<Card/>}/>
+        <Route exact path='/Library' element={<Library/>}/>
+        <Route exact path='/Admin' element={<Admin/>}/>
       </Routes>
       <Footer/>
       
