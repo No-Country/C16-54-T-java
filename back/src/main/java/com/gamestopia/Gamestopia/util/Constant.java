@@ -9,4 +9,5 @@ public final class Constant {
 
     public static final String RESOURCE_GAME = "/game";
     public static final String RESOURCE_PORTAL = "/portal";
+    public static final String RESOURCE_SHOPPING = "/shopping";
 }

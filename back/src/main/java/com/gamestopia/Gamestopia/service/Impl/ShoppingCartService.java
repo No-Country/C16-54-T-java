@@ -1,5 +1,6 @@
 package com.gamestopia.Gamestopia.service.Impl;
 
+import com.gamestopia.Gamestopia.Repository.GameRepository;
 import com.gamestopia.Gamestopia.Repository.ShoppinCartRepository;
 import com.gamestopia.Gamestopia.Repository.UserRepository;
 import com.gamestopia.Gamestopia.entities.Game;
@@ -24,8 +25,12 @@ public class ShoppingCartService implements IShoppingCartService {
     @Autowired
     private UserRepository userRepo;
 
+    @Autowired
+    private GameRepository gameRepo;
+
     @Override
-    public ShoppingCart AddToCart(Game game) {
+    public ShoppingCart AddToCart(String Idgame) {
+        Game game = gameRepo.findById(Idgame).get();
         //Para vincular al juego con el carrito hay que traer los datos del user logueado
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userdetail = (UserDetails) authentication.getPrincipal();

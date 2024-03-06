@@ -13,23 +13,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.gamestopia.Gamestopia.util.Constant.API;
+import static com.gamestopia.Gamestopia.util.Constant.RESOURCE_SHOPPING;
+
 @RestController
-@RequestMapping("/shopping_cart")
+@RequestMapping(value = API + RESOURCE_SHOPPING)
 public class ShoppingCartController {
 
     @Autowired
     private ShoppingCartService shoppingCartService;
 
     @Secured("USER")
-    @PostMapping("/add")
-    public ResponseEntity<ShoppingCart> addCart(@RequestBody Game game){
-        ShoppingCart addtoCart = shoppingCartService.AddToCart(game);
+    @PostMapping("/add/{Idgame}")
+    public ResponseEntity<ShoppingCart> addCart(@PathVariable String Idgame){
+        ShoppingCart addtoCart = shoppingCartService.AddToCart(Idgame);
         return ResponseEntity.status(HttpStatus.CREATED).body(addtoCart);
     }
 
     @Secured("USER")
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteToCart(@PathVariable String id){
+    public ResponseEntity<?> deleteToCart(@PathVariable("id") String id){
         shoppingCartService.deleteToCart(id);
         return ResponseEntity.noContent().build();
     }

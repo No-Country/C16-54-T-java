@@ -17,11 +17,11 @@ public class ShoppingCart {
     @UuidGenerator
     @Column (name = "id_shoppingcart")
     private String id;
-    @ManyToOne(targetEntity = Game.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Game.class, optional = false, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn (name = "id_game")
     private Game game;
 
-    @ManyToOne(targetEntity = User.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = User.class, optional = false, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn (name = "id_user")
     private User user;
 

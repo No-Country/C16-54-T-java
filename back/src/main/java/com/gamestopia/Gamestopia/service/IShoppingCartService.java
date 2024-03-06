@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IShoppingCartService {
     //Agregar producto al carrito
-    ShoppingCart AddToCart(Game game);
+    ShoppingCart AddToCart(String Idgame);
 
     //Borrar producto de carrito
     void deleteToCart(String Id);
