@@ -26,5 +26,5 @@ public interface IUserService {
     public void edit(String id, User updateUser);
 
 
-    List<Game> gameList(String id);
+    //List<Game> gameList(String id);
 }

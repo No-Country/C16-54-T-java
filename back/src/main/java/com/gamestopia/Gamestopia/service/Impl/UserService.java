@@ -62,17 +62,19 @@ public class UserService implements IUserService {
       
 //     user.setImg(updateUser.getImg() != null ? updateUser.getImg() : user.getImg());
     }
-    @Override
-    public List<Game> gameList(String id){
-        List<Game> myGames = new ArrayList<>();
-        Optional<User> response = userRepo.findById(id);
 
-        if(response.isPresent()){
-            User user = response.get();
-            myGames = gameRepository.findByUser(user);
-        }
-        return myGames;
-    }
+
+    //@Override
+    //public List<Game> gameList(String id){
+    //    List<Game> myGames = new ArrayList<>();
+    //    Optional<User> response = userRepo.findById(id);
+
+    //    if(response.isPresent()){
+    //        User user = response.get();
+    //        myGames = gameRepository.findByUser(user);
+    //    }
+    //    return myGames;
+    //}
 
 }
     
