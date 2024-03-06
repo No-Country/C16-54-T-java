@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface GameRepository extends JpaRepository <Game, String> {
 
-    List<Game> findByUser(User user);
+    //List<Game> findByUser(User user);
 
     @Query("SELECT g FROM Game g WHERE g.name LIKE %?1% OR g.category LIKE %?1% "
             + "OR g.description LIKE %?1% OR g.developerCompany LIKE %?1%")

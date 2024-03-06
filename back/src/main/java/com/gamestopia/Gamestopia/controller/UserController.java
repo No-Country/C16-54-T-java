@@ -63,11 +63,11 @@ public class UserController {
         iUserService.edit(id, updateUser);
     }
     //listar juegos asociados al usuario por id
-    @GetMapping("/{id}/games")
-    public ResponseEntity<List<Game>> showGames(@PathVariable String id){
-        List<Game> games = iUserService.gameList(id);
-        return new ResponseEntity<>(games, HttpStatus.OK);
-    }
+    //@GetMapping("/{id}/games")
+    //public ResponseEntity<List<Game>> showGames(@PathVariable String id){
+     //   List<Game> games = iUserService.gameList(id);
+    //    return new ResponseEntity<>(games, HttpStatus.OK);
+    //}
 
     @PostMapping("/uploadPhoto")
 
