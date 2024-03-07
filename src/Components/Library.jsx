@@ -19,6 +19,7 @@ import { useState, useEffect } from "react";
 const Library = () => {
   const [games, setGames] = useState([]);
 
+  
   useEffect(() => {
     fetch("http://localhost:8080/v1/api/game/list")
       .then((response) => {
@@ -32,6 +33,7 @@ const Library = () => {
         console.error("Error al obtener la lista de juegos: ", error)
       );
   }, []);
+
   return (
     <div className="games">
       <div className="image-games">
