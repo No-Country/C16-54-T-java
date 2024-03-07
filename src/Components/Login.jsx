@@ -23,9 +23,9 @@ const Login = () => {
       })
 
       //Si la respuesta es ok, redirecciona
-      // if(response.status == 200){
-      //   window.location.href = '/About-us'
-      // }
+        if(response.status == 200){
+        window.location.href = '/All-the-games'
+      }
 
       const token = response.data.token;
 

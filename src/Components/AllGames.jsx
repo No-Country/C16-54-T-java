@@ -30,7 +30,7 @@ const AllGames = () => {
 
   useEffect(() => {
 
-    fetch("http://localhost:8080/game/list")
+    fetch("http://localhost:8080/v1/api/game/list")
     .then(response => {
       if (!response.ok) {
         throw new Error(`Error!! ${response.status}: ${response.statusText}`);
@@ -48,7 +48,7 @@ const AllGames = () => {
       <div className="image-games">
         <img src={img} />
         <Menu>
-            <MenuButton color={"#9FEADD"} fontSize={"1.2rem"} fontWeight={"bold"} w={"220px"} position={"absolute"} top={"35%"} right={"10%"} zIndex={"10"} bg={"#0D1A2C"} >ORDENAR POR</MenuButton>
+            <MenuButton color={"#9FEADD"} fontSize={"1.2rem"} fontWeight={"bold"} w={"220px"} position={"relative"} top={"-100px"} left={"80%"} zIndex={"10"} bg={"#0D1A2C"} >ORDENAR POR</MenuButton>
             <Portal>
               <MenuList bg={"#0D1A2C"} color={"#9FEADD"} flexDir={"column"} display={"flex"} border={"none"}>
                 <MenuItem bg={"#0D1A2C"} fontWeight='semibold' justifyContent={"center"} borderTop={"solid 1px"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }}>MÁS RELEVANTES</MenuItem>
@@ -101,7 +101,7 @@ const AllGames = () => {
                 <Text color={"white"} fontSize="2xl">
                   ${game.price}
                 </Text>
-                <Link to={"/Card"}>
+                <Link to={`/Card/${game.id}`}>
                   <Button
                     position={"absolute"}
                     right={"0"}
@@ -110,7 +110,9 @@ const AllGames = () => {
                     variant="ghost"
                     colorScheme="blue"
                     _hover={{ bg: "none" }}
+                    
                   >
+                  
                     VER MÁS
                   </Button>
                 </Link>

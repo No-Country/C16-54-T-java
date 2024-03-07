@@ -15,8 +15,24 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import provisoria from "../assets/img/ffff.jpg";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Admin = () => {
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/game/list")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error!! ${response.status}: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => setGames(data))
+      .catch((error) =>
+        console.error("Error al obtener la lista de juegos: ", error)
+      );
+  }, []);
   return (
     <div className="admin">
       <div className="logo">
@@ -106,25 +122,21 @@ const Admin = () => {
             </Portal>
           </Menu>
         </div>
-        <div className="juegos">
+        {games.map(game => (
+        <div key={game.id} className="juegos">
           <div className="datos">
-            <h4>Nombre:</h4>
-            <h4>Categoria</h4>
-            <h4>Precio</h4>
+            <h4>{game.name}</h4>
+            <h4>{game.category}</h4>
+            <h4>{game.price}</h4>
           </div>
           <div className="img-datos">
             <img src={provisoria} />
           </div>
           <div className="description-datos">
-            Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-            archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
-            de las industrias desde el año 1500, cuando un impresor (N. del T.
-            persona que se dedica a la imprenta) desconocido usó una galería de
+            {game.description}
             
           </div>
-        </div>
-        <div className="juegos"></div>
-        <div className="juegos"></div>
+        </div>))}
       </div>
     </div>
   );

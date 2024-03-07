@@ -717,7 +717,7 @@
 
 .admin .admin-container{
     width: 80%;
-    height: 100vh;
+    height: auto;
     display: flex;
     justify-content: center;
     margin: 2rem auto;
@@ -853,4 +853,38 @@
     justify-content: flex-end;
     position: relative;
     top: 4rem;
+}
+
+/* Seccion bliblioteca */
+
+.games-container .cards-biblioteca{
+    position: relative;
+    top: -140px;
+    left: 35%;
+}
+
+.games-container .mis-juegos{
+    position: relative;
+    top: -30px;
+    left: 15%;
+    color: var(--light-green);
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.cards-deseos{
+    position: relative;
+    top: 0px;
+    left: 35%;
+}
+
+.mis-deseos{
+    width: 120%;
+    position: relative;
+    top: 0;
+    left: -20%;
+    color: var(--light-green);
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--light-green);
 }
