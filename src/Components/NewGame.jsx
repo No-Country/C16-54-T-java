@@ -3,14 +3,13 @@ import "./styles.css";
 import { Input, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-import axios from "axios";
-import { useState } from "react";
 
 const NewGame = () => {
+
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState(0);
-  const [clasificacion, setClasificacion] = useState("");
+  // const [clasificacion, setClasificacion] = useState("");
   const [categoria, setCategoria] = useState("");
   const [desarrollador, setDesarrollador] = useState("");
 
@@ -50,16 +49,14 @@ const NewGame = () => {
         <h2>NUEVO JUEGO</h2>
       </div>
       <form method="POST" onSubmit={handleSubmit} className="datos-new-game">
-      <form method="POST" onSubmit={handleSubmit} className="datos-new-game">
         <div className="datos-primarios">
-          <div>
           <div>
             <Text color={"#9FEADD"}>Nombre</Text>
             <Input
               required
-              id="nombre"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
+              id="nombre"
               background={"#C2CEDE"}
               type="text"
               w={"100%"}
@@ -68,9 +65,6 @@ const NewGame = () => {
             />
             <Text color={"#9FEADD"}>Categoria</Text>
             <Input
-              id="categoria"
-              value={categoria}
-              onChange={(e) => setCategoria(e.target.value)}
               id="categoria"
               value={categoria}
               onChange={(e) => setCategoria(e.target.value)}
@@ -93,6 +87,7 @@ const NewGame = () => {
               h={"3rem"}
               fontWeight={"bold"}
             />
+            {/*  <Text color={"#9FEADD"}>Clasificacion</Text>
             {/*  <Text color={"#9FEADD"}>Clasificacion</Text>
             <Input
               id="clasificacion"
@@ -122,6 +117,7 @@ const NewGame = () => {
             <Text color={"#9FEADD"}>Agregar Imagen</Text>
             <Input
               id="apellido"
+              
               background={"#C2CEDE"}
               type="text"
               w={"100%"}
@@ -131,6 +127,7 @@ const NewGame = () => {
             <Text color={"#9FEADD"}>Agregar Video</Text>
             <Input
               id="apellido"
+              
               background={"#C2CEDE"}
               type="text"
               w={"100%"}
@@ -145,9 +142,6 @@ const NewGame = () => {
             id="descripcion"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
-            id="descripcion"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
             required
             background={"#C2CEDE"}
             type="text"
@@ -159,7 +153,7 @@ const NewGame = () => {
         </div>
         <div className="agregar">
           <Button
-            type="submit"
+          type="submit"
             variant="solid"
             color={"#0D1A2C"}
             bg={"#879DBB"}
@@ -169,6 +163,7 @@ const NewGame = () => {
           </Button>
         </div>
       </form>
+        
     </div>
   );
 };
