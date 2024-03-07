@@ -18,21 +18,23 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Admin = () => {
+
   const [games, setGames] = useState([]);
 
   useEffect(() => {
+
     fetch("http://localhost:8080/game/list")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error!! ${response.status}: ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then((data) => setGames(data))
-      .catch((error) =>
-        console.error("Error al obtener la lista de juegos: ", error)
-      );
-  }, []);
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error!! ${response.status}: ${response.statusText}`);
+    }
+    return response.json();
+})
+    .then(data => setGames(data))
+    .catch(error => console.error("Error al obtener la lista de juegos: ", error));
+
+  },[])
+
   return (
     <div className="admin">
       <div className="logo">
@@ -77,6 +79,7 @@ const Admin = () => {
               ORDENAR POR
             </MenuButton>
             <Portal>
+
               <MenuList
                 bg={"#879DBB"}
                 color={"#0D1A2C"}
@@ -137,6 +140,7 @@ const Admin = () => {
             
           </div>
         </div>))}
+       
       </div>
     </div>
   );

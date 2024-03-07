@@ -176,6 +176,7 @@ const Register = () => {
               h={"2rem"}
               fontWeight={"bold"}
             />
+            {password.length <= 8 && password.length != 0  ? <p style={{color: '#FF6666'}}> Debe tener más de 8 caracteres</p> : null}
 
             <Text color={"#9FEADD"}>Confirmar Contraseña</Text>
 

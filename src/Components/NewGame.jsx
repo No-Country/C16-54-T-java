@@ -3,6 +3,8 @@ import "./styles.css";
 import { Input, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+import axios from "axios";
+import { useState } from "react";
 
 const NewGame = () => {
   const [nombre, setNombre] = useState("");
@@ -48,7 +50,9 @@ const NewGame = () => {
         <h2>NUEVO JUEGO</h2>
       </div>
       <form method="POST" onSubmit={handleSubmit} className="datos-new-game">
+      <form method="POST" onSubmit={handleSubmit} className="datos-new-game">
         <div className="datos-primarios">
+          <div>
           <div>
             <Text color={"#9FEADD"}>Nombre</Text>
             <Input
@@ -64,6 +68,9 @@ const NewGame = () => {
             />
             <Text color={"#9FEADD"}>Categoria</Text>
             <Input
+              id="categoria"
+              value={categoria}
+              onChange={(e) => setCategoria(e.target.value)}
               id="categoria"
               value={categoria}
               onChange={(e) => setCategoria(e.target.value)}
@@ -135,6 +142,9 @@ const NewGame = () => {
         <div className="datos-secundarios">
           <Text color={"#9FEADD"}>Descripción</Text>
           <Input
+            id="descripcion"
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
             id="descripcion"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
