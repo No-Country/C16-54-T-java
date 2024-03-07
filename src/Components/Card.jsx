@@ -29,6 +29,7 @@ const Card = () => {
   }, [id]);
 
 console.log(game)
+
   return (
     <div>
       <div className="card">

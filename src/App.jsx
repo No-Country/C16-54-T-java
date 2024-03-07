@@ -12,9 +12,10 @@ import Card from "./Components/Card";
 import Library from "./Components/Library";
 import Admin from "./Components/Admin";
 import NewGame from "./Components/NewGame";
-// import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const App = () => {
+  const [searchTerm, setSearchTerm] = useState('');
   // const [games, setGames] = useState([]);
 
   // useEffect(() => {
@@ -32,14 +33,14 @@ const App = () => {
   // }, []);
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar setSearchTerm={setSearchTerm} />
       <Routes>
         <Route exact path="/" element={<Hero />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/About-us" element={<AboutUs />} />
-        <Route exact path="/All-the-games" element={<AllGames />} />
+        <Route exact path="/All-the-games" element={<AllGames searchTerm={searchTerm}/>} />
         <Route exact path="/Card" element={<Card />} />
         <Route exact path="/Card/:id" element={<Card />} />
         <Route exact path="/Library" element={<Library />} />

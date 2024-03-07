@@ -23,7 +23,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const AllGames = () => {
+const AllGames = ({searchTerm}) => {
   const [games, setGames] = useState([]);
 
   /* useEffect(() => {
@@ -88,6 +88,12 @@ const AllGames = () => {
 
     fetchGamesAndImages(); // Llamamos a la función para obtener la lista de juegos y las imágenes cuando el componente se monta
   }, []);
+  console.log(searchTerm);
+
+ const results = games.filter((dato) =>
+ dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+
   return (
     <div className="games">
       <div className="image-games">
@@ -177,7 +183,7 @@ const AllGames = () => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-            {games.map((game) => (
+            {results.map((game) => (
               <Card
                 key={game.id}
                 maxW={{ base: "60%", md: "30%", lg: "30%" }}
