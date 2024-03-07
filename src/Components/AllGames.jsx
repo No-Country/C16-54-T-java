@@ -61,6 +61,7 @@ const AllGames = () => {
 
         // Obtener las imágenes de los juegos
         const gamesWithImages = await Promise.all(gamesData.map(async game => {
+          
           const imageResponse = await fetch(`http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`);
           if (!imageResponse.ok) {
             throw new Error(`Error al obtener la imagen del juego ${game.title}: ${imageResponse.status}`);
@@ -75,7 +76,7 @@ const AllGames = () => {
       }
     };
 
-    fetchGamesAndImages(); // Llamamos a la función para obtener la lista de juegos y las imágenes cuando el componente se monta
+    fetchGamesAndImages(); 
   }, []);
   return (
     <div className="games">
@@ -119,7 +120,6 @@ const AllGames = () => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-
           {games.map(game => (
             <Card key={game.id} maxW={{ base: "60%", md: "30%", lg: "30%" }} bg={"#1B314E"}>
             <CardBody>
@@ -132,7 +132,7 @@ const AllGames = () => {
                 <Heading size="md" color={"white"}>
                   {game.name}
                 </Heading>
-                {/* <Text color={"white"}>{game.description}</Text> */}
+                <Text color={"white"}>{game.description}</Text>
                 <Text color={"white"} fontSize="2xl">
                   ${game.price}
                 </Text>

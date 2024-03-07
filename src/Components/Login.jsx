@@ -1,15 +1,16 @@
 import { Button } from "@chakra-ui/button";
 import "./styles.css";
-
+import { useNavigate } from 'react-router-dom';
 import { Checkbox, Input, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 // import { useState } from "react";
 
 const Login = () => {
   // const [email, setEmail] = useState('');
   // const[password, setPassword] = useState('');
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -32,6 +33,12 @@ const Login = () => {
       //Almacenar el JWT en el localStorage
       localStorage.setItem('token', token)
       console.log(localStorage)
+      if (response.data.role === 'ADMIN') {
+        // Redirigir al panel de administrador
+        navigate('/Admin');
+      } else {
+        navigate('/user');
+      }
       
     } catch (error) {
       console.error('Error al iniciar sesión: ', error)
@@ -104,7 +111,7 @@ const Login = () => {
               alignItems={"center"}
               
             >
-              INICIAR SECION
+              INICIAR SESION
             </Button>
           </form>
           <Text

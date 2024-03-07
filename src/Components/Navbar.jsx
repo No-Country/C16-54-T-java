@@ -145,7 +145,7 @@ const Navbar = () => {
               </MenuButton>
             </Menu>
           </Link>
-          <Link to={"/Admin"}>
+          {/* <Link to={"/Admin"}>
           <Menu>
               <MenuButton
                 as={Button}
@@ -160,7 +160,7 @@ const Navbar = () => {
                 ADMINISTRADOR
               </MenuButton>
             </Menu>
-          </Link>
+          </Link> */}
         </Stack>
       </Flex>
 

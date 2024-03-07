@@ -21,17 +21,22 @@ const Cart = () => {
       <Flex className="cart-container">
         <Card margin={"auto"} background={"#1B314E"} color={"#9FEADD"}>
           <CardHeader margin={"auto"}>
-            <Heading size="md">Resumen de compra</Heading>
+            <Heading size="md" textTransform="uppercase">Carrito de compras</Heading>
           </CardHeader>
 
           <CardBody>
+          <Flex alignItems={"center"} p={"10px"}>
+          <Heading size="md" margin={"1rem"}>PRODUCTO</Heading>
+          <Heading size="md" margin={"1rem"}>SUBTOTAL</Heading>      
+          </Flex>
             <Stack
               divider={<StackDivider />}
-              spacing="4"
+              spacing="6"
               borderColor={"#9FEADD"}
             >
               <Box>
-                <Heading m={"1.6rem"} size="xs" textTransform="uppercase">
+                <Heading m={"0px"} size="xs" textTransform="uppercase">
+                
                   {/* {products.map((producto, indx) => (
                     <Flex alignItems={"center"} p={"1rem"} key={indx}>
                       <Box marginRight={"1rem"} boxSize={"32px"}>

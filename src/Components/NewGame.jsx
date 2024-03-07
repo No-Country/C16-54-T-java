@@ -13,36 +13,79 @@ const NewGame = () => {
   const [clasificacion, setClasificacion] = useState("");
   const [categoria, setCategoria] = useState("");
   const [desarrollador, setDesarrollador] = useState("");
+  const [image, setImage] = useState(null);
+  
 
   const handleSubmit = async (e) => {
     console.log("presionado");
 
     e.preventDefault();
-
-    const data = {
-      name: nombre,
-      description: descripcion,
-      price: precio,
-      active: true,
-      promotion: false,
-      clasification: "E",
-      category: categoria,
-      developerCompany: desarrollador,
-    };
+    
+    
+    
+    
     try {
-      const response = await axios.post(
-        "http://localhost:8080/game/create",
-        data
+      const token = localStorage.getItem('token');
+      const data = {
+        name: nombre,
+        description: descripcion,
+        price: precio,
+        active: true,
+        promotion: false,
+        clasification: "E",
+        category: categoria,
+        developerCompany: desarrollador,
+      };
+      const gameResponse= await axios.post(
+        "http://localhost:8080/v1/api/admin/createGame",
+        data,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            
+          }
+        }
+      );
+      // Verificar si se obtiene el ID del juego
+      const gameId = gameResponse.data.id;
+      console.log("ID del juego:", gameId);
+
+      if (image) {
+       const formData = new FormData();
+        formData.append('file', image);
+        const imageResponse = await axios.post(
+        `http://localhost:8080/v1/api/admin/uploadPhoto?idGame=${gameId}`,
+       formData,
+      {
+        headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data'
+        }
+      }
       );
 
-      if (response.status == 200) {
+        if (imageResponse.status == 201) {
+        console.log('Juego y foto cargados exitosamente');
         window.location.href = "/Admin";
-      } else {
-        // Manejar el caso de error, por ejemplo, mostrar un mensaje de error
-      }
+        }
+      
+      }else{
+          console.error("Debes seleccionar una imagen para cargar.");
+        }
+        setNombre("");
+        setDescripcion("");
+        setPrecio(0);
+        setClasificacion("");
+        setCategoria("");
+        setDesarrollador("");
+        setImage(null);    
     } catch (error) {
       console.error("Error al enviar solicitud:", error);
     }
+  };
+  
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
   };
   return (
     <div className="new-game">
@@ -114,16 +157,18 @@ const NewGame = () => {
             />
           </div>
           <div className="video-img">
-            <Text color={"#9FEADD"}>Agregar Imagen</Text>
+            <Text color={"#9FEADD"} htmlFor="imagenInput">Agregar Imagen</Text>
             <Input
-              id="apellido"
-              
+              id="imagenInput"
+              type="file"
               background={"#C2CEDE"}
-              type="text"
+              accept="image/*" 
+              onChange={handleImageChange}
               w={"100%"}
               h={"100%"}
               fontWeight={"bold"}
             />
+            
             <Text color={"#9FEADD"}>Agregar Video</Text>
             <Input
               id="apellido"
@@ -134,6 +179,7 @@ const NewGame = () => {
               h={"100%"}
               fontWeight={"bold"}
             />
+
           </div>
         </div>
         <div className="datos-secundarios">
