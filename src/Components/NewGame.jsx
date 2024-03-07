@@ -30,7 +30,7 @@ const NewGame = () => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:8080/game/create",
+        "http://localhost:8080/v1/api/game/create",
         data
       );
 

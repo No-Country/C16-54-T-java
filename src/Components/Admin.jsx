@@ -23,7 +23,7 @@ const Admin = () => {
 
   useEffect(() => {
 
-    fetch("http://localhost:8080/game/list")
+    fetch("http://localhost:8080/v1/api/game/list")
     .then(response => {
       if (!response.ok) {
         throw new Error(`Error!! ${response.status}: ${response.statusText}`);
