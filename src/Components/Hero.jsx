@@ -21,6 +21,38 @@ import { FaRegHeart } from "react-icons/fa";
 
 
 const Hero = () => {
+
+//   const [games, setGames] = useState([]);
+//   useEffect(() => {
+//     fetch("http://localhost:8080/v1/api/game/list")
+//       .then((response) => {
+//         if (!response.ok) {
+//           throw new Error(`Error!! ${response.status}: ${response.statusText}`);
+//         }
+//         return response.json();
+//       })
+//       .then((data) => setGames(data))
+//       .catch((error) =>
+//         console.error("Error al obtener la lista de juegos: ", error)
+//       );
+//   }, []);
+
+//   function filtrarUltimosTres(array) {
+//     // Si la longitud del array es menor o igual a 3, devolvemos el array completo
+//     if (games.length <= 3) {
+//       return array;
+//     } else {
+//       // Si la longitud es mayor a 3, devolvemos los últimos tres elementos
+//       return games.slice(array.length - 3);
+//     }
+//   }
+
+//   // const result = games.filter(game => game.price === 68);
+//   const ultimosTres = filtrarUltimosTres(games);
+// console.log(ultimosTres);
+
+
+
   const listRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [games, setGames] = useState([]);
@@ -45,6 +77,20 @@ const Hero = () => {
           const imageUrl = URL.createObjectURL(blob);
           return { ...game, imageUrl };
         }));
+
+      //   function filtrarUltimosTres(array) {
+      //     // Si la longitud del array es menor o igual a 3, devolvemos el array completo
+      //     if (games.length <= 3) {
+      //       return array;
+      //     } else {
+      //       // Si la longitud es mayor a 3, devolvemos los últimos tres elementos
+      //       return games.slice(array.length - 3);
+      //     }
+      //   }
+      
+      //   // const result = games.filter(game => game.price === 68);
+      //   const ultimosTres = filtrarUltimosTres(games);
+      // console.log(ultimosTres);
 
         // Establecer los últimos tres juegos en el estado
         setGames(gamesWithImages.slice(-3));
@@ -138,9 +184,21 @@ const Hero = () => {
                 <Text color={"white"} fontSize="2xl">
                   ${game.price}
                 </Text>
+                <Link to={`/Card/${game.id}`}>
+                      <Button
+                        position={"absolute"}
+                        right={"0"}
+                        bottom={"20%"}
+                        fontSize={{ base: 10, md: 10, lg: 15 }}
+                        variant="ghost"
+                        colorScheme="blue"
+                        _hover={{ bg: "none" }}
+                      >
+                        VER MÁS
+                      </Button>
+                    </Link>
               </Stack>
             </CardBody>
-            
             <Divider color={"#9FEADD"} />
             <CardFooter>
               <ButtonGroup spacing="2">

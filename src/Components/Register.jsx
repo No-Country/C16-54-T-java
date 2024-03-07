@@ -21,12 +21,23 @@
  * - El botón activa la función handleSubmit al hacer clic.
  */
 
-import { useState } from "react";
-import { Button, Input, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Button,
+  Input,
+  Text,
+} from "@chakra-ui/react";
 import "./styles.css";
 import axios from "axios";
 
 const Register = () => {
+  
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
@@ -39,15 +50,17 @@ const Register = () => {
   const [showErrorNombre, setShowErrorNombre] = useState(false);
   const [showErrorApellido, setShowErrorApellido] = useState(false);
   const [showErrorEmail, setShowErrorEmail] = useState(false);
-  
-  
+
+  const [isOpen, setIsOpen] = React.useState(false);
+  const onClose = () => setIsOpen(false);
+  const cancelRef = React.useRef();
+
   const handleBlur = () => {
     // Validación y configuración para mostrar el error al salir del campo
     setShowErrorNombre(nombre.trim() === "");
-    
   };
   const handleBlurApellido = () => {
-    setShowErrorApellido(apellido.trim() === ""); 
+    setShowErrorApellido(apellido.trim() === "");
   };
 
   //Validacion de e-mail
@@ -57,12 +70,12 @@ const Register = () => {
     return emailRegex.test(email);
   };
 
-  const handleBlurMail = () =>{
-    setShowErrorEmail(email.trim() === "" || !isValidEmail(email))
-  }
+  const handleBlurMail = () => {
+    setShowErrorEmail(email.trim() === "" || !isValidEmail(email));
+  };
 
   const handleSubmit = async (e) => {
-    console.log("presionado")
+    console.log("presionado");
 
     e.preventDefault();
 
@@ -74,19 +87,21 @@ const Register = () => {
       role: role,
     };
     try {
-      const response = await axios.post("http://localhost:8080/auth/register", data)
+      const response = await axios.post(
+        "http://localhost:8080/v1/api/auth/register",
+        data
+      );
 
       if (response.status == 200) {
-        window.location.href = '/login'
+        {setIsOpen}
+        // window.location.href = "/login";
       } else {
         // Manejar el caso de error, por ejemplo, mostrar un mensaje de error
       }
     } catch (error) {
-      console.error('Error al enviar solicitud:', error);
+      console.error("Error al enviar solicitud:", error);
     }
-  }
-  ;
-
+  };
   return (
     <div className="register">
       <div className="image-container">
@@ -110,7 +125,9 @@ const Register = () => {
               h={"2rem"}
               fontWeight={"bold"}
             />
-            {showErrorNombre  ? <p style={{color: '#FF6666'}}> Rellena este campo</p> : null}
+            {showErrorNombre ? (
+              <p style={{ color: "#FF6666" }}> Rellena este campo</p>
+            ) : null}
             <Text color={"#9FEADD"}>Apellido</Text>
             <Input
               id="apellido"
@@ -124,7 +141,9 @@ const Register = () => {
               h={"2rem"}
               fontWeight={"bold"}
             />
-            {showErrorApellido  ? <p style={{color: '#FF6666'}}> Rellena este campo</p> : null}
+            {showErrorApellido ? (
+              <p style={{ color: "#FF6666" }}> Rellena este campo</p>
+            ) : null}
 
             <Text color={"#9FEADD"}>Email</Text>
             <Input
@@ -140,7 +159,9 @@ const Register = () => {
               fontWeight={"bold"}
             />
 
-{showErrorEmail  ? <p style={{color: '#FF6666'}}> debe ser un email valido</p> : null}
+            {showErrorEmail ? (
+              <p style={{ color: "#FF6666" }}> debe ser un email valido</p>
+            ) : null}
 
             <Text color={"#9FEADD"}>Contraseña</Text>
 
@@ -170,7 +191,12 @@ const Register = () => {
               h={"2rem"}
               fontWeight={"bold"}
             />
-            {password != password2  ? <p style={{color: '#FF6666'}}> las contraseñas deben coincidir</p> : null}
+            {password != password2 ? (
+              <p style={{ color: "#FF6666" }}>
+                {" "}
+                las contraseñas deben coincidir
+              </p>
+            ) : null}
 
             <Input
               required
@@ -183,36 +209,76 @@ const Register = () => {
               w={"18rem"}
               h={"2rem"}
             />
-{!isValidEmail(email) || nombre.trim() === "" || apellido.trim() === "" || password !== password2 || password.trim() === "" ? <Button
-              disabled
-              bg={"#38748E"}
-              color={"#0D1A2C"}
-              colorScheme="blackAlpha"
-              w={"7rem"}
-              height={"1.5rem"}
-              fontWeight={"500"}
-              m={"1rem auto 0 auto"}
-              _hover={{ bg: "#9FEADD" }}
-              
-            >
-              Crear cuenta
-            </Button>  : <Button
-              onClick={handleSubmit}
-              id="btn-registro"
-              bg={"#ffffff"}
-              color={"#0D1A2C"}
-              colorScheme="blackAlpha"
-              w={"7rem"}
-              height={"1.5rem"}
-              fontWeight={"500"}
-              type="submit"
-              m={"1rem auto 0 auto"}
-              _hover={{ bg: "#9FEADD" }}
-            >
-              Crear cuenta
-            </Button> }
-            
+            {!isValidEmail(email) ||
+            nombre.trim() === "" ||
+            apellido.trim() === "" ||
+            password !== password2 ||
+            password.trim() === "" ? (
+              <Button
+                disabled
+                bg={"#38748E"}
+                color={"#0D1A2C"}
+                colorScheme="blackAlpha"
+                w={"7rem"}
+                height={"1.5rem"}
+                fontWeight={"500"}
+                m={"1rem auto 0 auto"}
+                _hover={{ bg: "#9FEADD" }}
+              >
+                Crear cuenta
+              </Button>
+            ) : (
+              <Button
+                onClick={handleSubmit}
+                onClickCapture={setIsOpen}
+                id="btn-registro"
+                bg={"#ffffff"}
+                color={"#0D1A2C"}
+                colorScheme="blackAlpha"
+                w={"7rem"}
+                height={"1.5rem"}
+                fontWeight={"500"}
+                type="submit"
+                m={"1rem auto 0 auto"}
+                _hover={{ bg: "#9FEADD" }}
+              >
+                Crear cuenta
+              </Button>
+            )}
           </form>
+          <>
+            <AlertDialog
+              isOpen={isOpen}
+              leastDestructiveRef={cancelRef}
+              onClose={onClose}
+            >
+              <AlertDialogOverlay>
+                <AlertDialogContent>
+                  <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                  Registro exitoso
+                  </AlertDialogHeader>
+
+                  <AlertDialogBody>
+                    {<Text as="em">Bienvenido a GamesTopia, ya eres parte de nuestra comunidad</Text>}
+                  </AlertDialogBody>
+
+                  <AlertDialogFooter>
+                    <Button
+                      color={"#0D1A2C"}
+                      backgroundColor={"#9FEADD"}
+                      colorScheme="blackAlpha"
+                      onClick={onClose}
+                      
+                      
+                      ml={3}
+                    >
+                      Ok
+                    </Button>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialogOverlay>
+            </AlertDialog>
+          </>
         </div>
       </div>
     </div>

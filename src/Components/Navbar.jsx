@@ -25,6 +25,7 @@ import { useState } from "react";
 const Navbar = () => {
   const [display, changeDisplay] = useState("none");
   return (
+
     <Flex className="navbar">
       <Box paddingLeft="20px">
         <Image
@@ -39,12 +40,14 @@ const Navbar = () => {
         className="menu"
         bg={"transparent"}
         display={["none", "none", "flex", "flex"]}
+        
       >
         <Stack
           direction="row"
-          spacing={{ base: 10, md: 18, lg: 14 }}
+          spacing={{ base: 10, md: 10, lg: 16 }}
           align="center"
           paddingLeft={"1rem"}
+          margin={"auto"}
         >
           <Link to={"/"}>
           <Menu>

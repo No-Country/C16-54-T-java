@@ -11,6 +11,7 @@ import {
   MenuItem,
   MenuList,
   Portal,
+  Stack,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import provisoria from "../assets/img/ffff.jpg";
@@ -20,7 +21,6 @@ import axios from 'axios';
 
 
 const Admin = () => {
-
   const [games, setGames] = useState([]);
 
   /*useEffect(() => {
@@ -100,15 +100,15 @@ const Admin = () => {
       </div>
       <div className="admin-container">
         <div className="nav-container">
-        <Link to={"Agregar-juego"}>
-          <Button
-            variant="solid"
-            color={"#0D1A2C"}
-            bg={"#879DBB"}
-            _hover={{ bg: "#9FEADD" }}
-          >
-            AGREGAR JUEGO
-          </Button>
+          <Link to={"Agregar-juego"}>
+            <Button
+              variant="solid"
+              color={"#0D1A2C"}
+              bg={"#879DBB"}
+              _hover={{ bg: "#9FEADD" }}
+            >
+              AGREGAR JUEGO
+            </Button>
           </Link>
           <Flex className="input" display={["none", "none", "flex", "flex"]}>
             <InputGroup w={[100, 250, 400]}>
@@ -136,7 +136,6 @@ const Admin = () => {
               ORDENAR POR
             </MenuButton>
             <Portal>
-
               <MenuList
                 bg={"#879DBB"}
                 color={"#0D1A2C"}
@@ -194,10 +193,26 @@ const Admin = () => {
           </div>
           <div className="description-datos">
             {game.description}
-            
           </div>
-        </div>))}
-       
+          <div className="estados">
+              <div className="text-estado">
+                <h4>Estado</h4>
+                <Stack direction="row">
+                  <Switch colorScheme="teal" size="lg" />
+                </Stack>
+              </div>
+
+              <Button
+                variant="solid"
+                color={"#0D1A2C"}
+                bg={"#879DBB"}
+                _hover={{ bg: "#9FEADD" }}
+              >
+                Editar
+              </Button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

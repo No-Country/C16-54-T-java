@@ -12,29 +12,43 @@ import Card from "./Components/Card";
 import Library from "./Components/Library";
 import Admin from "./Components/Admin";
 import NewGame from "./Components/NewGame";
+// import { useEffect, useState } from "react";
 
 const App = () => {
+  // const [games, setGames] = useState([]);
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:8080/game/list`)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error(`Error!! ${response.status}: ${response.statusText}`);
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => setGames(data))
+  //     .catch((error) =>
+  //       console.error("Error al obtener la lista de juegos: ", error)
+  //     );
+  // }, []);
   return (
     <BrowserRouter>
-      <Navbar/>
+      <Navbar />
       <Routes>
-        <Route exact path='/' element={<Hero/>}/>
-        <Route exact path='/login' element={<Login/>}/>
-        <Route exact path='/cart' element={<Cart/>}/>
-        <Route exact path='/register' element={<Register/>}/>
-        <Route exact path='/About-us' element={<AboutUs/>}/>
-        <Route exact path='/All-the-games' element={<AllGames/>}/>
-        <Route exact path='/Card' element={<Card/>}/>
-        <Route exact path='/Library' element={<Library/>}/>
-        <Route exact path='/Admin' element={<Admin/>}/>
-        <Route exact path='/Admin/Agregar-juego' element={<NewGame/>}/>
+        <Route exact path="/" element={<Hero />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/About-us" element={<AboutUs />} />
+        <Route exact path="/All-the-games" element={<AllGames />} />
+        <Route exact path="/Card" element={<Card />} />
+        <Route exact path="/Card/:id" element={<Card />} />
+        <Route exact path="/Library" element={<Library />} />
+        <Route exact path="/Admin" element={<Admin />} />
+        <Route exact path="/Admin/Agregar-juego" element={<NewGame />} />
       </Routes>
-      <Footer/>
-      
+      <Footer />
     </BrowserRouter>
-      
-    
-  )
-}
+  );
+};
 
-export default App
+export default App;

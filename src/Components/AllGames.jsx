@@ -23,14 +23,12 @@ import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
 const AllGames = () => {
-
   const [games, setGames] = useState([]);
 
- /* useEffect(() => {
+  /* useEffect(() => {
 
-    fetch("http://localhost:8080/v1/api/portal/list")
+    fetch("http://localhost:8080/v1/api/game/list")
     .then(response => {
       if (!response.ok) {
         throw new Error(`Error!! ${response.status}: ${response.statusText}`);
@@ -52,16 +50,19 @@ const AllGames = () => {
     const fetchGamesAndImages = async () => {
       try {
         // Obtener la lista de juegos
-        const gamesResponse = await fetch("http://localhost:8080/v1/api/portal/list");
+        const gamesResponse = await fetch(
+          "http://localhost:8080/v1/api/portal/list"
+        );
         if (!gamesResponse.ok) {
-          throw new Error(`Error al obtener la lista de juegos: ${gamesResponse.status}`);
+          throw new Error(
+            `Error al obtener la lista de juegos: ${gamesResponse.status}`
+          );
         }
         const gamesData = await gamesResponse.json();
         setGames(gamesData);
 
         // Obtener las imágenes de los juegos
         const gamesWithImages = await Promise.all(gamesData.map(async game => {
-          
           const imageResponse = await fetch(`http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`);
           if (!imageResponse.ok) {
             throw new Error(`Error al obtener la imagen del juego ${game.title}: ${imageResponse.status}`);
@@ -72,7 +73,10 @@ const AllGames = () => {
         }));
         setGames(gamesWithImages);
       } catch (error) {
-        console.error("Error al obtener la lista de juegos y las imágenes:", error);
+        console.error(
+          "Error al obtener la lista de juegos y las imágenes:",
+          error
+        );
       }
     };
 
@@ -83,16 +87,64 @@ const AllGames = () => {
       <div className="image-games">
         <img src={img} />
         <Menu>
-            <MenuButton color={"#9FEADD"} fontSize={"1.2rem"} fontWeight={"bold"} w={"220px"} position={"absolute"} top={"35%"} right={"10%"} zIndex={"10"} bg={"#0D1A2C"} >ORDENAR POR</MenuButton>
-            <Portal>
-              <MenuList bg={"#0D1A2C"} color={"#9FEADD"} flexDir={"column"} display={"flex"} border={"none"}>
-                <MenuItem bg={"#0D1A2C"} fontWeight='semibold' justifyContent={"center"} borderTop={"solid 1px"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }}>MÁS RELEVANTES</MenuItem>
-                <MenuItem bg={"#0D1A2C"} fontWeight='semibold' justifyContent={"center"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }}>MENOR PRECIO</MenuItem>
-                <MenuItem bg={"#0D1A2C"} fontWeight='semibold' justifyContent={"center"} _hover={{ bg: '#9FEADD', color:'#0D1A2C' }}>MAYOR PRECIO</MenuItem>
-                <MenuItem bg={"#0D1A2C"} fontWeight='semibold' justifyContent={"center"} borderTop={"solid 1px"}  _hover={{ bg: '#9FEADD', color:'#0D1A2C' }}>A - Z</MenuItem>
-              </MenuList>
-            </Portal>
-          </Menu>
+          <MenuButton
+            color={"#9FEADD"}
+            fontSize={"1.2rem"}
+            fontWeight={"bold"}
+            w={"220px"}
+            position={"relative"}
+            top={"-100px"}
+            left={"80%"}
+            zIndex={"10"}
+            bg={"#0D1A2C"}
+          >
+            ORDENAR POR
+          </MenuButton>
+          <Portal>
+            <MenuList
+              bg={"#0D1A2C"}
+              color={"#9FEADD"}
+              flexDir={"column"}
+              display={"flex"}
+              border={"none"}
+            >
+              <MenuItem
+                bg={"#0D1A2C"}
+                fontWeight="semibold"
+                justifyContent={"center"}
+                borderTop={"solid 1px"}
+                _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
+              >
+                MÁS RELEVANTES
+              </MenuItem>
+              <MenuItem
+                bg={"#0D1A2C"}
+                fontWeight="semibold"
+                justifyContent={"center"}
+                _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
+              >
+                MENOR PRECIO
+              </MenuItem>
+              <MenuItem
+                bg={"#0D1A2C"}
+                fontWeight="semibold"
+                justifyContent={"center"}
+                _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
+              >
+                MAYOR PRECIO
+              </MenuItem>
+              <MenuItem
+                bg={"#0D1A2C"}
+                fontWeight="semibold"
+                justifyContent={"center"}
+                borderTop={"solid 1px"}
+                _hover={{ bg: "#9FEADD", color: "#0D1A2C" }}
+              >
+                A - Z
+              </MenuItem>
+            </MenuList>
+          </Portal>
+        </Menu>
       </div>
       <div className="games-container">
         <div className="title-tienda">
@@ -110,7 +162,6 @@ const AllGames = () => {
               ESTRATEGÍA
             </Checkbox>
           </div>
-          
         </div>
         <div className="cards">
           <Flex
@@ -120,6 +171,7 @@ const AllGames = () => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
+
           {games.map(game => (
             <Card key={game.id} maxW={{ base: "60%", md: "30%", lg: "30%" }} bg={"#1B314E"}>
             <CardBody>
@@ -132,11 +184,11 @@ const AllGames = () => {
                 <Heading size="md" color={"white"}>
                   {game.name}
                 </Heading>
-                <Text color={"white"}>{game.description}</Text>
+                {/* <Text color={"white"}>{game.description}</Text> */}
                 <Text color={"white"} fontSize="2xl">
                   ${game.price}
                 </Text>
-                <Link to={"/Card"}>
+                <Link to={`/Card/${game.id}`}>
                   <Button
                     position={"absolute"}
                     right={"0"}
@@ -371,7 +423,6 @@ const AllGames = () => {
             </Card>  */}
           </Flex>
         </div>
-        
       </div>
     </div>
   );

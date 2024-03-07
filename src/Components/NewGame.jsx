@@ -1,5 +1,4 @@
 import { Button } from "@chakra-ui/button";
-import { Link } from "react-router-dom";
 import "./styles.css";
 import { Input, Text } from "@chakra-ui/react";
 import axios from "axios";
@@ -10,7 +9,7 @@ const NewGame = () => {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState(0);
-  const [clasificacion, setClasificacion] = useState("");
+  // const [clasificacion, setClasificacion] = useState("");
   const [categoria, setCategoria] = useState("");
   const [desarrollador, setDesarrollador] = useState("");
   const [image, setImage] = useState(null);
@@ -97,10 +96,10 @@ const NewGame = () => {
           <div>
             <Text color={"#9FEADD"}>Nombre</Text>
             <Input
-               required
-               id="nombre"
-               value={nombre}
-               onChange={(e) => setNombre(e.target.value)}
+              required
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              id="nombre"
               background={"#C2CEDE"}
               type="text"
               w={"100%"}
@@ -131,7 +130,8 @@ const NewGame = () => {
               h={"3rem"}
               fontWeight={"bold"}
             />
-           {/*  <Text color={"#9FEADD"}>Clasificacion</Text>
+            {/*  <Text color={"#9FEADD"}>Clasificacion</Text>
+            {/*  <Text color={"#9FEADD"}>Clasificacion</Text>
             <Input
               id="clasificacion"
               value={clasificacion}
@@ -208,7 +208,8 @@ const NewGame = () => {
             AGREGAR JUEGO
           </Button>
         </div>
-        </form>
+      </form>
+        
     </div>
   );
 };
