@@ -16,10 +16,41 @@ import {
 } from "@chakra-ui/react";
 import img from "../assets/img/ffff.jpg";
 import { FaRegHeart } from "react-icons/fa";
-
-
+import { Link } from "react-router-dom";
 
 const Hero = () => {
+
+  const [games, setGames] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/v1/api/game/list")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error!! ${response.status}: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => setGames(data))
+      .catch((error) =>
+        console.error("Error al obtener la lista de juegos: ", error)
+      );
+  }, []);
+
+  function filtrarUltimosTres(array) {
+    // Si la longitud del array es menor o igual a 3, devolvemos el array completo
+    if (games.length <= 3) {
+      return array;
+    } else {
+      // Si la longitud es mayor a 3, devolvemos los últimos tres elementos
+      return games.slice(array.length - 3);
+    }
+  }
+
+  // const result = games.filter(game => game.price === 68);
+  const ultimosTres = filtrarUltimosTres(games);
+console.log(ultimosTres);
+
+
+
   const listRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -90,8 +121,66 @@ const Hero = () => {
       <div className="novedades">
         <h2 className="novedades-title">Novedades</h2>
         <div className="novedades-container">
-        
-          <Card maxW={{ base: "60%", md: "25%", lg: "25%" }} bg={"#1B314E"}>
+          
+        {ultimosTres.map((game) => (
+              <Card
+                key={game.id}
+                maxW={{ base: "50%", md: "20%", lg: "25%" }}
+                bg={"#1B314E"}
+              >
+                <CardBody>
+                  <Image
+                    src={img}
+                    alt="Green double couch with wooden legs"
+                    borderRadius="lg"
+                  />
+                  <Stack mt="6" spacing="3">
+                    <Heading size="md" color={"white"}>
+                      {game.name}
+                    </Heading>
+                    {/* <Text color={"white"}>{game.description}</Text> */}
+                    <Text color={"white"} fontSize="2xl">
+                      ${game.price}
+                    </Text>
+                    <Link to={`/Card/${game.id}`}>
+                      <Button
+                        position={"absolute"}
+                        right={"0"}
+                        bottom={"20%"}
+                        fontSize={{ base: 10, md: 10, lg: 15 }}
+                        variant="ghost"
+                        colorScheme="blue"
+                        _hover={{ bg: "none" }}
+                      >
+                        VER MÁS
+                      </Button>
+                    </Link>
+                  </Stack>
+                </CardBody>
+                <Divider color={"#9FEADD"} />
+                <CardFooter>
+                <ButtonGroup spacing="2">
+                    <Button
+                      variant="solid"
+                      color={"#0D1A2C"}
+                      bg={"#879DBB"}
+                      _hover={{ bg: "#9FEADD" }}
+                    >
+                      Comprar
+                    </Button>
+                    <Button
+                      fontSize={{ base: 15, md: 15, lg: 30 }}
+                      variant="ghost"
+                      colorScheme="blue"
+                      _hover={{ bg: "#9FEADD" }}
+                    >
+                      <FaRegHeart />
+                    </Button>
+                  </ButtonGroup>
+                </CardFooter>
+              </Card>
+            ))}
+          {/* <Card maxW={{ base: "60%", md: "25%", lg: "25%" }} bg={"#1B314E"}>
             <CardBody>
               <Image
                 src={img}
@@ -99,46 +188,45 @@ const Hero = () => {
                 borderRadius="lg"
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md" color={"white"}>Valorant</Heading>
-                <Text color={"white"} fontSize="2xl">
-                  $450
-                </Text>
-              </Stack>
-            </CardBody>
-            <Divider color={"#9FEADD"}/>
-            <CardFooter>
-              <ButtonGroup spacing="2">
-                <Button variant="solid" color={"#0D1A2C"} bg={"#879DBB"} _hover={{ bg: '#9FEADD' }}>
-                  Comprar
-                </Button>
-                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue" _hover={{ bg: '#9FEADD' }}>
-                  <FaRegHeart />
-                </Button>
-              </ButtonGroup>
-            </CardFooter>
-          </Card>
-          <Card maxW={{ base: "60%", md: "25%", lg: "25%" }} bg={"#1B314E"}>
-            <CardBody>
-              <Image
-                src={img}
-                alt="Green double couch with wooden legs"
-                borderRadius="lg"
-              />
-              <Stack mt="6" spacing="3">
-                <Heading size="md" color={"white"}>Valorant</Heading>
+                <Heading size="md" color={"white"}>
+                  Valorant
+                </Heading>
 
                 <Text color={"white"} fontSize="2xl">
                   $450
                 </Text>
+                <Link to={"/Card"}>
+                  <Button
+                    position={"absolute"}
+                    right={"0"}
+                    bottom={"20%"}
+                    fontSize={{ base: 10, md: 10, lg: 15 }}
+                    variant="ghost"
+                    colorScheme="blue"
+                    _hover={{ bg: "none" }}
+                  >
+                    VER MÁS
+                  </Button>
+                </Link>
               </Stack>
             </CardBody>
-            <Divider color={"#9FEADD"}/>
+            <Divider color={"#9FEADD"} />
             <CardFooter>
               <ButtonGroup spacing="2">
-                <Button variant="solid" color={"#0D1A2C"} bg={"#879DBB"} _hover={{ bg: '#9FEADD' }}>
+                <Button
+                  variant="solid"
+                  color={"#0D1A2C"}
+                  bg={"#879DBB"}
+                  _hover={{ bg: "#9FEADD" }}
+                >
                   Comprar
                 </Button>
-                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue" _hover={{ bg: '#9FEADD' }}>
+                <Button
+                  fontSize={{ base: 15, md: 15, lg: 30 }}
+                  variant="ghost"
+                  colorScheme="blue"
+                  _hover={{ bg: "#9FEADD" }}
+                >
                   <FaRegHeart />
                 </Button>
               </ButtonGroup>
@@ -152,27 +240,51 @@ const Hero = () => {
                 borderRadius="lg"
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md" color={"white"}>Valorant</Heading>
+                <Heading size="md" color={"white"}>
+                  Valorant
+                </Heading>
 
                 <Text color={"white"} fontSize="2xl">
                   $450
                 </Text>
+                <Link to={"/Card"}>
+                  <Button
+                    position={"absolute"}
+                    right={"0"}
+                    bottom={"20%"}
+                    fontSize={{ base: 10, md: 10, lg: 15 }}
+                    variant="ghost"
+                    colorScheme="blue"
+                    _hover={{ bg: "none" }}
+                  >
+                    VER MÁS
+                  </Button>
+                </Link>
               </Stack>
             </CardBody>
-            <Divider color={"#9FEADD"}/>
+            <Divider color={"#9FEADD"} />
             <CardFooter>
               <ButtonGroup spacing="2">
-                <Button variant="solid" color={"#0D1A2C"} bg={"#879DBB"} _hover={{ bg: '#9FEADD' }}>
+                <Button
+                  variant="solid"
+                  color={"#0D1A2C"}
+                  bg={"#879DBB"}
+                  _hover={{ bg: "#9FEADD" }}
+                >
                   Comprar
                 </Button>
-                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue" _hover={{ bg: '#9FEADD' }}>
+                <Button
+                  fontSize={{ base: 15, md: 15, lg: 30 }}
+                  variant="ghost"
+                  colorScheme="blue"
+                  _hover={{ bg: "#9FEADD" }}
+                >
                   <FaRegHeart />
                 </Button>
               </ButtonGroup>
             </CardFooter>
-          </Card>
+          </Card> */}
         </div>
-              
       </div>
     </div>
   );
