@@ -16,13 +16,14 @@ import {
 } from "@chakra-ui/react";
 import img from "../assets/img/ffff.jpg";
 import { FaRegHeart } from "react-icons/fa";
-
-
+import { Link } from "react-router-dom";
 
 
 const Hero = ({ addToCart }) => {
 
   const [games, setGames] = useState([]);
+
+  // Función para agregar un juego al carrito
   const handleAddToCart = (game) => {
     addToCart(game);
   };
@@ -41,72 +42,24 @@ const Hero = ({ addToCart }) => {
       );
   }, []);
 
-//   function filtrarUltimosTres(array) {
-//     // Si la longitud del array es menor o igual a 3, devolvemos el array completo
-//     if (games.length <= 3) {
-//       return array;
-//     } else {
-//       // Si la longitud es mayor a 3, devolvemos los últimos tres elementos
-//       return games.slice(array.length - 3);
-//     }
-//   }
+  function filtrarUltimosTres(array) {
+    // Si la longitud del array es menor o igual a 3, devolvemos el array completo
+    if (games.length <= 3) {
+      return array;
+    } else {
+      // Si la longitud es mayor a 3, devolvemos los últimos tres elementos
+      return games.slice(array.length - 3);
+    }
+  }
 
-//   // const result = games.filter(game => game.price === 68);
-//   const ultimosTres = filtrarUltimosTres(games);
-// console.log(ultimosTres);
+  // const result = games.filter(game => game.price === 68);
+  const ultimosTres = filtrarUltimosTres(games);
+console.log(ultimosTres);
 
 
 
   const listRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [games, setGames] = useState([]);
-
-  useEffect(() => {
-    const fetchGamesAndImages = async () => {
-      try {
-        // Obtener la lista de juegos
-        const gamesResponse = await fetch("http://localhost:8080/v1/api/portal/list");
-        if (!gamesResponse.ok) {
-          throw new Error(`Error al obtener la lista de juegos: ${gamesResponse.status}`);
-        }
-        const gamesData = await gamesResponse.json();
-
-        // Obtener las imágenes de los juegos
-        const gamesWithImages = await Promise.all(gamesData.map(async game => {
-          const imageResponse = await fetch(`http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`);
-          if (!imageResponse.ok) {
-            throw new Error(`Error al obtener la imagen del juego ${game.name}: ${imageResponse.status}`);
-          }
-          const blob = await imageResponse.blob();
-          const imageUrl = URL.createObjectURL(blob);
-          return { ...game, imageUrl };
-        }));
-
-      //   function filtrarUltimosTres(array) {
-      //     // Si la longitud del array es menor o igual a 3, devolvemos el array completo
-      //     if (games.length <= 3) {
-      //       return array;
-      //     } else {
-      //       // Si la longitud es mayor a 3, devolvemos los últimos tres elementos
-      //       return games.slice(array.length - 3);
-      //     }
-      //   }
-      
-      //   // const result = games.filter(game => game.price === 68);
-      //   const ultimosTres = filtrarUltimosTres(games);
-      // console.log(ultimosTres);
-
-        // Establecer los últimos tres juegos en el estado
-        setGames(gamesWithImages.slice(-3));
-      } catch (error) {
-        console.error("Error al obtener la lista de juegos y las imágenes:", error);
-      }
-    };
-
-    fetchGamesAndImages();
-  }, []);
-
-
 
   useEffect(() => {
     const listNode = listRef.current;
@@ -175,12 +128,12 @@ const Hero = ({ addToCart }) => {
       <div className="novedades">
         <h2 className="novedades-title">Novedades</h2>
         <div className="novedades-container">
-        {games.map((game) => (
+        {ultimosTres.map((game) => (
           <Card key={game.id} maxW={{ base: "60%", md: "25%", lg: "25%" }} bg={"#1B314E"}>
 
             <CardBody>
               <Image
-                src={game.imageUrl}
+                src={img}
                 alt={game.name}
                 borderRadius="lg" />
               <Stack mt="6" spacing="3">
@@ -227,6 +180,23 @@ const Hero = ({ addToCart }) => {
                 </CardFooter>
               </Card>
             ))}
+{/* 
+              </Stack>
+            </CardBody>
+            <Divider color={"#9FEADD"} />
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button variant="solid" color={"white"} bg={"#879DBB"}>
+                  Comprar
+                </Button>
+                <Button fontSize={{ base: 15, md: 15, lg: 30 }} variant="ghost" colorScheme="blue">
+                  <FaRegHeart />
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card> 
+          ))}
+>>>>>>> a510442dce4863c33bec470e5f4ca3af7ea0f372 */}
           {/* <Card maxW={{ base: "60%", md: "25%", lg: "25%" }} bg={"#1B314E"}>
               <CardBody>
                 <Image

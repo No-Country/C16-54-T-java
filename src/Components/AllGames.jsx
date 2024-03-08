@@ -25,8 +25,6 @@ import { Link } from "react-router-dom";
 
 const AllGames = ({ addToCart }) => {
     const [games, setGames] = useState([]);
-const AllGames = ({searchTerm}) => {
-  const [games, setGames] = useState([]);
 
   // Función para agregar un juego al carrito
   const handleAddToCart = (game) => {
@@ -99,30 +97,6 @@ const AllGames = ({searchTerm}) => {
 
   //   fetchGamesAndImages(); // Llamamos a la función para obtener la lista de juegos y las imágenes cuando el componente se monta
   // }, []);
-        const gamesWithImages = await Promise.all(gamesData.map(async game => {
-          const imageResponse = await fetch(`http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`);
-          if (!imageResponse.ok) {
-            throw new Error(`Error al obtener la imagen del juego ${game.title}: ${imageResponse.status}`);
-          }
-          const blob = await imageResponse.blob();
-          const imageUrl = URL.createObjectURL(blob);
-          return { ...game, imageUrl };
-        }));
-        setGames(gamesWithImages);
-      } catch (error) {
-        console.error(
-          "Error al obtener la lista de juegos y las imágenes:",
-          error
-        );
-      }
-    };
-
-    fetchGamesAndImages(); 
-  }, []);
-  console.log(searchTerm);
-
- const results = games.filter((dato) =>
- dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
 
   return (
@@ -214,7 +188,7 @@ const AllGames = ({searchTerm}) => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-            {results.map((game) => (
+            {games.map((game) => (
               <Card
                 key={game.id}
                 maxW={{ base: "60%", md: "30%", lg: "30%" }}
