@@ -23,7 +23,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const AllGames = ({ addToCart }) => {
+const AllGames = ({ addToCart, searchTerm }) => {
     const [games, setGames] = useState([]);
 
   // Función para agregar un juego al carrito
@@ -45,6 +45,12 @@ const AllGames = ({ addToCart }) => {
     .catch(error => console.error("Error al obtener la lista de juegos: ", error));
 
   },[])
+//Buscador-------------------------------------------------
+
+
+
+  const results = games.filter((dato) =>
+ dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   // const renderImage = (imageContent) => {
   //   console.log("Valor de game.image:", imageContent);
@@ -188,7 +194,7 @@ const AllGames = ({ addToCart }) => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-            {games.map((game) => (
+            {results.map((game) => (
               <Card
                 key={game.id}
                 maxW={{ base: "60%", md: "30%", lg: "30%" }}

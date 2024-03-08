@@ -18,6 +18,7 @@ import { useState } from "react";
 const App = () => {
   const [cart, setCart] = useState([]);
   const [games, setGames] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const addToCart = (game) => {
     setCart([...cart, game]);
@@ -39,17 +40,17 @@ const App = () => {
   // }, []);
   return (
       <BrowserRouter>
-      <Navbar />
+      <Navbar setSearchTerm={setSearchTerm} />
       <Routes>
         <Route exact path="/" element={<Hero addToCart={addToCart}/>} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/cart" element={<Cart cart={cart}/>} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/About-us" element={<AboutUs />} />
-        <Route exact path="/All-the-games" element={<AllGames addToCart={addToCart}/>} />
+        <Route exact path="/All-the-games" element={<AllGames addToCart={addToCart} searchTerm={searchTerm}/>} />
         <Route exact path="/Card" element={<Card />} />
         <Route exact path="/Card/:id" element={<Card />} />
-        <Route exact path="/Library" element={<Library />} />
+        <Route exact path="/Library" element={<Library searchTerm={searchTerm} />} />
         <Route exact path="/Admin" element={<Admin />} />
         <Route exact path="/Admin/Agregar-juego" element={<NewGame />} />
       </Routes>
