@@ -23,10 +23,16 @@ import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const AllGames = () => {
-  const [games, setGames] = useState([]);
+const AllGames = ({ addToCart }) => {
+    const [games, setGames] = useState([]);
 
-  /* useEffect(() => {
+  // Función para agregar un juego al carrito
+  const handleAddToCart = (game) => {
+    addToCart(game);
+  };
+
+
+    useEffect(() => {
 
     fetch("http://localhost:8080/v1/api/game/list")
     .then(response => {
@@ -40,54 +46,57 @@ const AllGames = () => {
 
   },[])
 
-  const renderImage = (imageContent) => {
-    console.log("Valor de game.image:", imageContent);
-    if (!imageContent) return null;
+  // const renderImage = (imageContent) => {
+  //   console.log("Valor de game.image:", imageContent);
+  //   if (!imageContent) return null;
 
     
-  };*/
-  useEffect(() => {
-    const fetchGamesAndImages = async () => {
-      try {
-        // Obtener la lista de juegos
-        const gamesResponse = await fetch(
-          "http://localhost:8080/v1/api/portal/list"
-        );
-        if (!gamesResponse.ok) {
-          throw new Error(
-            `Error al obtener la lista de juegos: ${gamesResponse.status}`
-          );
-        }
-        const gamesData = await gamesResponse.json();
-        setGames(gamesData);
+  // };
+//   useEffect(() => {
+//     const fetchGamesAndImages = async () => {
+//       try {
+//         // Obtener la lista de juegos
+//         const gamesResponse = await fetch(
+//           "http://localhost:8080/v1/api/portal/list"
+//         );
+//         if (!gamesResponse.ok) {
+//           throw new Error(
+//             `Error al obtener la lista de juegos: ${gamesResponse.status}`
+//           );
+//         }
+//         const gamesData = await gamesResponse.json();
+//         setGames(gamesData);
+// console.log(games)
+
 
         // Obtener las imágenes de los juegos
-        const gamesWithImages = await Promise.all(
-          gamesData.map(async (game) => {
-            const imageResponse = await fetch(
-              `http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`
-            );
-            if (!imageResponse.ok) {
-              throw new Error(
-                `Error al obtener la imagen del juego ${game.title}: ${imageResponse.status}`
-              );
-            }
-            const blob = await imageResponse.blob();
-            const imageUrl = URL.createObjectURL(blob);
-            return { ...game, imageUrl };
-          })
-        );
-        setGames(gamesWithImages);
-      } catch (error) {
-        console.error(
-          "Error al obtener la lista de juegos y las imágenes:",
-          error
-        );
-      }
-    };
+        // const gamesWithImages = await Promise.all(
+        //   gamesData.map(async (game) => {
+        //     const imageResponse = await fetch(
+        //       `http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`
+        //     );
+        //     if (!imageResponse.ok) {
+        //       throw new Error(
+        //         `Error al obtener la imagen del juego ${game.title}: ${imageResponse.status}`
+        //       );
+        //     }
+        //     const blob = await imageResponse.blob();
+        //     const imageUrl = URL.createObjectURL(blob);
+        //     return { ...game, imageUrl };
+        //   })
+        // );
+        // setGames(gamesWithImages);
+    //   } catch (error) {
+    //     console.error(
+    //       "Error al obtener la lista de juegos y las imágenes:",
+    //       error
+    //     );
+    //   }
+    // };
+    
 
-    fetchGamesAndImages(); // Llamamos a la función para obtener la lista de juegos y las imágenes cuando el componente se monta
-  }, []);
+  //   fetchGamesAndImages(); // Llamamos a la función para obtener la lista de juegos y las imágenes cuando el componente se monta
+  // }, []);
   return (
     <div className="games">
       <div className="image-games">
@@ -220,6 +229,7 @@ const AllGames = () => {
                       color={"#0D1A2C"}
                       bg={"#879DBB"}
                       _hover={{ bg: "#9FEADD" }}
+                      onClick={() => handleAddToCart(game)}
                     >
                       Comprar
                     </Button>
@@ -228,11 +238,13 @@ const AllGames = () => {
                       variant="ghost"
                       colorScheme="blue"
                       _hover={{ bg: "#9FEADD" }}
+                      onClick={() => addToCart(game)}
                     >
                       <FaRegHeart />
                     </Button>
                   </ButtonGroup>
                 </CardFooter> 
+                
               </Card>
             ))}
 
@@ -429,6 +441,7 @@ const AllGames = () => {
           </Flex>
         </div>
       </div>
+      {/* <Cart cart={cart} /> */}
     </div>
   );
 };

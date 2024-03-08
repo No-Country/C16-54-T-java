@@ -18,9 +18,13 @@ import img from "../assets/img/ffff.jpg";
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Hero = () => {
+const Hero = ({ addToCart }) => {
 
   const [games, setGames] = useState([]);
+  const handleAddToCart = (game) => {
+    addToCart(game);
+  };
+
   useEffect(() => {
     fetch("http://localhost:8080/v1/api/game/list")
       .then((response) => {
@@ -165,6 +169,7 @@ console.log(ultimosTres);
                       color={"#0D1A2C"}
                       bg={"#879DBB"}
                       _hover={{ bg: "#9FEADD" }}
+                      onClick={() => handleAddToCart(game)}
                     >
                       Comprar
                     </Button>

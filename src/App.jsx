@@ -12,9 +12,16 @@ import Card from "./Components/Card";
 import Library from "./Components/Library";
 import Admin from "./Components/Admin";
 import NewGame from "./Components/NewGame";
+import { useState } from "react";
 // import { useEffect, useState } from "react";
 
 const App = () => {
+  const [cart, setCart] = useState([]);
+  const [games, setGames] = useState([]);
+
+  const addToCart = (game) => {
+    setCart([...cart, game]);
+  };
   // const [games, setGames] = useState([]);
 
   // useEffect(() => {
@@ -31,15 +38,15 @@ const App = () => {
   //     );
   // }, []);
   return (
-    <BrowserRouter>
+      <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Hero />} />
+        <Route exact path="/" element={<Hero addToCart={addToCart}/>} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/cart" element={<Cart cart={cart}/>} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/About-us" element={<AboutUs />} />
-        <Route exact path="/All-the-games" element={<AllGames />} />
+        <Route exact path="/All-the-games" element={<AllGames addToCart={addToCart}/>} />
         <Route exact path="/Card" element={<Card />} />
         <Route exact path="/Card/:id" element={<Card />} />
         <Route exact path="/Library" element={<Library />} />
@@ -48,6 +55,7 @@ const App = () => {
       </Routes>
       <Footer />
     </BrowserRouter>
+    
   );
 };
 
