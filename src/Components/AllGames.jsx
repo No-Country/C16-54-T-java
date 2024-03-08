@@ -23,7 +23,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const AllGames = () => {
+const AllGames = ({searchTerm}) => {
   const [games, setGames] = useState([]);
 
   /* useEffect(() => {
@@ -82,6 +82,12 @@ const AllGames = () => {
 
     fetchGamesAndImages(); 
   }, []);
+  console.log(searchTerm);
+
+ const results = games.filter((dato) =>
+ dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+
   return (
     <div className="games">
       <div className="image-games">
@@ -171,66 +177,65 @@ const AllGames = () => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
+            {results.map((game) => (
+              <Card
+                key={game.id}
+                maxW={{ base: "60%", md: "30%", lg: "30%" }}
+                bg={"#1B314E"}
+              >
+                <CardBody>
+                  <Image
+                    src={img}
+                    alt="Green double couch with wooden legs"
+                    borderRadius="lg"
+                  />
+                  <Stack mt="6" spacing="3">
+                    <Heading size="md" color={"white"}>
+                      {game.name}
+                    </Heading>
+                    {/* <Text color={"white"}>{game.description}</Text> */}
+                    <Text color={"white"} fontSize="2xl">
+                      ${game.price}
+                    </Text>
+                    <Link to={`/Card/${game.id}`}>
+                      <Button
+                        position={"absolute"}
+                        right={"0"}
+                        bottom={"20%"}
+                        fontSize={{ base: 10, md: 10, lg: 15 }}
+                        variant="ghost"
+                        colorScheme="blue"
+                        _hover={{ bg: "none" }}
+                      >
+                        VER MÁS
+                      </Button>
+                    </Link>
+                  </Stack>
+                </CardBody>
+                <Divider color={"#9FEADD"} />
+                <CardFooter>
+                  <ButtonGroup spacing="2">
+                    <Button
+                      variant="solid"
+                      color={"#0D1A2C"}
+                      bg={"#879DBB"}
+                      _hover={{ bg: "#9FEADD" }}
+                    >
+                      Comprar
+                    </Button>
+                    <Button
+                      fontSize={{ base: 15, md: 15, lg: 30 }}
+                      variant="ghost"
+                      colorScheme="blue"
+                      _hover={{ bg: "#9FEADD" }}
+                    >
+                      <FaRegHeart />
+                    </Button>
+                  </ButtonGroup>
+                </CardFooter> 
+              </Card>
+            ))}
 
-          {games.map(game => (
-            <Card key={game.id} maxW={{ base: "60%", md: "30%", lg: "30%" }} bg={"#1B314E"}>
-            <CardBody>
-              <Image
-                src={game.imageUrl}
-                alt="Green double couch with wooden legs"
-                borderRadius="lg"
-              />
-              <Stack mt="6" spacing="3">
-                <Heading size="md" color={"white"}>
-                  {game.name}
-                </Heading>
-                {/* <Text color={"white"}>{game.description}</Text> */}
-                <Text color={"white"} fontSize="2xl">
-                  ${game.price}
-                </Text>
-                <Link to={`/Card/${game.id}`}>
-                  <Button
-                    position={"absolute"}
-                    right={"0"}
-                    bottom={"20%"}
-                    fontSize={{ base: 10, md: 10, lg: 15 }}
-                    variant="ghost"
-                    colorScheme="blue"
-                    _hover={{ bg: "none" }}
-                  >
-                    VER MÁS
-                  </Button>
-                </Link>
-              </Stack>
-            </CardBody>
-            <Divider color={"#9FEADD"} />
-            <CardFooter>
-              <ButtonGroup spacing="2">
-                <Button
-                  variant="solid"
-                  color={"#0D1A2C"}
-                  bg={"#879DBB"}
-                  _hover={{ bg: "#9FEADD" }}
-                >
-                  Comprar
-                </Button>
-                <Button
-                  fontSize={{ base: 15, md: 15, lg: 30 }}
-                  variant="ghost"
-                  colorScheme="blue"
-                  _hover={{ bg: "#9FEADD" }}
-                >
-                  <FaRegHeart />
-                </Button>
-              </ButtonGroup>
-            </CardFooter>
-          </Card>
-          ))}
-
-            
-
-
-            
             {/* <Card maxW={{ base: "60%", md: "30%", lg: "30%" }} bg={"#1B314E"}>
               <CardBody>
                 <Image

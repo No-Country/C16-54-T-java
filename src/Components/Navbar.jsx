@@ -22,8 +22,16 @@ import { Link } from "react-router-dom";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
-const Navbar = () => {
+
+const Navbar = ({ setSearchTerm }) => {
   const [display, changeDisplay] = useState("none");
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+  };
+  
+
   return (
 
     <Flex className="navbar">
@@ -167,9 +175,11 @@ const Navbar = () => {
         </Stack>
       </Flex>
 
+{/* Buscador--------------------------------------- */}
+
       <Flex className="input" display={["none", "none", "flex", "flex"]}>
         <InputGroup w={[100, 300, 300]}>
-          <Input pr="9rem" placeholder="Buscador..." bg={"white"} />
+          <Input pr="9rem" placeholder="Buscador..." bg={"white"} onChange={handleSearch}/>
           <InputRightElement width="4.5rem">
             <IconButton
               aria-label="Search database"
