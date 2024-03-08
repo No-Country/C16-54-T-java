@@ -55,8 +55,8 @@ const Library = ({searchTerm}) => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-            {results.map((game) => (
-              <Card
+            {/* {results.map((game) => ( */}
+              {/* <Card
                 key={game.id}
                 maxW={{ base: "60%", md: "30%", lg: "30%" }}
                 bg={"#1B314E"}
@@ -97,8 +97,8 @@ const Library = ({searchTerm}) => {
                     </Button>
                   </ButtonGroup>
                 </CardFooter>
-              </Card>
-            ))}
+              </Card> */}
+            {/* ))} */}
           </Flex>
         </div>
 
@@ -111,7 +111,7 @@ const Library = ({searchTerm}) => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-            {games.map((game) => (
+            {/* {games.map((game) => (
               <Card
                 key={game.id}
                 maxW={{ base: "60%", md: "30%", lg: "30%" }}
@@ -141,7 +141,7 @@ const Library = ({searchTerm}) => {
                       bg={"#879DBB"}
                       _hover={{ bg: "#9FEADD" }}
                     >
-                      PLAY
+                      COMPRAR
                     </Button>
                     <Button
                       fontSize={{ base: 15, md: 15, lg: 30 }}
@@ -155,7 +155,7 @@ const Library = ({searchTerm}) => {
                   </ButtonGroup>
                 </CardFooter>
               </Card>
-            ))}
+            ))} */}
           </Flex>
         </div>
       </div>
