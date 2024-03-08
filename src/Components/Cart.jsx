@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 const Cart = ({ cart }) => {
+  
   const calculateTotal = () => {
     return cart.reduce((total, game) => total + game.price, 0);
   };
@@ -39,7 +40,7 @@ const Cart = ({ cart }) => {
             >
               <Box>
                 <Heading
-                  m={"1.6rem"}
+                  m={"0px"}
                   size="sm"
                   textTransform="uppercase"
                 ></Heading>

@@ -23,18 +23,17 @@ import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const AllGames = ({ addToCart }) => {
+const AllGames = ({ addToCart, searchTerm }) => {
     const [games, setGames] = useState([]);
 
-  // Función para agregar un juego al carrito
-  const handleAddToCart = (game) => {
-    addToCart(game);
-  };
+    //Buscador-------------------------------------------------
 
 
-    useEffect(() => {
 
-    fetch("http://localhost:8080/v1/api/game/list")
+
+    /* useEffect(() => {
+
+    fetch("http://localhost:8080/v1/api/portal/list")
     .then(response => {
       if (!response.ok) {
         throw new Error(`Error!! ${response.status}: ${response.statusText}`);
@@ -46,27 +45,72 @@ const AllGames = ({ addToCart }) => {
 
   },[])
 
+  const renderImage = (imageContent) => {
+    console.log("Valor de game.image:", imageContent);
+    if (!imageContent) return null;
+
+    
+  };*/
+
+  // Función para agregar un juego al carrito
+  const handleAddToCart = (game) => {
+    addToCart(game);
+  };
+
+
+//     useEffect(() => {
+
+//     fetch("http://localhost:8080/v1/api/game/list")
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error(`Error!! ${response.status}: ${response.statusText}`);
+//     }
+//     return response.json();
+// })
+//     .then(data => setGames(data))
+//     .catch(error => console.error("Error al obtener la lista de juegos: ", error));
+
+//   },[])
+
   // const renderImage = (imageContent) => {
   //   console.log("Valor de game.image:", imageContent);
   //   if (!imageContent) return null;
 
     
   // };
-//   useEffect(() => {
-//     const fetchGamesAndImages = async () => {
-//       try {
-//         // Obtener la lista de juegos
-//         const gamesResponse = await fetch(
-//           "http://localhost:8080/v1/api/portal/list"
-//         );
-//         if (!gamesResponse.ok) {
-//           throw new Error(
-//             `Error al obtener la lista de juegos: ${gamesResponse.status}`
-//           );
-//         }
-//         const gamesData = await gamesResponse.json();
-//         setGames(gamesData);
-// console.log(games)
+  useEffect(() => {
+    const fetchGamesAndImages = async () => {
+      try {
+        // Obtener la lista de juegos
+        const gamesResponse = await fetch(
+          "http://localhost:8080/v1/api/portal/list"
+        );
+        if (!gamesResponse.ok) {
+          throw new Error(
+            `Error al obtener la lista de juegos: ${gamesResponse.status}`
+          );
+        }
+        const gamesData = await gamesResponse.json();
+        setGames(gamesData);
+
+        const gamesWithImages = await Promise.all(gamesData.map(async game => {
+          const imageResponse = await fetch(`http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`);
+          if (!imageResponse.ok) {
+            throw new Error(`Error al obtener la imagen del juego ${game.title}: ${imageResponse.status}`);
+          }
+          const blob = await imageResponse.blob();
+          const imageUrl = URL.createObjectURL(blob);
+          return { ...game, imageUrl };
+        }));
+        setGames(gamesWithImages);
+      } catch (error) {
+        console.error(
+          "Error al obtener la lista de juegos y las imágenes:",
+          error
+        );
+      }
+    };
+    fetchGamesAndImages();
 
 
         // Obtener las imágenes de los juegos
@@ -95,8 +139,13 @@ const AllGames = ({ addToCart }) => {
     // };
     
 
-  //   fetchGamesAndImages(); // Llamamos a la función para obtener la lista de juegos y las imágenes cuando el componente se monta
-  // }, []);
+    fetchGamesAndImages();
+  }, []);
+  console.log(searchTerm);
+
+  const results = games.filter((dato) =>
+  dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
 
 
   return (
@@ -188,7 +237,7 @@ const AllGames = ({ addToCart }) => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-            {games.map((game) => (
+            {results.map((game) => (
               <Card
                 key={game.id}
                 maxW={{ base: "60%", md: "30%", lg: "30%" }}
@@ -196,7 +245,7 @@ const AllGames = ({ addToCart }) => {
               >
                 <CardBody>
                   <Image
-                    src={img}
+                    src={game.imgeUrl}
                     alt="Green double couch with wooden legs"
                     borderRadius="lg"
                   />
@@ -204,7 +253,7 @@ const AllGames = ({ addToCart }) => {
                     <Heading size="md" color={"white"}>
                       {game.name}
                     </Heading>
-                    {/* <Text color={"white"}>{game.description}</Text> */}
+                    <Text color={"white"}>{game.description}</Text>
                     <Text color={"white"} fontSize="2xl">
                       ${game.price}
                     </Text>
@@ -446,6 +495,6 @@ const AllGames = ({ addToCart }) => {
       {/* <Cart cart={cart} /> */}
     </div>
   );
-};
+          }
 
 export default AllGames;

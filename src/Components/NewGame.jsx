@@ -50,11 +50,11 @@ const NewGame = () => {
       console.log("ID del juego:", gameId);
 
       if (image) {
-       const formData = new FormData();
+        const formData = new FormData();
         formData.append('file', image);
         const imageResponse = await axios.post(
         `http://localhost:8080/v1/api/admin/uploadPhoto?idGame=${gameId}`,
-       formData,
+        formData,
       {
         headers: {
         'Authorization': `Bearer ${token}`,

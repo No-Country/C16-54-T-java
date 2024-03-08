@@ -18,10 +18,54 @@ import img from "../assets/img/ffff.jpg";
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
 const Hero = ({ addToCart }) => {
-
+  const listRef = useRef();
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    const fetchGamesAndImages = async () => {
+      try {
+        // Obtener la lista de juegos
+        const gamesResponse = await fetch(
+          "http://localhost:8080/v1/api/portal/list"
+        );
+        if (!gamesResponse.ok) {
+          throw new Error(
+            `Error al obtener la lista de juegos: ${gamesResponse.status}`
+          );
+        }
+        const gamesData = await gamesResponse.json();
+
+        // Obtener las imágenes de los juegos
+        const gamesWithImages = await Promise.all(
+          gamesData.map(async (game) => {
+            const imageResponse = await fetch(
+              `http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`
+            );
+            if (!imageResponse.ok) {
+              throw new Error(
+                `Error al obtener la imagen del juego ${game.name}: ${imageResponse.status}`
+              );
+            }
+            const blob = await imageResponse.blob();
+            const imageUrl = URL.createObjectURL(blob);
+            return { ...game, imageUrl };
+          })
+        );
+
+        // Establecer los últimos tres juegos en el estado
+        setGames(gamesWithImages.slice(-3));
+      } catch (error) {
+        console.error(
+          "Error al obtener la lista de juegos y las imágenes:",
+          error
+        );
+      }
+    };
+
+    fetchGamesAndImages();
+  }, []);
 
   // Función para agregar un juego al carrito
   const handleAddToCart = (game) => {
@@ -54,12 +98,7 @@ const Hero = ({ addToCart }) => {
 
   // const result = games.filter(game => game.price === 68);
   const ultimosTres = filtrarUltimosTres(games);
-console.log(ultimosTres);
-
-
-
-  const listRef = useRef();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  console.log(ultimosTres);
 
   useEffect(() => {
     const listNode = listRef.current;
@@ -128,59 +167,61 @@ console.log(ultimosTres);
       <div className="novedades">
         <h2 className="novedades-title">Novedades</h2>
         <div className="novedades-container">
-        {ultimosTres.map((game) => (
-          <Card key={game.id} maxW={{ base: "60%", md: "25%", lg: "25%" }} bg={"#1B314E"}>
-
-            <CardBody>
-              <Image
-                src={img}
-                alt={game.name}
-                borderRadius="lg" />
-              <Stack mt="6" spacing="3">
-                <Heading size="md" color={"white"}>{game.name}</Heading>
-                <Text color={"white"} fontSize="2xl">
-                  ${game.price}
-                </Text>
-                <Link to={`/Card/${game.id}`}>
-                      <Button
-                        position={"absolute"}
-                        right={"0"}
-                        bottom={"20%"}
-                        fontSize={{ base: 10, md: 10, lg: 15 }}
-                        variant="ghost"
-                        colorScheme="blue"
-                        _hover={{ bg: "none" }}
-                      >
-                        VER MÁS
-                      </Button>
-                    </Link>
-                  </Stack>
-                </CardBody>
-                <Divider color={"#9FEADD"} />
-                <CardFooter>
-                <ButtonGroup spacing="2">
+          {ultimosTres.map((game) => (
+            <Card
+              key={game.id}
+              maxW={{ base: "60%", md: "25%", lg: "25%" }}
+              bg={"#1B314E"}
+            >
+              <CardBody>
+                <Image src={img} alt={game.name} borderRadius="lg" />
+                <Stack mt="6" spacing="3">
+                  <Heading size="md" color={"white"}>
+                    {game.name}
+                  </Heading>
+                  <Text color={"white"} fontSize="2xl">
+                    ${game.price}
+                  </Text>
+                  <Link to={`/Card/${game.id}`}>
                     <Button
-                      variant="solid"
-                      color={"#0D1A2C"}
-                      bg={"#879DBB"}
-                      _hover={{ bg: "#9FEADD" }}
-                      onClick={() => handleAddToCart(game)}
-                    >
-                      Comprar
-                    </Button>
-                    <Button
-                      fontSize={{ base: 15, md: 15, lg: 30 }}
+                      position={"absolute"}
+                      right={"0"}
+                      bottom={"20%"}
+                      fontSize={{ base: 10, md: 10, lg: 15 }}
                       variant="ghost"
                       colorScheme="blue"
-                      _hover={{ bg: "#9FEADD" }}
+                      _hover={{ bg: "none" }}
                     >
-                      <FaRegHeart />
+                      VER MÁS
                     </Button>
-                  </ButtonGroup>
-                </CardFooter>
-              </Card>
-            ))}
-{/* 
+                  </Link>
+                </Stack>
+              </CardBody>
+              <Divider color={"#9FEADD"} />
+              <CardFooter>
+                <ButtonGroup spacing="2">
+                  <Button
+                    variant="solid"
+                    color={"#0D1A2C"}
+                    bg={"#879DBB"}
+                    _hover={{ bg: "#9FEADD" }}
+                    onClick={() => handleAddToCart(game)}
+                  >
+                    Comprar
+                  </Button>
+                  <Button
+                    fontSize={{ base: 15, md: 15, lg: 30 }}
+                    variant="ghost"
+                    colorScheme="blue"
+                    _hover={{ bg: "#9FEADD" }}
+                  >
+                    <FaRegHeart />
+                  </Button>
+                </ButtonGroup>
+              </CardFooter>
+            </Card>
+          ))}
+          {/* 
               </Stack>
             </CardBody>
             <Divider color={"#9FEADD"} />
@@ -252,10 +293,8 @@ console.log(ultimosTres);
                 </ButtonGroup>
               </CardFooter>
             </Card> */}
-            
         </div>
       </div>
-      
     </div>
   );
 };

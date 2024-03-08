@@ -16,9 +16,11 @@ import {
 import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
-const Library = () => {
+const Library = ({searchTerm}) => {
   const [games, setGames] = useState([]);
 
+  const results = games.filter((dato) =>
+  dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
   
   useEffect(() => {
     fetch("http://localhost:8080/v1/api/game/list")
@@ -52,7 +54,7 @@ const Library = () => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-            {games.map((game) => (
+            {results.map((game) => (
               <Card
                 key={game.id}
                 maxW={{ base: "60%", md: "30%", lg: "30%" }}

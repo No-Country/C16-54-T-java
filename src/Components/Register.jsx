@@ -269,7 +269,6 @@ const Register = () => {
                       backgroundColor={"#9FEADD"}
                       colorScheme="blackAlpha"
                       onClick={onClose}
-                      href={"window.location='/login'"}
                       ml={3}
                     >
                       Ok

@@ -12,6 +12,7 @@ import {
   MenuList,
   Portal,
   Stack,
+  Switch,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import provisoria from "../assets/img/ffff.jpg";
@@ -51,7 +52,7 @@ const Admin = () => {
           }
         );
 
-        /*if (response.status === 200) {
+         /*if (response.status === 200) {
           
           setGames(response.data); // Establecer los juegos obtenidos del servidor
         } 
@@ -70,7 +71,7 @@ const Admin = () => {
         */
         if (response.status === 200) {
           const gamesData = response.data;
-  
+
           // Obtener las imágenes de los juegos
           const gamesWithImages = await Promise.all(gamesData.map(async game => {
             const imageResponse = await fetch(`http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`);
@@ -81,9 +82,10 @@ const Admin = () => {
             const imageUrl = URL.createObjectURL(blob);
             return { ...game, imageUrl };
           }));
-  
+
           setGames(gamesWithImages);
-        }
+      }
+        
       } catch (error) {
         console.error("Error al obtener la lista de juegos:", error);
       }
