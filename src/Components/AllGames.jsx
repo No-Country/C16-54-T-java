@@ -23,12 +23,17 @@ import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const AllGames = () => {
-  const [games, setGames] = useState([]);
+const AllGames = ({ addToCart, searchTerm }) => {
+    const [games, setGames] = useState([]);
 
-  /* useEffect(() => {
+    //Buscador-------------------------------------------------
 
-    fetch("http://localhost:8080/v1/api/game/list")
+
+
+
+    /* useEffect(() => {
+
+    fetch("http://localhost:8080/v1/api/portal/list")
     .then(response => {
       if (!response.ok) {
         throw new Error(`Error!! ${response.status}: ${response.statusText}`);
@@ -39,6 +44,12 @@ const AllGames = () => {
     .catch(error => console.error("Error al obtener la lista de juegos: ", error));
 
   },[])
+//Buscador-------------------------------------------------
+
+
+
+  const results = games.filter((dato) =>
+ dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   const renderImage = (imageContent) => {
     console.log("Valor de game.image:", imageContent);
@@ -46,6 +57,33 @@ const AllGames = () => {
 
     
   };*/
+
+  // Función para agregar un juego al carrito
+  const handleAddToCart = (game) => {
+    addToCart(game);
+  };
+
+
+//     useEffect(() => {
+
+//     fetch("http://localhost:8080/v1/api/game/list")
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error(`Error!! ${response.status}: ${response.statusText}`);
+//     }
+//     return response.json();
+// })
+//     .then(data => setGames(data))
+//     .catch(error => console.error("Error al obtener la lista de juegos: ", error));
+
+//   },[])
+
+  // const renderImage = (imageContent) => {
+  //   console.log("Valor de game.image:", imageContent);
+  //   if (!imageContent) return null;
+
+    
+  // };
   useEffect(() => {
     const fetchGamesAndImages = async () => {
       try {
@@ -61,22 +99,15 @@ const AllGames = () => {
         const gamesData = await gamesResponse.json();
         setGames(gamesData);
 
-        // Obtener las imágenes de los juegos
-        const gamesWithImages = await Promise.all(
-          gamesData.map(async (game) => {
-            const imageResponse = await fetch(
-              `http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`
-            );
-            if (!imageResponse.ok) {
-              throw new Error(
-                `Error al obtener la imagen del juego ${game.title}: ${imageResponse.status}`
-              );
-            }
-            const blob = await imageResponse.blob();
-            const imageUrl = URL.createObjectURL(blob);
-            return { ...game, imageUrl };
-          })
-        );
+        const gamesWithImages = await Promise.all(gamesData.map(async game => {
+          const imageResponse = await fetch(`http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`);
+          if (!imageResponse.ok) {
+            throw new Error(`Error al obtener la imagen del juego ${game.title}: ${imageResponse.status}`);
+          }
+          const blob = await imageResponse.blob();
+          const imageUrl = URL.createObjectURL(blob);
+          return { ...game, imageUrl };
+        }));
         setGames(gamesWithImages);
       } catch (error) {
         console.error(
@@ -85,9 +116,44 @@ const AllGames = () => {
         );
       }
     };
+    fetchGamesAndImages();
 
-    fetchGamesAndImages(); // Llamamos a la función para obtener la lista de juegos y las imágenes cuando el componente se monta
+
+        // Obtener las imágenes de los juegos
+        // const gamesWithImages = await Promise.all(
+        //   gamesData.map(async (game) => {
+        //     const imageResponse = await fetch(
+        //       `http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`
+        //     );
+        //     if (!imageResponse.ok) {
+        //       throw new Error(
+        //         `Error al obtener la imagen del juego ${game.title}: ${imageResponse.status}`
+        //       );
+        //     }
+        //     const blob = await imageResponse.blob();
+        //     const imageUrl = URL.createObjectURL(blob);
+        //     return { ...game, imageUrl };
+        //   })
+        // );
+        // setGames(gamesWithImages);
+    //   } catch (error) {
+    //     console.error(
+    //       "Error al obtener la lista de juegos y las imágenes:",
+    //       error
+    //     );
+    //   }
+    // };
+    
+
+    fetchGamesAndImages();
   }, []);
+  console.log(searchTerm);
+
+  const results = games.filter((dato) =>
+  dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+
+
   return (
     <div className="games">
       <div className="image-games">
@@ -177,7 +243,7 @@ const AllGames = () => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-            {games.map((game) => (
+            {results.map((game) => (
               <Card
                 key={game.id}
                 maxW={{ base: "60%", md: "30%", lg: "30%" }}
@@ -185,7 +251,7 @@ const AllGames = () => {
               >
                 <CardBody>
                   <Image
-                    src={img}
+                    src={game.imgeUrl}
                     alt="Green double couch with wooden legs"
                     borderRadius="lg"
                   />
@@ -193,7 +259,7 @@ const AllGames = () => {
                     <Heading size="md" color={"white"}>
                       {game.name}
                     </Heading>
-                    {/* <Text color={"white"}>{game.description}</Text> */}
+                    <Text color={"white"}>{game.description}</Text>
                     <Text color={"white"} fontSize="2xl">
                       ${game.price}
                     </Text>
@@ -220,6 +286,7 @@ const AllGames = () => {
                       color={"#0D1A2C"}
                       bg={"#879DBB"}
                       _hover={{ bg: "#9FEADD" }}
+                      onClick={() => handleAddToCart(game)}
                     >
                       Comprar
                     </Button>
@@ -228,11 +295,13 @@ const AllGames = () => {
                       variant="ghost"
                       colorScheme="blue"
                       _hover={{ bg: "#9FEADD" }}
+                      onClick={() => addToCart(game)}
                     >
                       <FaRegHeart />
                     </Button>
                   </ButtonGroup>
                 </CardFooter> 
+                
               </Card>
             ))}
 
@@ -429,8 +498,9 @@ const AllGames = () => {
           </Flex>
         </div>
       </div>
+      {/* <Cart cart={cart} /> */}
     </div>
   );
-};
+          }
 
 export default AllGames;

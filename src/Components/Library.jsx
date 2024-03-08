@@ -16,7 +16,7 @@ import {
 import { FaRegHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
-const Library = () => {
+const Library = ({searchTerm}) => {
   const [games, setGames] = useState([]);
 
   
@@ -33,6 +33,9 @@ const Library = () => {
         console.error("Error al obtener la lista de juegos: ", error)
       );
   }, []);
+  const results = games.filter((dato) =>
+  dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
 
   return (
     <div className="games">
@@ -52,8 +55,8 @@ const Library = () => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-            {games.map((game) => (
-              <Card
+            {/* {results.map((game) => ( */}
+              {/* <Card
                 key={game.id}
                 maxW={{ base: "60%", md: "30%", lg: "30%" }}
                 bg={"#1B314E"}
@@ -94,8 +97,8 @@ const Library = () => {
                     </Button>
                   </ButtonGroup>
                 </CardFooter>
-              </Card>
-            ))}
+              </Card> */}
+            {/* ))} */}
           </Flex>
         </div>
 
@@ -108,7 +111,7 @@ const Library = () => {
             justifyContent={"space-around"}
             flexWrap={"wrap"}
           >
-            {games.map((game) => (
+            {/* {games.map((game) => (
               <Card
                 key={game.id}
                 maxW={{ base: "60%", md: "30%", lg: "30%" }}
@@ -138,7 +141,7 @@ const Library = () => {
                       bg={"#879DBB"}
                       _hover={{ bg: "#9FEADD" }}
                     >
-                      PLAY
+                      COMPRAR
                     </Button>
                     <Button
                       fontSize={{ base: 15, md: 15, lg: 30 }}
@@ -152,7 +155,7 @@ const Library = () => {
                   </ButtonGroup>
                 </CardFooter>
               </Card>
-            ))}
+            ))} */}
           </Flex>
         </div>
       </div>
