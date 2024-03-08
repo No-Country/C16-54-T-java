@@ -44,6 +44,12 @@ const AllGames = ({ addToCart, searchTerm }) => {
     .catch(error => console.error("Error al obtener la lista de juegos: ", error));
 
   },[])
+//Buscador-------------------------------------------------
+
+
+
+  const results = games.filter((dato) =>
+ dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   const renderImage = (imageContent) => {
     console.log("Valor de game.image:", imageContent);

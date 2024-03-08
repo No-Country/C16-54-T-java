@@ -35,6 +35,9 @@ const Library = ({searchTerm}) => {
         console.error("Error al obtener la lista de juegos: ", error)
       );
   }, []);
+  const results = games.filter((dato) =>
+ dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
 
   return (
     <div className="games">
