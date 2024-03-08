@@ -19,8 +19,6 @@ import { useState, useEffect } from "react";
 const Library = ({searchTerm}) => {
   const [games, setGames] = useState([]);
 
-  const results = games.filter((dato) =>
-  dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
   
   useEffect(() => {
     fetch("http://localhost:8080/v1/api/game/list")
@@ -36,7 +34,7 @@ const Library = ({searchTerm}) => {
       );
   }, []);
   const results = games.filter((dato) =>
- dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  dato.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
 
   return (
