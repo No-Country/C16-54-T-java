@@ -1,14 +1,22 @@
-import { Button } from "@chakra-ui/button";
+import { Button,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay 
+} from "@chakra-ui/react";
 import "./styles.css";
-
+import { useNavigate } from 'react-router-dom';
 import { Checkbox, Input, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-// import { useState } from "react";
+import { useState } from "react";
 
 const Login = () => {
   // const [email, setEmail] = useState('');
   // const[password, setPassword] = useState('');
+  const [showDialog, setShowDialog] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +31,7 @@ const Login = () => {
       })
 
       //Si la respuesta es ok, redirecciona
-        if(response.status == 200){
+      if(response.status == 200){
         window.location.href = '/All-the-games'
       }
 
@@ -32,11 +40,24 @@ const Login = () => {
       //Almacenar el JWT en el localStorage
       localStorage.setItem('token', token)
       console.log(localStorage)
+      if (response.data.role === 'ADMIN') {
+        // Redirigir al panel de administrador
+        navigate('/Admin');
+      } else {
+        navigate('/user');
+      }
       
     } catch (error) {
       console.error('Error al iniciar sesión: ', error)
+      //Muestra mensaje de correo o contraseña no registrado
+      setShowDialog(true);
     }
   };
+
+  const handleClose = () => {
+    setShowDialog(false);
+    window.location.reload();
+  }
 
   return (
     <div className="container">
@@ -104,9 +125,40 @@ const Login = () => {
               alignItems={"center"}
               
             >
-              INICIAR SECION
+              INICIAR SESION
             </Button>
           </form>
+          <>
+            <AlertDialog
+              isOpen={showDialog}
+              //leastDestructiveRef={cancelRef}
+              onClose={() => setShowDialog(false)}
+            >
+              <AlertDialogOverlay>
+                <AlertDialogContent>
+                  <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                  Error
+                  </AlertDialogHeader>
+
+                  <AlertDialogBody>
+                    {<Text as="em">Correo o contraseña NO encontrados</Text>}
+                  </AlertDialogBody>
+
+                  <AlertDialogFooter>
+                    <Button
+                      color={"#0D1A2C"}
+                      backgroundColor={"#9FEADD"}
+                      colorScheme="blackAlpha"
+                      onClick={handleClose}
+                      ml={3}
+                    >
+                      Cerrar
+                    </Button>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialogOverlay>
+            </AlertDialog>
+          </>
           <Text
             fontSize={".8rem"}
             color={"#9FEADD"}

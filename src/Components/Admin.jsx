@@ -17,25 +17,81 @@ import { SearchIcon } from "@chakra-ui/icons";
 import provisoria from "../assets/img/ffff.jpg";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Switch } from "@chakra-ui/react";
+import axios from 'axios';
+
 
 const Admin = () => {
   const [games, setGames] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:8080/v1/api/game/list")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error!! ${response.status}: ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then((data) => setGames(data))
-      .catch((error) =>
-        console.error("Error al obtener la lista de juegos: ", error)
-      );
-  }, []);
+  /*useEffect(() => {
 
+    fetch("http://localhost:8080/v1/api/admin/listGames")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error!! ${response.status}: ${response.statusText}`);
+    }
+    return response.json();
+})
+    .then(data => setGames(data))
+    .catch(error => console.error("Error al obtener la lista de juegos: ", error));
+
+  },[])
+  */
+  useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const token = localStorage.getItem('token'); // Obtener el token del localStorage
+
+        const response = await axios.get(
+          "http://localhost:8080/v1/api/admin/listGames",
+          {
+            headers: {
+              'Authorization': `Bearer ${token}` // Incluir el token en el encabezado
+            }
+          }
+        );
+
+        /*if (response.status === 200) {
+          
+          setGames(response.data); // Establecer los juegos obtenidos del servidor
+        } 
+        // Obtener las imágenes de los juegos
+        const gamesWithImages = await Promise.all(gamesData.map(async game => {
+          
+          const imageResponse = await fetch(`http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`);
+          if (!imageResponse.ok) {
+            throw new Error(`Error al obtener la imagen del juego ${game.name}: ${imageResponse.status}`);
+          }
+          const blob = await imageResponse.blob();
+          const imageUrl = URL.createObjectURL(blob);
+          return { ...game, imageUrl };
+        }));
+        setGames(gamesWithImages);
+        */
+        if (response.status === 200) {
+          const gamesData = response.data;
+  
+          // Obtener las imágenes de los juegos
+          const gamesWithImages = await Promise.all(gamesData.map(async game => {
+            const imageResponse = await fetch(`http://localhost:8080/v1/api/game/getPhoto?idGame=${game.id}`);
+            if (!imageResponse.ok) {
+              throw new Error(`Error al obtener la imagen del juego ${game.name}: ${imageResponse.status}`);
+            }
+            const blob = await imageResponse.blob();
+            const imageUrl = URL.createObjectURL(blob);
+            return { ...game, imageUrl };
+          }));
+  
+          setGames(gamesWithImages);
+        }
+      } catch (error) {
+        console.error("Error al obtener la lista de juegos:", error);
+      }
+
+    };
+
+    fetchGames(); // Llamar a la función para obtener los juegos
+  }, []); 
   return (
     <div className="admin">
       <div className="logo">
@@ -125,18 +181,20 @@ const Admin = () => {
             </Portal>
           </Menu>
         </div>
-        {games.map((game) => (
-          <div key={game.id} className="juegos">
-            <div className="datos">
-              <h4>{game.name}</h4>
-              <h4>{game.category}</h4>
-              <h4>{game.price}</h4>
-            </div>
-            <div className="img-datos">
-              <img src={provisoria} />
-            </div>
-            <div className="description-datos">{game.description}</div>
-            <div className="estados">
+        {games.map(game => (
+        <div key={game.id} className="juegos">
+          <div className="datos">
+            <h4>{game.name}</h4>
+            <h4>{game.category}</h4>
+            <h4>{game.price}</h4>
+          </div>
+          <div className="img-datos">
+            <img src={game.imageUrl} alt={game.name} />
+          </div>
+          <div className="description-datos">
+            {game.description}
+          </div>
+          <div className="estados">
               <div className="text-estado">
                 <h4>Estado</h4>
                 <Stack direction="row">

@@ -28,13 +28,17 @@ const Cart = ({ cart }) => {
           w={"360px"}
         >
           <CardHeader margin={"auto"}>
-            <Heading size="md">Resumen de compra</Heading>
+            <Heading size="md" textTransform="uppercase">Carrito de compras</Heading>
           </CardHeader>
 
           <CardBody>
+          <Flex alignItems={"center"} p={"10px"}>
+          <Heading size="md" margin={"1rem"}>PRODUCTO</Heading>
+          <Heading size="md" margin={"1rem"}>SUBTOTAL</Heading>      
+          </Flex>
             <Stack
               divider={<StackDivider />}
-              spacing="4"
+              spacing="6"
               borderColor={"#9FEADD"}
             >
               <Box>

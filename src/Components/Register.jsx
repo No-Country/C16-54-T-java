@@ -52,7 +52,10 @@ const Register = () => {
   const [showErrorEmail, setShowErrorEmail] = useState(false);
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const onClose = () => setIsOpen(false);
+  const onClose = () => {
+    setIsOpen(false);
+    window.location.href = "/login";
+  }
   const cancelRef = React.useRef();
 
   const handleBlur = () => {
@@ -94,9 +97,7 @@ const Register = () => {
 
       if (response.status == 200) {
         {setIsOpen}
-        // window.location.href = "/login";
-      } else {
-        // Manejar el caso de error, por ejemplo, mostrar un mensaje de error
+        
       }
     } catch (error) {
       console.error("Error al enviar solicitud:", error);
